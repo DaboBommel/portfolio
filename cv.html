@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="CV | Student Portfolio" data-cz="Životopis | Studentské Portfolium">CV | Student Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé Portfolio">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Essays" data-cz="Eseje">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="reflections.html" data-en="Reflections" data-cz="Reflexe">Reflections</a></li>
+                <li><a href="cv.html" data-en="CV" data-cz="Životopis">CV</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 data-en="Curriculum Vitae" data-cz="Životopis">Curriculum Vitae</h1>
+
+        <div class="cv-download-buttons">
+            <a href="assets/pdfs/CV_EN.pdf" download="[YourName]_CV_EN.pdf" class="btn" data-en="Download CV (EN)" data-cz="Stáhnout CV (EN)">Download CV (EN)</a>
+            <a href="assets/pdfs/CV_CZ.pdf" download="[YourName]_CV_CZ.pdf" class="btn" data-en="Download CV (CZ)" data-cz="Stáhnout CV (CZ)">Download CV (CZ)</a>
+        </div>
+
+        <div class="cv-container fade-in">
+            <object id="cv-pdf-en" class="cv-embed" data="assets/pdfs/CV_EN.pdf" type="application/pdf">
+                <p data-en="Your browser does not support PDFs." data-cz="Váš prohlížeč nepodporuje PDF.">Your browser does not support PDFs.</p>
+            </object>
+            
+            <object id="cv-pdf-cz" class="cv-embed" data="assets/pdfs/CV_CZ.pdf" type="application/pdf" style="display: none;">
+                <p data-en="Your browser does not support PDFs." data-cz="Váš prohlížeč nepodporuje PDF.">Your browser does not support PDFs.</p>
+            </object>
+        </div>
+
+    </main>
+
+    <footer class="container">
+        <p data-en="© 2025 [Your Name]. All rights reserved." data-cz="© 2025 [Tvé Jméno]. Všechna práva vyhrazena.">© 2025 [Your Name]. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

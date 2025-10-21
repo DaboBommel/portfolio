@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Contact | Student Portfolio" data-cz="Kontakt | Studentské Portfolium">Contact | Student Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé Portfolio">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Essays" data-cz="Eseje">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="reflections.html" data-en="Reflections" data-cz="Reflexe">Reflections</a></li>
+                <li><a href="cv.html" data-en="CV" data-cz="Životopis">CV</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 data-en="Get in Touch" data-cz="Kontaktujte mě">Get in Touch</h1>
+        <p class="subtitle" data-en="Feel free to send me a message using the form below." data-cz="Neváhejte mi poslat zprávu pomocí formuláře níže.">
+            Feel free to send me a message using the form below.
+        </p>
+
+        <form class="contact-form fade-in" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/index.html">
+            
+            <input type="hidden" name="form-name" value="contact">
+
+            <p class="hidden">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </p>
+            
+            <div class="form-group">
+                <label for="name" data-en="Name" data-cz="Jméno">Name</label>
+                <input type="text" id="name" name="name" required 
+                       data-en-placeholder="Your Name" 
+                       data-cz-placeholder="Vaše jméno">
+            </div>
+            
+            <div class="form-group">
+                <label for="email" data-en="Email" data-cz="E-mail">Email</label>
+                <input type="email" id="email" name="email" required
+                       data-en-placeholder="your.email@example.com"
+                       data-cz-placeholder="vas.email@priklad.cz">
+            </div>
+            
+            <div class="form-group">
+                <label for="message" data-en="Message" data-cz="Zpráva">Message</label>
+                <textarea id="message" name="message" rows="6" required
+                          data-en-placeholder="Your message..."
+                          data-cz-placeholder="Vaše zpráva..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn" data-en="Send Message" data-cz="Odeslat zprávu">Send Message</button>
+        </form>
+
+    </main>
+
+    <footer class="container">
+        <p data-en="© 2025 Damian van Bommel. All rights reserved." data-cz="© 2025 [Tvé Jméno]. Všechna práva vyhrazena.">© 2025 [Your Name]. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

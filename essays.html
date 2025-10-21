@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Essays | Student Portfolio" data-cz="Eseje | Studentské Portfolium">Essays | Student Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé Portfolio">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Essays" data-cz="Eseje">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="reflections.html" data-en="Reflections" data-cz="Reflexe">Reflections</a></li>
+                <li><a href="cv.html" data-en="CV" data-cz="Životopis">CV</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 data-en="Essays" data-cz="Eseje">Essays</h1>
+
+        <section class="year-group fade-in">
+            <h2 data-en="Year 2" data-cz="2. ročník">Year 2</h2>
+            <div class="portfolio-grid">
+                
+                <article class="portfolio-item">
+                    <h3 data-en="Analysis of Modernist Literature" data-cz="Analýza modernistické literatury">Analysis of Modernist Literature</h3>
+                    <p class="item-meta">
+                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> <span data-en="Contemporary Lit" data-cz="Současná literatura">Contemporary Lit</span> | 
+                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2024
+                    </p>
+                    <p class="item-description" data-en="A 10-page analysis on the themes of alienation in T.S. Eliot and Virginia Woolf." data-cz="10stránková analýza na téma odcizení v díle T.S. Eliota a Virginie Woolfové.">
+                        A 10-page analysis on the themes of alienation in T.S. Eliot and Virginia Woolf.
+                    </p>
+                    
+                    <div class="embed-container">
+                        <object data="assets/pdfs/Sample_Essay.pdf" type="application/pdf" width="100%">
+                            <p data-en="Your browser does not support PDFs. You can " data-cz="Váš prohlížeč nepodporuje PDF. Můžete ">Your browser does not support PDFs. You can 
+                                <a href="assets/pdfs/Sample_Essay.pdf" data-en="download the file instead." data-cz="místo toho soubor stáhnout.">download the file instead.</a>
+                            </p>
+                        </object>
+                    </div>
+
+                    <a href="assets/pdfs/Sample_Essay.pdf" download="Modernist_Literature_Analysis.pdf" class="btn" data-en="Download PDF" data-cz="Stáhnout PDF">Download PDF</a>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="year-group fade-in">
+            <h2 data-en="Year 1" data-cz="1. ročník">Year 1</h2>
+            <div class="portfolio-grid">
+                <article class="portfolio-item">
+                    <h3 data-en="Introduction to Philosophy" data-cz="Úvod do filozofie">Introduction to Philosophy</h3>
+                    <p class="item-meta">
+                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> PHIL101 | 
+                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2023
+                    </p>
+                    <p data-en="Placeholder for Year 1 essay." data-cz="Placeholder pro esej z 1. ročníku.">Placeholder for Year 1 essay.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="container">
+        <p data-en="© 2025 [Your Name]. All rights reserved." data-cz="© 2025 [Tvé Jméno]. Všechna práva vyhrazena.">© 2025 [Your Name]. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
