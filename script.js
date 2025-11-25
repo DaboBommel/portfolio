@@ -99,4 +99,39 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    // --- Contact Form Handling ---
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    const backToFormBtn = document.getElementById('back-to-form');
+
+    if (contactForm && successMessage) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+                .then(() => {
+                    contactForm.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    alert('Error sending message. Please try again later.');
+                    console.error('Form submission error:', error);
+                });
+        });
+
+        if (backToFormBtn) {
+            backToFormBtn.addEventListener('click', () => {
+                successMessage.classList.add('hidden');
+                contactForm.classList.remove('hidden');
+            });
+        }
+    }
 });
