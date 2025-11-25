@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Language Toggle Logic ---
     const langToggleBtn = document.getElementById('lang-toggle');
-    const elementsToTranslate = document.querySelectorAll('[data-en]');
+    const elementsToTranslate = document.querySelectorAll('[data-en], [data-en-placeholder]');
 
     // Helper to get query param
     const getQueryParam = (param) => {
@@ -28,9 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to update text content based on language
     function updateLanguage(lang) {
         elementsToTranslate.forEach(el => {
-            el.textContent = el.getAttribute(`data-${lang}`);
+            if (el.hasAttribute(`data-${lang}`)) {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            }
+            if (el.hasAttribute(`data-${lang}-placeholder`)) {
+                el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+            }
         });
-        langToggleBtn.textContent = lang === 'en' ? 'CZ' : 'EN';
+        if (langToggleBtn) {
+            langToggleBtn.textContent = lang === 'en' ? 'CZ' : 'EN';
+        }
         document.documentElement.lang = lang;
 
         // Update URL without reloading
@@ -46,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanguage(currentLang);
 
     // Toggle event listener
-    langToggleBtn.addEventListener('click', () => {
-        currentLang = currentLang === 'en' ? 'cz' : 'en';
-        localStorage.setItem('preferredLang', currentLang);
-        updateLanguage(currentLang);
-    });
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'cz' : 'en';
+            localStorage.setItem('preferredLang', currentLang);
+            updateLanguage(currentLang);
+        });
+    }
 
     // --- Fade-in Animation on Scroll ---
     const fadeElements = document.querySelectorAll('.fade-in');
