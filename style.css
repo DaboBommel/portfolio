@@ -55,6 +55,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-image: radial-gradient(circle at 50% 50%, rgba(23, 42, 69, 0.4) 0%, rgba(10, 25, 47, 0) 50%);
     background-attachment: fixed;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from bubbles */
 }
 
 .container {
@@ -590,30 +592,39 @@ footer {
     }
 
     .profile-visuals {
-        margin-bottom: 100px;
-        /* More space on mobile */
+        margin-bottom: 120px;
+        /* Adjusted space for mobile */
     }
 
     .profile-photo.main-photo {
         width: 130px;
+        /* Slightly larger for mobile */
         height: 130px;
     }
 
     .profile-photo.bubble {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bubble-1 {
+        top: 140px;
+        left: -20px;
+        /* Safer positioning */
+    }
+
+    .bubble-2 {
+        top: 160px;
+        right: -10px;
+        /* Safer positioning */
         width: 90px;
         height: 90px;
     }
 
-    .bubble-1 {
-        top: 110px;
-        left: -30px;
-    }
-
-    .bubble-2 {
-        top: 130px;
-        right: -20px;
-        width: 80px;
-        height: 80px;
+    /* Fix PDF Embed on Mobile */
+    .cv-embed {
+        height: 500px;
+        min-height: auto;
     }
 }
 
@@ -644,12 +655,16 @@ footer {
     border: 4px solid var(--primary-color);
     box-shadow: 0 0 20px rgba(56, 182, 255, 0.3);
     opacity: 0.9;
+    z-index: 1;
+    /* Restored z-index */
 }
 
 .profile-photo.main-photo {
     width: 220px;
     height: 220px;
     position: relative;
+    z-index: 2;
+    /* Ensure main photo is on top */
 }
 
 .profile-photo.main-photo:hover {
@@ -668,6 +683,8 @@ footer {
 .profile-photo.bubble:hover {
     transform: scale(1.2);
     opacity: 1;
+    z-index: 3;
+    /* Ensure hover brings to front */
 }
 
 .bubble-1 {
