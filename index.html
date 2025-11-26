@@ -33,49 +33,128 @@
 
     <main class="container">
         <section class="hero fade-in">
-            <h1 data-en="Hi this is a test" data-cz="Ahoj, tohle je test">Welcome to My Academic Portfolio</h1>
-            <p class="subtitle" data-en="A curated collection of my work throughout my university studies." data-cz="Spravovaná sbírka mé práce během mých univerzitních studií.">
-                A curated collection of my work throughout my university studies.
+            <div class="profile-container">
+                <div class="profile-visuals">
+                    <img src="assets/me.png" alt="Damian van Bommel" class="profile-photo main-photo">
+                    <img src="assets/me2.jpg" alt="Damian van Bommel" class="profile-photo bubble bubble-1">
+                    <img src="assets/me3.jpg" alt="Damian van Bommel" class="profile-photo bubble bubble-2">
+                </div>
+                <div class="profile-text">
+                    <h1 data-en="My Academic portfolio Damian van Bommel"
+                        data-cz="Akademické portfolio  Damian van Bommel">
+                        Welcome to My Academic Portfolio</h1>
+                    <p class="subtitle" data-en="A curated collection of my work throughout my university studies."
+                        data-cz="Spravovaná sbírka mé práce během mých univerzitních studií.">
+                        A curated collection of my work throughout my university studies.
                     </p>
+                    <a href="contact.html" class="btn contact-btn" data-en="Contact Me" data-cz="Kontaktujte mě">Contact
+                        Me</a>
+                </div>
+            </div>
         </section>
 
         <section class="timeline-section fade-in">
-            <h2 data-en="My Academic Journey" data-cz="Moje akademická cesta">My Academic Journey</h2>
-            <div class="timeline">
+            <div class="content-wrapper">
+                <h2 data-en="My Academic Journey" data-cz="Moje akademická cesta">My Academic Journey</h2>
 
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <h3 data-en="Year 1: Foundations" data-cz="1. ročník: Základy">Year 1: Foundations</h3>
-                        <span class="timeline-date">2025-2026</span>
-                        <p data-en="Focused on core concepts, introductory courses, and developing fundamental research skills."
-                            data-cz="Zaměření na základní koncepty, úvodní kurzy a rozvoj základních výzkumných dovedností.">
-                            Focused on core concepts, introductory courses, and developing fundamental research skills.
-                        </p>
+                <!-- Year 1 -->
+                <div class="year-block">
+                    <h3 class="year-heading" data-en="Year 1" data-cz="1. Ročník">Year 1</h3>
+
+                    <details class="semester-details">
+                        <summary class="semester-summary" data-en="Semester 1" data-cz="1. Semestr">Semester 1</summary>
+                        <div class="subject-list">
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">PGBICT01</span>
+                                    <span class="subject-name" data-en="Digitální technologie ve vzdělávání"
+                                        data-cz="Digitální technologie ve vzdělávání">Digitální technologie ve
+                                        vzdělávání</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Orientation in key issues of ICT implementation in education and society, searching and interpreting empirical data on ICT, presentation of relevant educational and policy documents related to ICT in education, and application of ICT in teaching practice with attention to social and ethical aspects."
+                                    data-cz="Orientace v klíčových otázkách implementace ICT do vzdělávání i života společnosti, vyhledávání a interpretace empirických dat k tématu ICT, prezentace relevantních školských a politických dokumentů týkajících se ICT ve vzdělávání a využívání ICT v didaktické praxi s ohledem na sociální a etické aspekty.">
+                                </p>
+                            </details>
+
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">PGBICT02</span>
+                                    <span class="subject-name" data-en="Úvod do ICT" data-cz="Úvod do ICT">Úvod do
+                                        ICT</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Orientation in the principles of software applications, computer networks and the internet, knowledge of basic algorithmization, identification and use of markup languages and document styles, understanding of electronic documents and their practical creation, ability to formulate simple database queries, effective data visualization, distinction between basic formats of image, sound and video, handling challenges of online communication, and ensuring safe work with electronic data."
+                                    data-cz="Orientace v principech fungování softwarových aplikací, počítačových sítí a internetu, znalost základů algoritmizace, identifikace a využívání značkovacích jazyků a dokumentových stylů, porozumění principům elektronických dokumentů a jejich praktické tvorbě, schopnost pokládat jednoduché databázové dotazy, efektivní vizualizace dat, rozlišení základních formátů obrazu, zvuku a videa, zvládání nástrah online komunikace a zajištění bezpečné práce s elektronickými daty.">
+                                </p>
+                            </details>
+
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">CORE139</span>
+                                    <span class="subject-name" data-en="Large Language Models in Practice"
+                                        data-cz="Large Language Models in Practice">Large Language Models in
+                                        Practice</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Understanding the fundamental principles on which models are built, identifying areas of LLM application within one’s field, effectively using prompt engineering techniques, understanding ethical issues associated with the use of AI, conducting a practical experiment related to the use of LLM with appropriate evaluation."
+                                    data-cz="Porozumění základním principům, na kterých jsou modely postaveny, identifikace oblasti použití LLM ve svém oboru, efektivní využívání pohotových inženýrských technik, Porozumění etickým otázkám spojeným s používáním UI, provedení praktického experimentu týkající se použití LLM s odpovídajícím vyhodnocením">
+                                </p>
+                            </details>
+
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">PG2B001</span>
+                                    <span class="subject-name" data-en="Klíčová témata dějin školství a pedagogiky"
+                                        data-cz="Klíčová témata dějin školství a pedagogiky">Klíčová témata dějin
+                                        školství a
+                                        pedagogiky</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Orientation in educational systems and institutions from antiquity to modern times, knowledge of pedagogical history terminology, critical reflection on history and contexts, application of historical‑pedagogical research methodology, understanding of schooling in the 20th century including totalitarian regimes, evaluation of major figures’ views, and reflection on ethical issues of education, learning, and culture."
+                                    data-cz="Orientace ve výchovných systémech a institucích od starověku po novověk, znalost terminologie dějin pedagogiky, kritické uvažování o dějinách a jejich kontextech, aplikace metodologie historicko‑pedagogického výzkumu, porozumění dějinám školství ve 20. století včetně totalitních režimů, hodnocení názorů významných osobností a reflexe etických otázek výchovy, vzdělávání a kultury.">
+                                </p>
+                            </details>
+
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">PG2B002</span>
+                                    <span class="subject-name" data-en="Úvod do pedagogických věd"
+                                        data-cz="Úvod do pedagogických věd">Úvod do pedagogických věd</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Orientation in the demands of university study and faculty resources, acquisition of key professional skills in pedagogical disciplines, work with academic literature and databases, understanding principles of quantitative and qualitative research, basic orientation in current issues of education, knowledge of strategic documents and institutions involved in the development of the educational system."
+                                    data-cz="Orientace v nárocích vysokoškolského studia a možnostech fakulty, osvojování klíčových odborných dovedností v pedagogických disciplínách, práce s odbornou literaturou a databázemi, porozumění principům kvantitativního i kvalitativního výzkumu, základní orientace v aktuálních otázkách výchovy a vzdělávání, znalost strategických dokumentů a institucí spojených s rozvojem vzdělávacího systému.">
+                                </p>
+                            </details>
+
+                            <details class="subject-item">
+                                <summary>
+                                    <span class="subject-code">PG2B007</span>
+                                    <span class="subject-name" data-en="Obecná psychologie"
+                                        data-cz="Obecná psychologie">Obecná psychologie</span>
+                                </summary>
+                                <p class="subject-description"
+                                    data-en="Orientation in basic psychological terminology and methods of inquiry, understanding the relationship between psychology and pedagogy, knowledge of mental processes, states and traits, overview of psychological schools and personality theories, ability to apply insights to personal experience and educational practice, recognition of basic mental disorders, and awareness of the significance and limitations of psychology for education and everyday life."
+                                    data-cz="Orientace v základní psychologické terminologii a metodách poznání, porozumění vztahu psychologie k pedagogice, znalost psychických procesů, stavů a vlastností, přehled psychologických směrů a teorií osobnosti, schopnost aplikovat poznatky na vlastní zkušenosti i pedagogickou praxi, rozpoznání základních psychických onemocnění a uvědomění si významu i limitů psychologie pro vzdělávání a každodenní život.">
+                                </p>
+                            </details>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Future Placeholders -->
+                <div class="year-block placeholder">
+                    <h3 class="year-heading" data-en="Year 2" data-cz="2. ročník">Year 2</h3>
+                    <div class="semester-block-placeholder">
+                        <p data-en="Coming soon..." data-cz="Již brzy...">Coming soon...</p>
                     </div>
                 </div>
 
-                <div class="timeline-item right fade-in">
-                    <div class="timeline-content">
-                        <h3 data-en="Year 2: Specialization" data-cz="2. ročník: Specializace">Year 2: Specialization
-                        </h3>
-                        <span class="timeline-date">2023-2024</span>
-                        <p data-en="Began specializing in my chosen field, taking advanced modules and completing more complex projects."
-                            data-cz="Začátek specializace ve zvoleném oboru, absolvování pokročilých modulů a dokončování složitějších projektů.">
-                            Began specializing in my chosen field, taking advanced modules and completing more complex
-                            projects.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <h3 data-en="Year 3: Application" data-cz="3. ročník: Aplikace">Year 3: Application</h3>
-                        <span class="timeline-date">2024-2025</span>
-                        <p data-en="Applying knowledge to real-world problems, working on a dissertation, and preparing for graduation."
-                            data-cz="Aplikace znalostí na reálné problémy, práce na disertační práci a příprava na promoci.">
-                            Applying knowledge to real-world problems, working on a dissertation, and preparing for
-                            graduation.
-                        </p>
+                <div class="year-block placeholder">
+                    <h3 class="year-heading" data-en="Year 3" data-cz="3. ročník">Year 3</h3>
+                    <div class="semester-block-placeholder">
+                        <p data-en="Coming soon..." data-cz="Již brzy...">Coming soon...</p>
                     </div>
                 </div>
 
@@ -83,40 +162,48 @@
         </section>
 
         <section class="fade-in" style="margin-top: 5rem;">
-            <h2 data-en="Featured Work" data-cz="Vybrané práce">Featured Work</h2>
-            <div class="portfolio-grid">
-                <article class="portfolio-item">
-                    <h3 data-en="Key topics in ICT in education" data-cz="Zásadní témata v ICT ve vzdělávání">Key topics
-                        in ICT</h3>
-                    <p class="item-meta">
-                        <strong data-en="Type:" data-cz="Typ:">Type:</strong> Essay
-                    </p>
-                    <p class="item-description" data-en="A deep dive into the role of technology in modern classrooms."
-                        data-cz="Hluboký ponor do role technologií v moderních třídách.">
-                        A deep dive into the role of technology in modern classrooms.
-                    </p>
-                    <a href="essays.html" class="btn" data-en="Read More" data-cz="Číst více">Read More</a>
-                </article>
+            <div class="content-wrapper">
+                <h2 data-en="Featured Work" data-cz="Vybrané práce">Featured Work</h2>
+                <div class="portfolio-grid">
+                    <article class="portfolio-item">
+                        <h3 data-en="Key topics in ICT in education" data-cz="Zásadní témata v ICT ve vzdělávání">Key
+                            topics
+                            in ICT</h3>
+                        <p class="item-meta">
+                            <strong data-en="Type: Seminar paper" data-cz="Typ: Seminární práce">Type:</strong>
+                        </p>
+                        <p class="item-description"
+                            data-en="A brief seminar paper written in the 1. year of my studies on key topics in ICT in education."
+                            data-cz="Stručná seminární práce z 1. ročníku studia zaměřená na zásadní témata v ICT ve vzdělávání">
+                            A brief seminar paper written in the 1. year of my studies on key topics in ICT in
+                            education.
+                        </p>
+                        <a href="essays.html" class="btn" data-en="Read More" data-cz="Číst více">Read More</a>
+                    </article>
 
-                <article class="portfolio-item">
-                    <h3 data-en="Marketing Strategy" data-cz="Marketingová strategie">Marketing Strategy</h3>
-                    <p class="item-meta">
-                        <strong data-en="Type:" data-cz="Typ:">Type:</strong> Presentation
-                    </p>
-                    <p class="item-description" data-en="Group project presentation on marketing strategies using LLMs."
-                        data-cz="Prezentace skupinového projektu o marketingových strategiích s využitím LLM.">
-                        Group project presentation on marketing strategies using LLMs.
-                    </p>
-                    <a href="presentations.html" class="btn" data-en="View Presentation"
-                        data-cz="Zobrazit prezentaci">View Presentation</a>
-                </article>
+                    <article class="portfolio-item">
+                        <h3 data-en="Insights from the core course ‘LLMs in Practice"
+                            data-cz="Poznatky z core předmětu LLMs in practice">
+                            Insights from the core course LLMs in practice</h3>
+                        <p class="item-meta">
+                            <strong data-en="Type: presentation" data-cz="Typ: prezentace">Type:</strong>
+                        </p>
+                        <p class="item-description"
+                            data-en="A presentation from the 1st year on Insights from the core course ‘LLMs in Practice."
+                            data-cz="Prezentace z 1. ročníku na téma poznatky z core předmětu LLMs in practice.">
+                            Presentation on insights from the core course LLMs in Practice.
+                        </p>
+                        <a href="presentations.html" class="btn" data-en="View Presentation"
+                            data-cz="Zobrazit prezentaci">View Presentation</a>
+                    </article>
+                </div>
             </div>
         </section>
 
     </main>
 
     <footer class="container">
-        <p data-en="© 2026 Damian van Bommel. All rights reserved."
+        <p data-en="© 2025 Damian van Bommel. All rights reserved."
             data-cz="© 2025 Damian van Bommel. Všechna práva vyhrazena.">© 2025 Damian van Bommel. All rights reserved.
         </p>
     </footer>
