@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="CV | Student Portfolio" data-cz="Životopis | Studentské Portfolium">CV | Student Portfolio</title>
+    <title data-en="CV + other documents | Student Portfolio"
+        data-cz="Životopis + další dokumenty | Studentské Portfolium">CV + other documents | Student Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,29 +25,98 @@
                 <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
                 <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
                 <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
-                <li><a href="cv.html" data-en="CV" data-cz="Životopis">CV</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other
+                        documents</a></li>
                 <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
             </ul>
             <button id="lang-toggle" title="Toggle language">CZ</button>
         </nav>
-        browser does not support PDFs.</p>
-        </object>
+    </header>
 
-        <object id="cv-pdf-cz" class="cv-embed" data="assets/pdfs/CV_CZ.txt" type="text/plain" style="display: none;">
-            <p data-en="Your browser does not support PDFs." data-cz="Váš prohlížeč nepodporuje PDF.">Your
-                browser does not support PDFs.</p>
-        </object>
+    <main class="container fade-in">
+        <!-- Elevator Pitch -->
+        <section class="cv-intro">
+            <details class="summary-details">
+                <summary>
+                    <h2 data-en="Short Summary" data-cz="Krátké Shrnutí"
+                        style="display: inline-block; margin: 0; cursor: pointer;">Professional Summary</h2>
+                </summary>
+                <div class="elevator-pitch">
+                    <p data-en="I'm a pedagogy student at Masaryk University in Brno, specializing in digital technologies in education. I have practical experience leading teams and organizing activities for children and young people. My roles as a program leader for summer camps (Lata, Lužánky) and as a swimming coach for Kometa Brno have significantly helped me improve my communication and organizational skills. I’m Interested in people, learning, and helping teams grow, which aligns closely with my long-term career goal to work in HR or training and development. I‘m motivated, curious, energetic, and highly extroverted, hoping to help others improve."
+                        data-cz="Jsem student pedagogiky se specializací na digitální technologie ve vzdělávání na Masarykově univerzitě v Brně. Mám zkušenosti s vedením týmů a organizováním aktivit pro děti a mládež. V rámci mých rolí programového vedoucího na letních táborech (Lata, Lužánky) a trenéra plavání pro Kometu Brno mi pomohly zlepšit mé komunikační a organizační dovednosti.
+Zajímám se o lidi, učení a pomoc týmům se zlepšovat ve spolupráci, což se úzce shoduje s mým dlouhodobým kariérním cílem pracovat v oblasti HR, nebo firemním vzdělávání a rozvoji. Jsem motivovaný, zvědavý, energický a silně extrovertní, s cílem pomáhat ostatním se zlepšovat.">
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <!-- PDF Embed -->
+        <div class="pdf-container">
+            <h1 data-en="Curriculum Vitae" data-cz="Životopis"
+                style="text-align: left; margin-bottom: 2rem; color: var(--primary-color);">
+                Curriculum Vitae</h1>
+
+            <div class="portfolio-item">
+                <object id="cv-pdf-en" class="cv-embed" data="assets/pdfs/CV_EN.pdf" type="application/pdf" width="100%"
+                    height="800px">
+                    <p data-en="Your browser does not support PDFs. Please download the PDF to view it: <a href='assets/pdfs/CV_EN.pdf'>Download PDF</a>."
+                        data-cz="Váš prohlížeč nepodporuje PDF. Prosím stáhněte si PDF pro zobrazení: <a href='assets/pdfs/CV_EN.pdf'>Stáhnout PDF</a>.">
+                        Your browser does not support PDFs. Please download the PDF to view it: <a
+                            href="assets/pdfs/CV_EN.pdf">Download PDF</a>.
+                    </p>
+                </object>
+
+                <object id="cv-pdf-cz" class="cv-embed" data="assets/pdfs/CV_CZ.pdf" type="application/pdf" width="100%"
+                    height="800px" style="display: none;">
+                    <p data-en="Your browser does not support PDFs. Please download the PDF to view it: <a href='assets/pdfs/CV_CZ.pdf'>Download PDF</a>."
+                        data-cz="Váš prohlížeč nepodporuje PDF. Prosím stáhněte si PDF pro zobrazení: <a href='assets/pdfs/CV_CZ.pdf'>Stáhnout PDF</a>.">
+                        Your browser does not support PDFs. Please download the PDF to view it: <a
+                            href="assets/pdfs/CV_CZ.pdf">Download PDF</a>.
+                    </p>
+                </object>
+
+                <!-- Additional Download Buttons -->
+                <div class="cv-download-buttons">
+                    <a href="assets/pdfs/CV_EN.pdf" class="btn" download data-en="Download English CV"
+                        data-cz="Stáhnout Anglický CV">Download English CV</a>
+                    <a href="assets/pdfs/CV_CZ.pdf" class="btn" download data-en="Download Czech CV"
+                        data-cz="Stáhnout Český CV">Download Czech CV</a>
+                </div>
+            </div>
         </div>
 
-        </main>
+        <!-- Pedagogical Minimum Section -->
+        <div class="pdf-container" style="margin-top: 5rem;">
+            <h2 data-en="Pedagogical Minimum Qualification" data-cz="Osvědčení o pedagogickém minimu"
+                style="text-align: left; margin-bottom: 2rem; color: var(--primary-color);">Pedagogical Minimum
+                Qualification</h2>
 
-        <footer class="container">
-            <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">©
-                2025 [Your Name]. All rights reserved.
-            </p>
-        </footer>
+            <div class="portfolio-item">
+                <object class="cv-embed" data="assets/pdfs/pedagog_mininum.pdf" type="application/pdf" width="100%"
+                    height="800px">
+                    <p data-en="Your browser does not support PDFs. Please download the PDF to view it: <a href='assets/pdfs/pedagog_mininum.pdf'>Download PDF</a>."
+                        data-cz="Váš prohlížeč nepodporuje PDF. Prosím stáhněte si PDF pro zobrazení: <a href='assets/pdfs/pedagog_mininum.pdf'>Stáhnout PDF</a>.">
+                        Your browser does not support PDFs. Please download the PDF to view it: <a
+                            href="assets/pdfs/pedagog_mininum.pdf">Download PDF</a>.
+                    </p>
+                </object>
 
-        <script src="script.js"></script>
+                <div class="cv-download-buttons">
+                    <a href="assets/pdfs/pedagog_mininum.pdf" class="btn" download data-en="Download Certificate"
+                        data-cz="Stáhnout Osvědčení">Download Certificate</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">©
+            2025 Damian van Bommel. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

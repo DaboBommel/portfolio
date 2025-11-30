@@ -25,6 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Function to update CV page specific elements
+    function updateCVPage(lang) {
+        const cvPdfEn = document.getElementById('cv-pdf-en');
+        const cvPdfCz = document.getElementById('cv-pdf-cz');
+        const downloadBtn = document.getElementById('download-cv-btn');
+
+        if (cvPdfEn && cvPdfCz) {
+            if (lang === 'en') {
+                cvPdfEn.style.display = 'block';
+                cvPdfCz.style.display = 'none';
+                if (downloadBtn) downloadBtn.href = 'assets/pdfs/CV_EN.pdf';
+            } else {
+                cvPdfEn.style.display = 'none';
+                cvPdfCz.style.display = 'block';
+                if (downloadBtn) downloadBtn.href = 'assets/pdfs/CV_CZ.pdf';
+            }
+        }
+    }
+
     // Function to update text content based on language
     function updateLanguage(lang) {
         elementsToTranslate.forEach(el => {
@@ -33,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (el.hasAttribute(`data-${lang}-placeholder`)) {
                 el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+            }
+            // Handle title attributes for tooltips
+            if (el.hasAttribute(`data-${lang}-title`)) {
+                el.title = el.getAttribute(`data-${lang}-title`);
             }
         });
         if (langToggleBtn) {
@@ -47,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update all navigation links
         updateLinks(lang);
+
+        // Update CV specific elements
+        updateCVPage(lang);
     }
 
     // Initial update

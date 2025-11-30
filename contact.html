@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="contact-page">
 
     <header>
         <nav class="container">
@@ -25,7 +25,8 @@
                 <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
                 <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
                 <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
-                <li><a href="cv.html" data-en="CV" data-cz="Životopis">CV</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other
+                        documents</a></li>
                 <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
             </ul>
             <button id="lang-toggle" title="Toggle language">CZ</button>
@@ -44,35 +45,60 @@
                 Another Message</button>
         </div>
 
-        <form id="contact-form" class="contact-form fade-in" name="contact" method="POST" data-netlify="true"
-            netlify-honeypot="bot-field" action="/index.html">
-            <input class="hidden" name="bot-field" />
+        <div class="contact-wrapper">
+            <!-- Left Column: Contact Form -->
+            <div class="contact-form-container">
+                <h2 data-en="Contact me!" data-cz="Kontaktujte mě!" style="text-align: center; margin-bottom: 2rem;">
+                    CONTACT ME</h2>
 
-            <div class="form-group">
-                <label for="name" data-en="Name" data-cz="Jméno">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Your Name"
-                    data-en-placeholder="Your Name" data-cz-placeholder="Vaše jméno">
+                <form id="contact-form" class="contact-form fade-in" name="contact" method="POST" data-netlify="true"
+                    netlify-honeypot="bot-field" action="/index.html">
+                    <input class="hidden" name="bot-field" />
+
+                    <div class="form-group">
+                        <label for="name" data-en="Name" data-cz="Jméno">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name"
+                            data-en-placeholder="Your Name" data-cz-placeholder="Vaše jméno">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" data-en="Email" data-cz="E-mail">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="example@muni.cz"
+                            data-en-placeholder="example@muni.cz" data-cz-placeholder="příklad@muni.cz">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-en="Message" data-cz="Zpráva">Message</label>
+                        <textarea id="message" name="message" rows="3" required placeholder="Your message..."
+                            data-en-placeholder="Your message..." data-cz-placeholder="Vaše zpráva..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" data-en="Send Message" data-cz="Odeslat zprávu">Send
+                        Message</button>
+                </form>
             </div>
 
-            <div class="form-group">
-                <label for="email" data-en="Email" data-cz="E-mail">Email</label>
-                <input type="email" id="email" name="email" required placeholder="example@muni.cz"
-                    data-en-placeholder="example@muni.cz" data-cz-placeholder="příklad@muni.cz">
+            <!-- Right Column: Socials -->
+            <div class="contact-socials fade-in">
+                <h2 data-en="Socials" data-cz="Sociální sítě" style="margin-bottom: 2rem;">Socials</h2>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/dabobommel/" target="_blank" rel="noopener noreferrer"
+                        class="social-item">
+                        <img src="assets/dabobommel_qr.png" alt="Instagram QR Code" class="qr-code">
+                        <p class="social-label">Instagram</p>
+                    </a>
+                    <a href="https://discord.gg/emdpsStR" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <img src="assets/truedabo_qr.png" alt="Discord QR Code" class="qr-code">
+                        <p class="social-label">Discord</p>
+                    </a>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="message" data-en="Message" data-cz="Zpráva">Message</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Your message..."
-                    data-en-placeholder="Your message..." data-cz-placeholder="Vaše zpráva..."></textarea>
-            </div>
-
-            <button type="submit" class="btn" data-en="Send Message" data-cz="Odeslat zprávu">Send Message</button>
-        </form>
+        </div>
     </main>
 
     <footer class="container">
-        <p data-en="Academic portfolio - Damian van Bommel"
-            data-cz="Akademické portfolio - Damian van Bommel">© 2025 Damian van Bommel. All rights reserved.
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025
+            Damian van Bommel. All rights reserved.
         </p>
     </footer>
 
