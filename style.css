@@ -3,17 +3,17 @@
 
 /* --- CSS Variables (Theme) --- */
 :root {
-    /* HYBRID THEME: Old Colors + New Design Variables */
+    /* --- Theme Colors --- */
     --bg-color: #0a192f;
     /* Very dark navy blue */
     --surface-color: rgba(17, 34, 64, 0.8);
     /* Lighter navy with transparency for Glassmorphism */
     --primary-color: #38b6ff;
-    /* Old Bright Blue */
+    /* Primary Brand Color (Bright Blue) */
     --secondary-color: #00f0ff;
-    /* Old Cyan */
+    /* Secondary Brand Color (Cyan) */
     --accent-color: #FFC107;
-    /* NEW: Golden Amber for highlights */
+    /* Accent Color (Golden Amber) - Used for highlights and active states */
 
     --text-color: #ccd6f6;
     /* Lightest text */
@@ -85,7 +85,7 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 4rem);
     color: var(--text-highlight);
     margin-bottom: 1.5rem;
     border-bottom: 2px solid var(--primary-color);
@@ -94,7 +94,7 @@ h1 {
 }
 
 h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     color: var(--primary-color);
     margin-top: 3rem;
     margin-bottom: 2rem;
@@ -103,7 +103,7 @@ h2 {
     align-items: center;
 }
 
-/* REMOVED h2::after (The line next to headers) */
+
 
 h3 {
     font-size: 1.4rem;
@@ -1031,7 +1031,7 @@ nav ul li a.active::after {
 }
 
 .pdf-container {
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .cv-download-buttons {
@@ -1191,4 +1191,67 @@ nav ul li a.active::after {
     .contact-socials {
         order: 2;
     }
+}
+
+/* --- Refactored Inline Styles --- */
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mt-5 {
+    margin-top: 5rem;
+}
+
+.d-none {
+    display: none;
+}
+
+/* 404 Page */
+.error-page-main {
+    text-align: center;
+    padding-top: 10vh;
+}
+
+.error-heading {
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+/* CV Page */
+.cv-summary-title {
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+}
+
+.cv-section-title {
+    text-align: left;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* Presentations Page (Embeds) */
+.aspect-ratio-16-9 {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+}
+
+.embed-iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
 }

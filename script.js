@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Language Toggle Logic ---
+    // Handles switching between English and Czech content
     const langToggleBtn = document.getElementById('lang-toggle');
     const elementsToTranslate = document.querySelectorAll('[data-en], [data-en-placeholder]');
 
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to update CV page specific elements
+    // Toggles between English and Czech PDF embeds and download buttons
     function updateCVPage(lang) {
         const cvPdfEn = document.getElementById('cv-pdf-en');
         const cvPdfCz = document.getElementById('cv-pdf-cz');
@@ -88,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Fade-in Animation on Scroll ---
+    // Uses IntersectionObserver to trigger animations when elements scroll into view
     const fadeElements = document.querySelectorAll('.fade-in');
 
     const observerOptions = {
@@ -110,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Back to Top Button Logic ---
+    // Creates and manages the visibility of the 'Back to Top' button
     // Create the button element dynamically
     const backToTopBtn = document.createElement('button');
     backToTopBtn.id = 'back-to-top';
@@ -136,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Contact Form Handling ---
+    // Handles form submission via fetch API and displays success message
     const contactForm = document.getElementById('contact-form');
     const successMessage = document.getElementById('success-message');
     const backToFormBtn = document.getElementById('back-to-form');
