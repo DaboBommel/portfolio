@@ -117,7 +117,6 @@ p {
     max-width: 65ch;
     margin-bottom: 1.5rem;
     font-size: 1.15rem;
-    /* INCREASED PARAGRAPH FONT SIZE */
 }
 
 p.subtitle {
@@ -320,7 +319,7 @@ nav ul li a.active::after {
     width: 100%;
     display: block;
     border: none;
-    height: 60vh;
+    height: 70vh;
     /* Reduced height */
 }
 
@@ -596,7 +595,7 @@ nav ul li a.active::after {
     flex-direction: column;
     align-items: center;
     /* Ensure centering in mobile if needed */
-    margin-bottom: 180px;
+    margin-bottom: 220px;
     /* Increased space for bubbles below */
 }
 
@@ -606,16 +605,14 @@ nav ul li a.active::after {
     border: 4px solid var(--primary-color);
     box-shadow: 0 0 20px rgba(56, 182, 255, 0.3);
     opacity: 0.9;
-    z-index: 1;
-    /* Restored z-index */
+    
 }
 
 .profile-photo.main-photo {
     width: 220px;
     height: 220px;
     position: relative;
-    z-index: 2;
-    /* Ensure main photo is on top */
+    right: 20px
 }
 
 .profile-photo.main-photo:hover {
@@ -625,8 +622,8 @@ nav ul li a.active::after {
 
 .profile-photo.bubble {
     position: absolute;
-    width: 160px;
-    height: 160px;
+    width: 175px;
+    height: 175px;
     opacity: 0.9;
     transition: transform var(--transition-speed), z-index var(--transition-speed);
 }
@@ -634,18 +631,16 @@ nav ul li a.active::after {
 .profile-photo.bubble:hover {
     transform: scale(1.2);
     opacity: 1;
-    z-index: 3;
-    /* Ensure hover brings to front */
 }
 
 .bubble-1 {
-    top: 210px;
-    left: -150px;
+    top: 245px;
+    left: -180px;
 }
 
 .bubble-2 {
-    top: 260px;
-    right: 20px;
+    top: 275px;
+    right: 25px;
 }
 
 .profile-text {
@@ -834,9 +829,6 @@ nav ul li a.active::after {
     /* Ensure full width */
 }
 
-.pdf-container {
-    margin-top: 4rem;
-}
 
 .cv-download-buttons {
     display: flex;
@@ -1241,7 +1233,7 @@ nav ul li a.active::after {
 .aspect-ratio-16-9 {
     position: relative;
     width: 100%;
-    height: 0;
+    height: 100%;
     padding-top: 56.25%;
 }
 
