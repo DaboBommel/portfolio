@@ -36,12 +36,36 @@
     <main class="container">
         <h1 data-en="Seminar papers" data-cz="Seminární práce">Essays</h1>
 
+        <!-- Filter Controls -->
+        <div id="filter-controls">
+            <input type="text" id="search-bar" placeholder="Search by title..." data-en-placeholder="Search by title..."
+                data-cz-placeholder="Vyhledat podle názvu...">
+
+            <select id="semester-filter">
+                <option value="all" data-en="All Semesters" data-cz="Všechny semestry">All Semesters</option>
+                <option value="1" data-en="1. Semester" data-cz="1. semestr">1. Semester</option>
+                <option value="2" data-en="2. Semester" data-cz="2. semestr">2. Semester</option>
+                <option value="3" data-en="3. Semester" data-cz="3. semestr">3. Semester</option>
+                <option value="4" data-en="4. Semester" data-cz="4. semestr">4. Semester</option>
+                <option value="5" data-en="5. Semester" data-cz="5. semestr">5. Semester</option>
+                <option value="6" data-en="6. Semester" data-cz="6. semestr">6. Semester</option>
+            </select>
+
+            <select id="subject-filter">
+                <option value="all" data-en="All Subjects" data-cz="Všechny předměty">All Subjects</option>
+                <option value="ICT in education" data-en="ICT in education" data-cz="ICT ve vzdělávání">ICT in
+                    education</option>
+                <option value="Úvod do psychologie" data-en="Introduction to Psychology" data-cz="Úvod do psychologie">
+                    Introduction to Psychology</option>
+            </select>
+        </div>
+
         <!-- Section: Year 1 Essays -->
         <section class="year-group fade-in">
-            <h2 data-en="Year 1 - DIGITED" data-cz="1. Ročník - DIGITED">Year 1 - DIGITED</h2>
             <div class="portfolio-grid full-width">
 
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-title="Key topics in ICT in education" data-semester="1"
+                    data-subject="ICT in education">
                     <h3 data-en="Key topics in ICT in education" data-cz="Zásadní témata v ICT ve vzdělávání.">Key
                         topics in ICT in education</h3>
                     <p class="item-meta">
@@ -50,10 +74,12 @@
                         <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2025
                     </p>
                     <p class="item-description"
-                        data-en="A brief seminar paper written in the 1. year of my studies on key topics in ICT in education."
-                        data-cz="Stručná seminární práce z 1. ročníku studia zaměřená na zásadní témata v ICT ve vzdělávání.">
-                        A short seminar paper written in the first year of my studies on key topics in ICT in
-                        education.
+                        data-en="This seminar paper explores the theoretical foundations of ICT in education, covering core topics such as digital literacy and the &quot;society of knowledge&quot;. It provides a concise summary and reflection on essential frameworks, including the European DigCompEdu model and the role of digital technologies within school and family contexts."
+                        data-cz="Tato seminární práce zkoumá teoretické základy ICT ve vzdělávání a pokrývá klíčová témata, jako je digitální gramotnost a &quot;společnost vědění&quot;. Poskytuje stručný shrnutí a reflexi důležitých rámců, včetně evropského modelu DigCompEdu a role digitálních technologií ve školním a rodinném kontextu.">
+                        This seminar paper explores the theoretical foundations of ICT in education, covering core
+                        topics such as digital literacy and the "society of knowledge". It provides a concise summary
+                        and reflection on essential frameworks, including the European DigCompEdu model and the role of
+                        digital technologies within school and family contexts.
                     </p>
 
                     <div class="embed-container">
@@ -73,20 +99,57 @@
                     </div>
                 </article>
 
+                <article class="portfolio-item" data-title="PIAAC 2024 Analysis" data-semester="1"
+                    data-subject="ICT in education">
+                    <h3 data-en="PIAAC 2024 Analysis" data-cz="Analýza PIAAC 2024">PIAAC 2024 Analysis</h3>
+                    <p class="item-meta">
+                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> <span data-en="ICT in education"
+                            data-cz="ICT ve vzdělávání">ICT in education</span> |
+                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2025
+                    </p>
+                    <p class="item-description"
+                        data-en="This PIAAC 2024 project analyzes adult skills like literacy and numeracy across 31 countries, comparing Czech performance against OECD benchmarks. I was personally responsible for the basis of the visual design of the materials and the analysis of the study's results."
+                        data-cz="Tento projekt PIAAC 2024 analyzuje dovednosti dospělých, jako je čtenářská a matematická gramotnost, ve 31 zemích a porovnává výsledky ČR s průměrem OECD. Osobně jsem zodpovídal za vizuální stránku materiálů a analýzu výsledků studie.">
+                        This PIAAC 2024 project analyzes adult skills like literacy and numeracy across 31 countries,
+                        comparing Czech performance against OECD benchmarks. I was personally responsible for the basis
+                        of the visual design of the materials and the analysis of the study's results.
+                    </p>
+
+                    <div class="embed-container">
+                        <object data="assets/pdfs/plakat_vrcholpedagogiky.pdf" type="application/pdf" width="100%">
+                            <p data-en="Your browser does not support PDFs. You can "
+                                data-cz="Váš prohlížeč nepodporuje PDF. Můžete ">Your browser does not support PDFs.
+                                You can
+                                <a href="assets/pdfs/plakat_vrcholpedagogiky.pdf" data-en="download the file instead."
+                                    data-cz="stáhnout soubor">download the file instead.</a>
+                            </p>
+                        </object>
+                    </div>
+
+                    <div class="download-wrapper">
+                        <a href="assets/pdfs/plakat_vrcholpedagogiky.pdf"
+                            download="assets/pdfs/plakat_vrcholpedagogiky.pdf" class="btn full-width-btn"
+                            data-en="Download PDF" data-cz="Stáhnout PDF">Download PDF</a>
+                    </div>
+                </article>
+
             </div>
         </section>
 
         <section class="year-group fade-in">
-            <h2 data-en="Year 1 - DIGITED" data-cz="1. Ročník - DIGITED">Year 1 - DIGITED</h2>
             <div class="portfolio-grid full-width">
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-title="Phenomenology and Existentialism" data-semester="1"
+                    data-subject="Úvod do psychologie">
                     <h3 data-en="Phenomenology and Existentialism" data-cz="Fenomenologie a Existencialismus">
-                        Introduction to Psychology</h3>
+                        Phenomenology and Existentialism</h3>
                     <p class="item-meta">
-                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> Úvod do psychologie |
+                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> <span
+                            data-en="Introduction to Psychology" data-cz="Úvod do psychologie">Introduction to
+                            Psychology</span> |
                         <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2025
                     </p>
-                    <p data-en="Seminar paper from the first year, based on group work on the topic of Phenomenology and Existentialism."
+                    <p class="item-description"
+                        data-en="Seminar paper from the first year, based on group work on the topic of Phenomenology and Existentialism."
                         data-cz="Práce vychází ze skupinového projektu na téma Fenomenologie a Existencialismus, v rámci mníž jsem zpracovávál část věnující se porovnání Existencialismu a fenomenologie s třemi hlavními psychologickými směry své doby (behaviorismu, psychoanalýzy a humanismu).">
                         Placeholder for Year 1 essay.</p>
                     <div class="embed-container">

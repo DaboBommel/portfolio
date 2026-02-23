@@ -298,6 +298,7 @@ nav ul li a.active::after {
 .item-description {
     flex-grow: 1;
     font-size: 1.1rem;
+    max-width: 100%;
 }
 
 .embed-container {
@@ -312,6 +313,7 @@ nav ul li a.active::after {
 .canva-embed {
     background: transparent;
     border: none;
+
 }
 
 .embed-container object,
@@ -319,7 +321,7 @@ nav ul li a.active::after {
     width: 100%;
     display: block;
     border: none;
-    height: 70vh;
+    height: 100vh;
     /* Reduced height */
 }
 
@@ -605,7 +607,7 @@ nav ul li a.active::after {
     border: 4px solid var(--primary-color);
     box-shadow: 0 0 20px rgba(56, 182, 255, 0.3);
     opacity: 0.9;
-    
+
 }
 
 .profile-photo.main-photo {
@@ -802,6 +804,7 @@ nav ul li a.active::after {
     border-top: 1px solid var(--border-color);
     margin-top: 0.5rem;
     padding-top: 1rem;
+    max-width: 100%;
 }
 
 .semester-block-placeholder {
@@ -1246,4 +1249,65 @@ nav ul li a.active::after {
     border: none;
     padding: 0;
     margin: 0;
+}
+
+/* --- Filter Controls --- */
+#filter-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+#search-bar,
+#semester-filter,
+#subject-filter {
+    padding: 0.8rem;
+    background: rgba(17, 34, 64, 0.5);
+    border: 1px solid var(--border-color);
+    color: var(--text-highlight);
+    border-radius: 4px;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+}
+
+#search-bar {
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+#semester-filter,
+#subject-filter {
+    min-width: 150px;
+    cursor: pointer;
+}
+
+#search-bar:focus,
+#semester-filter:focus,
+#subject-filter:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(17, 34, 64, 0.8);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.1);
+}
+
+#search-bar::placeholder {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    #filter-controls {
+        flex-direction: column;
+    }
+
+    #search-bar,
+    #semester-filter,
+    #subject-filter {
+        width: 100%;
+    }
+}
+
+p {
+    text-align: justify;
 }

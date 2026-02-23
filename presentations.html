@@ -36,17 +36,39 @@
     <main class="container">
         <h1 data-en="Presentations" data-cz="Prezentace">Presentations</h1>
 
+        <!-- Filter Controls -->
+        <div id="filter-controls">
+            <input type="text" id="search-bar" placeholder="Search by title..." data-en-placeholder="Search by title..."
+                data-cz-placeholder="Vyhledat podle názvu...">
+
+            <select id="semester-filter">
+                <option value="all" data-en="All Semesters" data-cz="Všechny semestry">All Semesters</option>
+                <option value="1" data-en="1. Semester" data-cz="1. semestr">1. Semester</option>
+                <option value="2" data-en="2. Semester" data-cz="2. semestr">2. Semester</option>
+                <option value="3" data-en="3. Semester" data-cz="3. semestr">3. Semester</option>
+                <option value="4" data-en="4. Semester" data-cz="4. semestr">4. Semester</option>
+                <option value="5" data-en="5. Semester" data-cz="5. semestr">5. Semester</option>
+                <option value="6" data-en="6. Semester" data-cz="6. semestr">6. Semester</option>
+            </select>
+
+            <select id="subject-filter">
+                <option value="all" data-en="All Subjects" data-cz="Všechny předměty">All Subjects</option>
+                <option value="introduction to ICT" data-en="introduction to ICT" data-cz="Úvod do ICT">introduction to
+                    ICT</option>
+            </select>
+        </div>
+
         <!-- Section: Year 1 Presentations -->
         <section class="year-group fade-in">
-            <h2 data-en="Year 1 - DIGITED" data-cz="1. Ročník - DIGITED">Year 1 - DIGITED</h2>
             <div class="portfolio-grid full-width">
 
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-title="Group Project: Marketing Strategy" data-semester="1"
+                    data-subject="introduction to ICT">
                     <h3 data-en="Insights from the core course ‘LLMs in Practice"
                         data-cz="Poznatky z core předmětu LLMs in practice">Group Project: Marketing Strategy</h3>
                     <p class="item-meta">
                         <strong data-en="Course:" data-cz="Předmět:">Course:</strong> <span
-                            data-en="introduction to ICT" data-cz="Úvod do ICT">Marketing 201</span> |
+                            data-en="introduction to ICT" data-cz="Úvod do ICT">introduction to ICT</span> |
                         <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2025
                     </p>
                     <p class="item-description"

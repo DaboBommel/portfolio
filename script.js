@@ -174,4 +174,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    // --- Essay Filtering Logic ---
+    const searchBar = document.getElementById('search-bar');
+    const semesterFilter = document.getElementById('semester-filter');
+    const subjectFilter = document.getElementById('subject-filter');
+    const essayItems = document.querySelectorAll('.portfolio-item');
+
+    function filterEssays() {
+        if (!searchBar || !semesterFilter || !subjectFilter) return;
+
+        const searchText = searchBar.value.toLowerCase();
+        const semesterValue = semesterFilter.value;
+        const subjectValue = subjectFilter.value;
+
+        essayItems.forEach(item => {
+            const title = (item.getAttribute('data-title') || '').toLowerCase();
+            const semester = item.getAttribute('data-semester');
+            const subject = item.getAttribute('data-subject');
+
+            const matchesSearch = title.includes(searchText);
+            const matchesSemester = semesterValue === 'all' || semester === semesterValue;
+            const matchesSubject = subjectValue === 'all' || subject === subjectValue;
+
+            if (matchesSearch && matchesSemester && matchesSubject) {
+                item.style.display = 'flex'; // Restore display
+                item.classList.add('visible'); // Ensure fade-in visible if applicable
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    if (searchBar && semesterFilter && subjectFilter) {
+        searchBar.addEventListener('input', filterEssays);
+        semesterFilter.addEventListener('change', filterEssays);
+        subjectFilter.addEventListener('change', filterEssays);
+    }
 });
