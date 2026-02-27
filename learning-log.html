@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Learning Log | Student Portfolio" data-cz="Deník učení | Studentské Portfolium">Learning Log |
+        Student Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio" onclick="location.href='index.html'">My
+                Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other
+                        documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="content-wrapper">
+            <a href="index.html" class="back-link" data-en="← Back to study overview"
+                data-cz="← Zpět na přehled studia">← Back to study overview</a>
+
+            <h1 data-en="Learning Log: Lifelong Learning in Digital Environments"
+                data-cz="Deník učení: Celoživotní učení v digitálním prostředí">
+                Learning Log: Lifelong Learning in Digital Environments
+            </h1>
+
+            <section class="timeline-container fade-in visible">
+                <div class="timeline-line"></div>
+
+                <!-- Placeholder Entry -->
+                <div class="timeline-entry">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">February 23, 2026</span>
+                    <div class="timeline-content-box">
+                        <p class="reflection-text"
+                            data-en="This is a placeholder entry for the learning log. Here I will document my reflections, challenges, and progress throughout the course."
+                            data-cz="Toto je ukázkový záznam v deníku učení. Zde budu dokumentovat své reflexe, výzvy a pokroky v průběhu kurzu.">
+                            This is a placeholder entry for the learning log. Here I will document my reflections,
+                            challenges, and progress throughout the course.
+                        </p>
+
+                        <!-- Placeholder for Media -->
+                        <!-- 
+                        <div class="media-placeholder">
+                            <a href="#" class="media-link">View related PDF</a>
+                        </div> 
+                        -->
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025
+            Damian van Bommel. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</body>
+
+</html>
