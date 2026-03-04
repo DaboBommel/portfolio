@@ -1313,15 +1313,181 @@ p {
 }
 
 /* --- Learning Log Styles --- */
-.subject-btn { font-family: monospace; color: var(--primary-color); background: rgba(56, 182, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: all var(--transition-speed); cursor: pointer; border: 1px solid transparent; margin-left: auto; }
-.subject-btn:hover { background: rgba(255, 193, 7, 0.2); border-color: var(--accent-color); color: var(--accent-color); }
-.timeline-container { position: relative; padding: 2rem 0; }
-.timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border-color); }
-.timeline-entry { position: relative; padding-left: 60px; margin-bottom: 3rem; }
-.timeline-dot { position: absolute; left: 12px; top: 0; width: 18px; height: 18px; background: var(--bg-color); border: 2px solid var(--primary-color); border-radius: 50%; z-index: 1; }
-.timeline-date { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; display: block; }
-.timeline-content-box { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; backdrop-filter: var(--glass-blur); transition: border-color var(--transition-speed), transform var(--transition-speed); }
-.timeline-entry:hover .timeline-content-box { border-color: var(--accent-color); transform: translateY(-2px); }
-.timeline-entry:hover .timeline-dot { background: var(--accent-color); border-color: var(--accent-color); }
-.media-placeholder { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); font-style: italic; color: var(--text-secondary); }
-@media (max-width: 768px) { .timeline-line { left: 15px; } .timeline-entry { padding-left: 45px; } .timeline-dot { left: 7px; } }
+.subject-btn {
+    font-family: monospace;
+    color: var(--primary-color);
+    background: rgba(56, 182, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-left: auto;
+}
+
+.subject-btn:hover {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.timeline-container {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.timeline-entry {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 3rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.timeline-content-box {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0;
+    backdrop-filter: var(--glass-blur);
+    transition: border-color var(--transition-speed), transform var(--transition-speed);
+    overflow: hidden;
+}
+
+.timeline-summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background var(--transition-speed);
+}
+
+.timeline-summary::-webkit-details-marker {
+    display: none;
+}
+
+.timeline-summary:hover {
+    background: rgba(56, 182, 255, 0.1);
+}
+
+.summary-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.timeline-summary h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-highlight);
+    transition: color var(--transition-speed);
+}
+
+.timeline-summary::after {
+    content: '\002B';
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform var(--transition-speed);
+    margin-left: 1rem;
+}
+
+.timeline-content-box[open] .timeline-summary::after {
+    content: '\2212';
+    color: var(--accent-color);
+}
+
+.timeline-expanded-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    animation: slideDown 0.3s ease-out;
+}
+
+.timeline-expanded-content p {
+    margin-top: 1.5rem;
+}
+
+.pdf-viewer-container {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: rgba(17, 34, 64, 0.4);
+}
+
+.media-button-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border-color);
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
+
+.media-btn {
+    margin-top: 0;
+}
+
+.timeline-entry:hover .timeline-content-box {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.timeline-entry:hover .timeline-dot {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.timeline-content-box[open] .timeline-summary h3 {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 15px;
+    }
+
+    .timeline-entry {
+        padding-left: 45px;
+    }
+
+    .timeline-dot {
+        left: 7px;
+    }
+
+    .pdf-viewer-container embed {
+        height: 400px;
+    }
+}
