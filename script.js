@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Language Toggle Logic ---
     // Handles switching between English and Czech content
     const langToggleBtn = document.getElementById('lang-toggle');
-    const elementsToTranslate = document.querySelectorAll('[data-en], [data-en-placeholder]');
+    const elementsToTranslate = document.querySelectorAll('[data-en], [data-en-placeholder], [data-en-title]');
 
     // Helper to get query param
     const getQueryParam = (param) => {

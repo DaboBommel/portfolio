@@ -200,6 +200,28 @@ nav ul li a.active {
     /* Use Accent Color for active link text */
 }
 
+/* --- Specialization Indicator --- */
+.spec-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    cursor: help;
+    transition: transform var(--transition-speed);
+    vertical-align: middle;
+}
+
+.spec-indicator:hover {
+    transform: scale(1.2);
+}
+
 nav ul li a:hover::after,
 nav ul li a.active::after {
     width: 100%;
