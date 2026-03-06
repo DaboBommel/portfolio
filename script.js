@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLanguage(lang) {
         elementsToTranslate.forEach(el => {
             if (el.hasAttribute(`data-${lang}`)) {
-                el.textContent = el.getAttribute(`data-${lang}`);
+                el.innerHTML = el.getAttribute(`data-${lang}`);
             }
             if (el.hasAttribute(`data-${lang}-placeholder`)) {
                 el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
