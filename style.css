@@ -1,4 +1,4 @@
-﻿/* --- Google Font Import --- */
+/* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap');
 
 /* --- CSS Variables (Theme) --- */
@@ -93,7 +93,7 @@ h1 {
     padding-bottom: 5px;
 }
 
-h2 {
+h2, .academic-journey-heading {
     font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     color: var(--primary-color);
     margin-top: 3rem;
@@ -101,6 +101,7 @@ h2 {
     position: relative;
     display: flex;
     align-items: center;
+    gap: 0.75rem;
 }
 
 
@@ -225,6 +226,96 @@ nav ul li a.active {
 nav ul li a:hover::after,
 nav ul li a.active::after {
     width: 100%;
+}
+
+/* --- Info Icon & Tooltip --- */
+.info-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: help;
+}
+
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--body-font);
+    font-style: italic;
+    transition: all var(--transition-speed);
+}
+
+.info-icon-wrapper:hover .info-icon {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    transform: scale(1.1);
+}
+
+.info-tooltip {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 15px);
+    transform: translateY(-50%) translateX(10px);
+    width: 300px;
+    background: var(--surface-color);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 50;
+    box-shadow: 0 10px 30px rgba(2, 12, 27, 0.5);
+}
+
+.info-icon-wrapper:hover .info-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+.info-tooltip p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    color: var(--text-color);
+    max-width: 100%;
+}
+
+.info-tooltip .spec-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+/* Tooltip Arrow */
+.info-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent var(--border-color) transparent transparent;
 }
 
 /* --- Language Toggle Button --- */

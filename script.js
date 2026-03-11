@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update text content based on language
     function updateLanguage(lang) {
-        elementsToTranslate.forEach(el => {
+        document.querySelectorAll('[data-en], [data-en-placeholder], [data-en-title]').forEach(el => {
             if (el.hasAttribute(`data-${lang}`)) {
                 el.innerHTML = el.getAttribute(`data-${lang}`);
             }
