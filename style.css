@@ -1587,6 +1587,36 @@ p {
     color: var(--accent-color);
 }
 
+.audio-player-container {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(17, 34, 64, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.audio-player-container h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    font-family: var(--body-font);
+}
+
+audio {
+    width: 100%;
+    outline: none;
+    border-radius: 4px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: var(--surface-color);
+}
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: var(--text-color);
+}
+
 @media (max-width: 768px) {
     .timeline-line {
         left: 15px;
