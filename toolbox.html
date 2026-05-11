@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Presentations | Student Portfolio" data-cz="Prezentace | Studentské Portfolium">Presentations |
-        Student Portfolio</title>
+    <title data-en="Digital Toolbox | Student Portfolio" data-cz="Digitální Toolbox | Studentské Portfolium">Digital
+        Toolbox | Student Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,250 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Toolbox-specific styles */
+
+        .toolbox-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .toolbox-header h1 {
+            text-align: center;
+        }
+
+        .toolbox-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            color: var(--text-secondary, #b0b0b0);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .toolbox-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: start;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* --- Tool card (summary row) --- */
+        .tool-card {
+            border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+            border-radius: 16px;
+            background: var(--card-bg, rgba(255, 255, 255, 0.05));
+            overflow: hidden;
+            transition: border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .tool-card:hover {
+            border-color: rgba(100, 180, 255, 0.3);
+            box-shadow: 0 8px 30px rgba(100, 180, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-card[open] {
+            border-color: rgba(100, 180, 255, 0.35);
+            box-shadow: 0 12px 40px rgba(100, 180, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .tool-card summary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1.2rem;
+            cursor: pointer;
+            list-style: none;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .tool-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .tool-card summary::after {
+            content: '▾';
+            position: absolute;
+            top: 0.7rem;
+            right: 0.9rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary, #b0b0b0);
+            opacity: 0.5;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .tool-card[open] summary::after {
+            transform: rotate(180deg);
+            opacity: 0.8;
+        }
+
+        .tool-card summary:hover {
+            background: rgba(100, 180, 255, 0.04);
+        }
+
+        /* --- Logos --- */
+        .tool-logo {
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tool-card summary:hover .tool-logo {
+            transform: scale(1.08);
+        }
+
+        /* Default logo size */
+        .tool-logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Larger logos for specific tools */
+        .tool-logo.logo-lg {
+            width: 110px;
+            height: 110px;
+        }
+
+        .tool-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: var(--text-primary, #ffffff);
+            opacity: 0.9;
+        }
+
+        /* --- Expanded content area --- */
+        .tool-content {
+            border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+            padding: 1.5rem;
+            animation: fadeSlideIn 0.3s ease;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tool-content h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-color, #64b4ff);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(100, 180, 255, 0.15);
+        }
+
+        .tool-content-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .tool-content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .tool-file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .tool-file-list li a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            color: var(--text-primary, #ffffff);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.25s ease;
+        }
+
+        .tool-file-list li a:hover {
+            background: rgba(100, 180, 255, 0.08);
+            border-color: rgba(100, 180, 255, 0.2);
+            transform: translateX(4px);
+        }
+
+        .tool-file-list .file-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .tool-empty-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary, #888);
+            font-style: italic;
+            padding: 0.5rem 0;
+        }
+
+        /* --- Back link --- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color, #64b4ff);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .back-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .toolbox-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .toolbox-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .tool-logo,
+            .tool-logo.logo-lg {
+                width: 70px;
+                height: 70px;
+            }
+
+            .tool-content {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -34,125 +278,227 @@
     </header>
 
     <main class="container">
-        <h1 data-en="Presentations" data-cz="Prezentace">Presentations</h1>
+        <a href="index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span data-en="Back to Overview" data-cz="Zpět na přehled">Back to Overview</span>
+        </a>
 
-        <!-- Filter Controls -->
-        <div id="filter-controls">
-            <input type="text" id="search-bar" placeholder="Search by title..." data-en-placeholder="Search by title..."
-                data-cz-placeholder="Vyhledat podle názvu...">
-
-            <select id="semester-filter">
-                <option value="all" data-en="All Semesters" data-cz="Všechny semestry">All Semesters</option>
-                <option value="1" data-en="1. Semester" data-cz="1. semestr">1. Semester</option>
-                <option value="2" data-en="2. Semester" data-cz="2. semestr">2. Semester</option>
-                <option value="3" data-en="3. Semester" data-cz="3. semestr">3. Semester</option>
-                <option value="4" data-en="4. Semester" data-cz="4. semestr">4. Semester</option>
-                <option value="5" data-en="5. Semester" data-cz="5. semestr">5. Semester</option>
-                <option value="6" data-en="6. Semester" data-cz="6. semestr">6. Semester</option>
-            </select>
-
-            <select id="subject-filter">
-                <option value="all" data-en="All Subjects" data-cz="Všechny předměty">All Subjects</option>
-                <option value="introduction to ICT" data-en="introduction to ICT" data-cz="Úvod do ICT">introduction to
-                    ICT</option>
-                <option value="online výuková prostředí" data-en="Online learning environments"
-                    data-cz="Online výuková prostředí">Online výuková prostředí</option>
-                <option value="leadership pro 21. století" data-en="Leadership for the 21st century"
-                    data-cz="Leadership pro 21. století">Leadership pro 21. století</option>
-            </select>
+        <div class="toolbox-header">
+            <h1 data-en="Digital Toolbox" data-cz="Digitální Toolbox">Digital Toolbox</h1>
         </div>
 
-        <!-- Section: Year 1 Presentations -->
-        <section class="year-group fade-in">
-            <div class="portfolio-grid full-width">
+        <p class="toolbox-intro"
+            data-en="A curated collection of 8 digital tools explored during the course Digital Tools in Education and Learning. Each tool was tested and evaluated for its potential in educational contexts. Click on a tool to see reviews and materials."
+            data-cz="Sbírka 8 digitálních nástrojů prozkoumaných v rámci předmětu Digitální nástroje ve výuce a učení. Každý nástroj byl otestován a zhodnocen z hlediska jeho potenciálu ve vzdělávacím kontextu. Kliknutím na nástroj zobrazíte recenze a materiály.">
+            A curated collection of 8 digital tools explored during the course Digital Tools in Education and Learning.
+            Click on a tool to see reviews and materials.
+        </p>
 
-                <article class="portfolio-item" data-title="Group Project: Marketing Strategy" data-semester="1"
-                    data-subject="introduction to ICT">
-                    <h3 data-en="Insights from the core course ‘LLMs in Practice"
-                        data-cz="Poznatky z core předmětu LLMs in practice">Group Project: Marketing Strategy</h3>
-                    <p class="item-meta">
-                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong> <span
-                            data-en="introduction to ICT" data-cz="Úvod do ICT">introduction to ICT</span> |
-                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2025
-                    </p>
-                    <p class="item-description"
-                        data-en="A presentation from the 1st year on Insights from the core course ‘LLMs in Practice."
-                        data-cz="Prezentace z 1. ročníku na téma poznatky z core předmětu LLMs in practice, zaměřená především na nové nástroje prezentované firmou OpenAI a ekonomickým vývojem trhu, jež se stále více soustředí na AI.">
-                        A presentation from the 1st year on Insights from the core course ‘LLMs in Practice.
-                    </p>
+        <div class="toolbox-grid">
 
-                    <div class="embed-container canva-embed">
-                        <div class="aspect-ratio-16-9">
-                            <iframe loading="lazy" class="embed-iframe"
-                                src="https://www.canva.com/design/DAG1rHKqluY/KqIcapawG9pAE7IBUk7aBQ/view?embed"
-                                allowfullscreen="allowfullscreen" allow="fullscreen">
-                            </iframe>
-                        </div>
-                        <a href="https://www.canva.com/design/DAG1rHKqluY/KqIcapawG9pAE7IBUk7aBQ/view?utm_content=DAG1rHKqluY&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-                            target="_blank" rel="noopener">
-                        </a>
+            <!-- 1. Claude -->
+            <details class="tool-card" id="tool-claude">
+                <summary>
+                    <img src="assets/logos/Logo Claude 1.png" alt="Claude" class="tool-logo logo-lg">
+                    <span class="tool-label">Claude Artifacts</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                            <!-- Add review PDFs here like this:
+                            <li><a href="assets/pdfs/your-review.pdf" target="_blank"><span class="file-icon">📄</span> Review name</a></li>
+                            -->
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
                     </div>
-                </article>
-
-                <article class="portfolio-item" data-title="Praktické testování Nástroje YouLearn" data-semester="2"
-                    data-subject="online výuková prostředí">
-                    <h3 data-en="Praktické testování Nástroje YouLearn" data-cz="Praktické testování Nástroje YouLearn">
-                        Praktické testování Nástroje YouLearn</h3>
-                    <p class="item-meta">
-                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong>
-                        <span data-en="Online learning environments" data-cz="Online výuková prostředí">Online výuková
-                            prostředí</span> |
-                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2026
-                    </p>
-                    <p class="item-description"
-                        data-en="A practical test and presentation of the online learning tool YouLearn."
-                        data-cz="Praktické testování a prezentace online výukového nástroje YouLearn.">
-                        Praktické testování online výukového nástroje <a href="https://www.youlearn.ai/" target="_blank"
-                            rel="noopener">YouLearn</a>.
-                    </p>
-
-                    <div class="embed-container canva-embed">
-                        <div class="aspect-ratio-16-9">
-                            <iframe loading="lazy" class="embed-iframe"
-                                src="https://www.canva.com/design/DAHI92Qtz-s/i1HcUvH6R54PTVIhzdr6DA/view?embed"
-                                allowfullscreen="allowfullscreen" allow="fullscreen">
-                            </iframe>
-                        </div>
-                        <a href="https://www.canva.com/design/DAHI92Qtz-s/i1HcUvH6R54PTVIhzdr6DA/view?utm_content=DAHI92Qtz-s&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-                            target="_blank" rel="noopener">Praktické testování Nástroje YouLearn</a>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                            <!-- Add education material files here like this:
+                            <li><a href="assets/pdfs/your-material.pdf" target="_blank"><span class="file-icon">📚</span> Material name</a></li>
+                            -->
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
                     </div>
-                </article>
+                </div>
+            </details>
 
-                <article class="portfolio-item" data-title="Giorgia Meloni - charakteristika leadera" data-semester="2"
-                    data-subject="leadership pro 21. století">
-                    <h3 data-en="Giorgia Meloni - charakteristika leadera"
-                        data-cz="Giorgia Meloni - charakteristika leadera">Giorgia Meloni - charakteristika leadera</h3>
-                    <p class="item-meta">
-                        <strong data-en="Course:" data-cz="Předmět:">Course:</strong>
-                        <span data-en="Leadership for the 21st century" data-cz="Leadership pro 21. století">Leadership
-                            pro 21. století</span> |
-                        <strong data-en="Year:" data-cz="Rok:">Year:</strong> 2026
-                    </p>
-                    <p class="item-description"
-                        data-en="A presentation on Giorgia Meloni as a leader - characteristics of a leader."
-                        data-cz="Prezentace o Giorgii Meloni jako leaderce - charakteristika leadera.">
-                        Giorgia Meloni - charakteristika leadera. Autoři: Dobrovolny &amp; van Bommel.
-                    </p>
-
-                    <div class="embed-container canva-embed">
-                        <div class="aspect-ratio-16-9">
-                            <iframe loading="lazy" class="embed-iframe"
-                                src="https://www.canva.com/design/DAHHfK1hYtY/gkwvwyT22KARphpn-gBiwg/view?embed"
-                                allowfullscreen="allowfullscreen" allow="fullscreen">
-                            </iframe>
-                        </div>
-                        <a href="https://www.canva.com/design/DAHHfK1hYtY/gkwvwyT22KARphpn-gBiwg/view?utm_content=DAHHfK1hYtY&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-                            target="_blank" rel="noopener">Giorgia Meloni - charakteristika leadera</a>
+            <!-- 2. YouLearn -->
+            <details class="tool-card" id="tool-youlearn">
+                <summary>
+                    <img src="assets/logos/Logo YouLearn 2.png" alt="YouLearn" class="tool-logo logo-lg">
+                    <span class="tool-label">YouLearn</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                            <li><a href="assets/pdfs/YouLearn-recenze.pdf" target="_blank"><span
+                                        class="file-icon"></span> YouLearn-recenze</a></li>
+                        </ul>
                     </div>
-                </article>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                            <li><a href="assets/pdfs/Výukový materiál_YouLearn.pdf" target="_blank"><span
+                                        class="file-icon"></span> Výukový materiál YouLearn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
 
-            </div>
-        </section>
+            <!-- 3. NotebookLM -->
+            <details class="tool-card" id="tool-notebooklm">
+                <summary>
+                    <img src="assets/logos/Logo NotebookLM 3.png" alt="NotebookLM" class="tool-logo logo-lg">
+                    <span class="tool-label">NotebookLM</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 4. Padlet Arcade -->
+            <details class="tool-card" id="tool-padlet">
+                <summary>
+                    <img src="assets/logos/Logo PadletArcade 4.png" alt="Padlet Arcade" class="tool-logo logo-lg">
+                    <span class="tool-label">Padlet Arcade</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 5. Google Antigravity -->
+            <details class="tool-card" id="tool-antigravity">
+                <summary>
+                    <img src="assets/logos/Logo GoogleAntigravity 5.png" alt="Google Antigravity"
+                        class="tool-logo logo-lg">
+                    <span class="tool-label">Google Antigravity</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 6. QuillBot -->
+            <details class="tool-card" id="tool-quillbot">
+                <summary>
+                    <img src="assets/logos/Logo QuillBot 6.png" alt="QuillBot" class="tool-logo logo-lg">
+                    <span class="tool-label">QuillBot</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 7. Nearpod -->
+            <details class="tool-card" id="tool-nearpod">
+                <summary>
+                    <img src="assets/logos/Logo Nearpod 7.png" alt="Nearpod" class="tool-logo logo-lg">
+                    <span class="tool-label">Nearpod</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 8. OpenAI Prism -->
+            <details class="tool-card" id="tool-openai">
+                <summary>
+                    <img src="assets/logos/Logo OpenAI_Prism 8.png" alt="OpenAI Prism" class="tool-logo logo-lg">
+                    <span class="tool-label">OpenAI Prism</span>
+                </summary>
+                <div class="tool-content">
+                    <div class="tool-content-section">
+                        <h4 data-en="Reviews" data-cz="Recenze">Reviews</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No reviews added yet." data-cz="Zatím žádné recenze.">No
+                            reviews added yet.</p>
+                    </div>
+                    <div class="tool-content-section">
+                        <h4 data-en="Education Materials" data-cz="Výukové materiály">Education Materials</h4>
+                        <ul class="tool-file-list">
+                        </ul>
+                        <p class="tool-empty-note" data-en="No materials added yet." data-cz="Zatím žádné materiály.">No
+                            materials added yet.</p>
+                    </div>
+                </div>
+            </details>
+
+        </div>
 
     </main>
 
