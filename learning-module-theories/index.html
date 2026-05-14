@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Educational Theories Module" data-cz="Modul vzdělávacích teorií">Educational Theories Module</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../toolbox.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                <span data-en="Back to Toolbox" data-cz="Zpět do Toolboxu">Back to Toolbox</span>
+            </a>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <header class="hero">
+            <h1 data-en="Educational Theories & Curriculum Mechanisms" data-cz="Vzdělávací teorie a mechanismy kurikula">Educational Theories & Curriculum Mechanisms</h1>
+            <p data-en="An interactive, offline single-page application to explore the core pillars of psychological and pedagogical theory." data-cz="Interaktivní, offline single-page aplikace pro prozkoumání hlavních pilířů psychologické a pedagogické teorie.">An interactive, offline single-page application to explore the core pillars of psychological and pedagogical theory.</p>
+        </header>
+
+        <main>
+            <!-- 1. Piaget -->
+            <details class="theory-section">
+                <summary data-en="1. Jean Piaget: Cognitive Development" data-cz="1. Jean Piaget: Kognitivní vývoj">1. Jean Piaget: Cognitive Development</summary>
+                <div class="theory-content">
+                    <p data-en="Piaget's theory suggests that children move through four different stages of cognitive development. Explore the stages below:" data-cz="Piagetova teorie naznačuje, že děti procházejí čtyřmi různými stádii kognitivního vývoje. Prozkoumejte stádia níže:">Piaget's theory suggests that children move through four different stages of cognitive development. Explore the stages below:</p>
+                    <div class="interactive-zone piaget-simulator">
+                        <button class="piaget-stage-btn active" data-stage="sensorimotor" data-en="Sensorimotor (0-2)" data-cz="Senzomotorické (0-2)">Sensorimotor (0-2)</button>
+                        <button class="piaget-stage-btn" data-stage="preoperational" data-en="Preoperational (2-7)" data-cz="Předoperační (2-7)">Preoperational (2-7)</button>
+                        <button class="piaget-stage-btn" data-stage="concrete" data-en="Concrete Operational (7-11)" data-cz="Konkrétní operace (7-11)">Concrete Operational (7-11)</button>
+                        <button class="piaget-stage-btn" data-stage="formal" data-en="Formal Operational (11+)" data-cz="Formální operace (11+)">Formal Operational (11+)</button>
+                        <div id="piaget-output" style="width: 100%;">
+                            <strong data-en="Sensorimotor stage (0-2):" data-cz="Senzomotorické stádium (0-2):">Sensorimotor stage (0-2):</strong> <span data-en="Infants learn about the world through their senses and actions (grasping, looking). Object permanence develops." data-cz="Kojenci se učí o světě prostřednictvím svých smyslů a akcí (uchopování, dívání se). Vyvíjí se stálost objektu.">Infants learn about the world through their senses and actions (grasping, looking). Object permanence develops.</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2. Gopnik -->
+            <details class="theory-section">
+                <summary data-en="2. Alison Gopnik: The Scientist in the Crib" data-cz="2. Alison Gopnik: Vědec v kolébce">2. Alison Gopnik: The Scientist in the Crib</summary>
+                <div class="theory-content">
+                    <p data-en="Gopnik argues that young children learn about the world in much the same way that scientists do—by conducting experiments, analyzing statistical data, and forming intuitive theories." data-cz="Gopnik tvrdí, že malé děti se o světě učí podobně jako vědci – prováděním experimentů, analýzou statistických dat a vytvářením intuitivních teorií.">Gopnik argues that young children learn about the world in much the same way that scientists do—by conducting experiments, analyzing statistical data, and forming intuitive theories.</p>
+                    <div class="interactive-zone gopnik-sandbox">
+                        <label for="gopnik-hypothesis"><b data-en="Formulate a child's hypothesis:" data-cz="Formulujte dětskou hypotézu:">Formulate a child's hypothesis:</b></label>
+                        <input type="text" id="gopnik-hypothesis" placeholder="e.g., If I drop this cup, it will make a loud noise..." data-en="e.g., If I drop this cup, it will make a loud noise..." data-cz="např. Když upustím tento hrnek, vydá hlasitý zvuk..." />
+                        <button id="gopnik-test-btn" data-en="Test Hypothesis" data-cz="Otestovat hypotézu">Test Hypothesis</button>
+                        <p id="gopnik-result" style="margin-top:1rem;color:var(--secondary-color);"></p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 3. Lewin -->
+            <details class="theory-section">
+                <summary data-en="3. Kurt Lewin: Leadership Styles" data-cz="3. Kurt Lewin: Styly vedení">3. Kurt Lewin: Leadership Styles</summary>
+                <div class="theory-content">
+                    <p data-en="Lewin identified three primary styles of leadership: Autocratic, Democratic, and Laissez-faire. Adjust the slider to see how the classroom climate changes." data-cz="Lewin identifikoval tři základní styly vedení: Autokratický, Demokratický a Laissez-faire. Upravte posuvník, abyste viděli, jak se mění klima ve třídě.">Lewin identified three primary styles of leadership: Autocratic, Democratic, and Laissez-faire. Adjust the slider to see how the classroom climate changes.</p>
+                    <div class="interactive-zone lewin-toggles">
+                        <div class="lewin-slide">
+                            <label for="lewin-slider" data-en="Leadership Style Continuum:" data-cz="Kontinuum stylu vedení:">Leadership Style Continuum:</label>
+                            <input type="range" id="lewin-slider" min="1" max="3" value="2" step="1">
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-top:5px; color:var(--text-muted);">
+                                <span data-en="Autocratic" data-cz="Autokratický">Autocratic</span>
+                                <span data-en="Democratic" data-cz="Demokratický">Democratic</span>
+                                <span data-en="Laissez-Faire" data-cz="Laissez-Faire">Laissez-Faire</span>
+                            </div>
+                        </div>
+                        <div id="lewin-output">
+                            <strong data-en="Democratic:" data-cz="Demokratický:">Democratic:</strong> <span data-en="High student engagement, moderate to high productivity, high morale, and independent thinking." data-cz="Vysoké zapojení studentů, střední až vysoká produktivita, vysoká morálka a nezávislé myšlení.">High student engagement, moderate to high productivity, high morale, and independent thinking.</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 4. Rogers -->
+            <details class="theory-section">
+                <summary data-en="4. Carl Rogers: Humanistic Reflection" data-cz="4. Carl Rogers: Humanistická reflexe">4. Carl Rogers: Humanistic Reflection</summary>
+                <div class="theory-content">
+                    <p data-en="Rogers emphasized unconditional positive regard, empathy, and congruence. Use this journal to reflect on your practice. (Your data autosaves locally)." data-cz="Rogers zdůrazňoval bezpodmínečné pozitivní přijetí, empatii a kongruenci. Použijte tento deník k zamyšlení nad vaší praxí. (Vaše data se automaticky ukládají lokálně).">Rogers emphasized unconditional positive regard, empathy, and congruence. Use this journal to reflect on your practice. (Your data autosaves locally).</p>
+                    <div class="interactive-zone rogers-journal">
+                        <label for="rogers-textarea"><b data-en="Reflective Journal Entry:" data-cz="Zápis do reflektivního deníku:">Reflective Journal Entry:</b></label>
+                        <textarea id="rogers-textarea" rows="4" placeholder="How did you show unconditional positive regard today?"></textarea>
+                        <span id="rogers-save-status" style="font-size:0.8rem; color:var(--success-color);"></span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 5. Deci & Ryan (SDT) -->
+            <details class="theory-section">
+                <summary data-en="5. Deci & Ryan: Self-Determination Theory" data-cz="5. Deci a Ryan: Teorie sebeurčení (SDT)">5. Deci & Ryan: Self-Determination Theory</summary>
+                <div class="theory-content">
+                    <p data-en="Intrinsic motivation is driven by three basic psychological needs: Competence, Autonomy, and Relatedness." data-cz="Vnitřní motivace je řízena třemi základními psychologickými potřebami: Kompetence, Autonomie a Spřízněnost.">Intrinsic motivation is driven by three basic psychological needs: Competence, Autonomy, and Relatedness.</p>
+                    <div class="interactive-zone sdt-checklist">
+                        <p style="margin-bottom:0.5rem"><b data-en="Did your lesson today provide:" data-cz="Poskytla vaše dnešní lekce:">Did your lesson today provide:</b></p>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sdt-comp" class="sdt-check">
+                            <label for="sdt-comp" data-en="Competence (Task matched to student skill level)" data-cz="Kompetence (Úkol odpovídá dovednostem studenta)">Competence (Task matched to student skill level)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sdt-auto" class="sdt-check">
+                            <label for="sdt-auto" data-en="Autonomy (Options/choices given to students)" data-cz="Autonomie (Možnosti/volby poskytnuté studentům)">Autonomy (Options/choices given to students)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sdt-rela" class="sdt-check">
+                            <label for="sdt-rela" data-en="Relatedness (Opportunities for peer collaboration/connection)" data-cz="Spřízněnost (Příležitosti ke spolupráci/propojení s vrstevníky)">Relatedness (Opportunities for peer collaboration/connection)</label>
+                        </div>
+                        <p id="sdt-feedback" style="margin-top:1rem; font-weight:bold; color:var(--accent-color);"></p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 6. Arendt & Biesta -->
+            <details class="theory-section">
+                <summary data-en="6. Arendt & Biesta: Educational Purpose" data-cz="6. Arendtová & Biesta: Účel vzdělávání">6. Arendt & Biesta: Educational Purpose</summary>
+                <div class="theory-content">
+                    <p data-en="Hannah Arendt spoke on the crisis in education—balancing the protection of the child and the world. Gert Biesta outlines three domains of purpose: Qualification, Socialization, and Subjectification." data-cz="Hannah Arendtová mluvila o krizi ve vzdělávání – vyvažování ochrany dítěte a světa. Gert Biesta nastiňuje tři domény účelu: Kvalifikace, Socializace a Subjektifikace.">Hannah Arendt spoke on the crisis in education—balancing the protection of the child and the world. Gert Biesta outlines three domains of purpose: Qualification, Socialization, and Subjectification.</p>
+                    <div class="interactive-zone purpose-mapping">
+                        <label for="purpose-select"><b data-en="Select an activity:" data-cz="Vyberte aktivitu:">Select an activity:</b></label>
+                        <select id="purpose-select" style="padding:1rem; width:100%; margin-bottom:1rem; border-radius:4px; border:1px solid var(--border-color)">
+                            <option value="default" data-en="-- Choose --" data-cz="-- Vyberte --">-- Choose --</option>
+                            <option value="testing" data-en="Standardized Testing" data-cz="Standardizované testování">Standardized Testing</option>
+                            <option value="civics" data-en="Community Service Project" data-cz="Projekt komunitní služby">Community Service Project</option>
+                            <option value="art" data-en="Open-ended Art Canvas" data-cz="Otevřené umělecké plátno">Open-ended Art Canvas</option>
+                        </select>
+                        <div id="purpose-mapping-output" style="padding:1rem; border-left:4px solid var(--accent-color); background:rgba(56, 182, 255, 0.05); border-radius:6px; display:none; color:var(--text-main);"></div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 7. Curriculum Mechanisms -->
+            <details class="theory-section">
+                <summary data-en="7. Curriculum Mechanisms" data-cz="7. Mechanismy kurikula">7. Curriculum Mechanisms</summary>
+                <div class="theory-content">
+                    <p data-en="Curriculum is influenced by Intended, Implemented, and Achieved mechanisms, along with the Hidden Curriculum." data-cz="Kurikulum je ovlivněno zamýšlenými, realizovanými a dosaženými mechanismy spolu se skrytým kurikulem.">Curriculum is influenced by Intended, Implemented, and Achieved mechanisms, along with the Hidden Curriculum.</p>
+                    <div class="interactive-zone curr-infographic">
+                        <button id="curr-intended" style="margin-bottom:0.5rem; width:100%;" data-en="Intended Curriculum" data-cz="Zamýšlené kurikulum">Intended Curriculum</button>
+                        <button id="curr-implemented" style="margin-bottom:0.5rem; width:100%;" data-en="Implemented Curriculum" data-cz="Realizované kurikulum">Implemented Curriculum</button>
+                        <button id="curr-achieved" style="margin-bottom:0.5rem; width:100%;" data-en="Achieved Curriculum" data-cz="Dosažené kurikulum">Achieved Curriculum</button>
+                        <button id="curr-hidden" style="width:100%; background:rgba(231, 76, 60, 0.2); border-color:#e74c3c; color:#e74c3c;" data-en="Hidden Curriculum" data-cz="Skryté kurikulum">Hidden Curriculum</button>
+                        <div id="curr-output" style="margin-top:1rem; padding:1rem; border:1px solid var(--border-color); border-radius:6px;" data-en="Select a mechanism above to explore." data-cz="Pro prozkoumání vyberte mechanismus výše.">Select a mechanism above to explore.</div>
+                    </div>
+                </div>
+            </details>
+        </main>
+
+        <!-- Teacher Cheat Sheet -->
+        <details class="teacher-cheatsheet">
+            <summary><h2 data-en="Teacher Cheat-sheet" data-cz="Tahák pro učitele">Teacher Cheat-sheet</h2></summary>
+            
+            <div class="cheat-sheet-content">
+                <p style="margin-bottom:1rem;" data-en="Print this page (Ctrl+P). Interactive elements will be hidden automatically." data-cz="Vytiskněte tuto stránku (Ctrl+P). Interaktivní prvky se automaticky skryjí.">Print this page (Ctrl+P). Interactive elements will be hidden automatically.</p>
+                <table class="cheat-sheet-table">
+                    <thead>
+                        <tr>
+                            <th data-en="Theory / Concept" data-cz="Teorie / Koncept">Theory / Concept</th>
+                            <th data-en="Core Objective" data-cz="Hlavní cíl">Core Objective</th>
+                            <th data-en="Application Tip" data-cz="Tip pro aplikaci">Application Tip</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Piaget</strong></td>
+                            <td data-en="Match tasks to cognitive stages." data-cz="Přizpůsobit úkoly kognitivním stádiím.">Match tasks to cognitive stages.</td>
+                            <td data-en="Use concrete props/visuals for concrete operational phase." data-cz="Pro fázi konkrétních operací používejte konkrétní rekvizity/vizuály.">Use concrete props/visuals for concrete operational phase.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gopnik</strong></td>
+                            <td data-en="Encourage intuition and hypothesis testing." data-cz="Povzbuzovat intuici a testování hypotéz.">Encourage intuition and hypothesis testing.</td>
+                            <td data-en="Create 'sandboxes' for safe failure and experimentation." data-cz="Vytvořte 'pískoviště' pro bezpečné selhání a experimentování.">Create "sandboxes" for safe failure and experimentation.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lewin</strong></td>
+                            <td data-en="Balance structure and freedom." data-cz="Vyvážit strukturu a svobodu.">Balance structure and freedom.</td>
+                            <td data-en="Utilize democratic leadership for long-term engagement." data-cz="Využívejte demokratické vedení pro dlouhodobé zapojení.">Utilize democratic leadership for long-term engagement.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rogers</strong></td>
+                            <td data-en="Foster a humanistic environment." data-cz="Podporovat humanistické prostředí.">Foster a humanistic environment.</td>
+                            <td data-en="Practice active listening and non-judgmental feedback." data-cz="Trénujte aktivní naslouchání a nehodnotící zpětnou vazbu.">Practice active listening and non-judgmental feedback.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deci & Ryan</strong></td>
+                            <td data-en="Promote internal motivation (SDT)." data-cz="Podporovat vnitřní motivaci (SDT).">Promote internal motivation (SDT).</td>
+                            <td data-en="Offer choices (Autonomy) and build relationships (Relatedness)." data-cz="Nabízejte možnosti (Autonomie) a budujte vztahy (Spřízněnost).">Offer choices (Autonomy) and build relationships (Relatedness).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Arendt & Biesta</strong></td>
+                            <td data-en="Determine the 'why' of the lesson." data-cz="Určit 'proč' u lekce.">Determine the 'why' of the lesson.</td>
+                            <td data-en="Don't focus solely on qualification; allow subjectification." data-cz="Nezaměřujte se pouze na kvalifikaci; umožněte subjektifikaci.">Don't focus solely on qualification; allow subjectification.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curriculum</strong></td>
+                            <td data-en="Align what is planned with what is learned." data-cz="Sladit to, co je plánováno, s tím, co je naučeno.">Align what is planned with what is learned.</td>
+                            <td data-en="Be mindful of the 'hidden curriculum' (implicit norms/values)." data-cz="Dbejte na 'skryté kurikulum' (implicitní normy/hodnoty).">Be mindful of the 'hidden curriculum' (implicit norms/values).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        <!-- Assessment Form -->
+        <section class="assessment-section">
+            <h2 data-en="Formative Assessment" data-cz="Formativní hodnocení">Formative Assessment</h2>
+            <p style="margin-bottom: 1rem;" data-en="Complete the check for understanding. Responses will be downloadable as a JSON file." data-cz="Dokončete kontrolu porozumění. Odpovědi bude možné stáhnout jako soubor JSON.">Complete the check for understanding. Responses will be downloadable as a JSON file.</p>
+            <form id="assessment-form">
+                <label for="q1" data-en="1. Which SDT component relates to giving students choices?" data-cz="1. Která složka SDT se vztahuje k poskytování možností studentům?">1. Which SDT component relates to giving students choices?</label>
+                <input type="text" id="q1" name="q1" required>
+
+                <label for="q2" data-en="2. According to Lewin, which leadership style yields high engagement but requires time?" data-cz="2. Podle Lewina, který styl vedení přináší vysoké zapojení, ale vyžaduje čas?">2. According to Lewin, which leadership style yields high engagement but requires time?</label>
+                <input type="text" id="q2" name="q2" required>
+                
+                <label for="q3" data-en="3. What is the 'Hidden Curriculum'?" data-cz="3. Co je to 'Skryté kurikulum'?">3. What is the 'Hidden Curriculum'?</label>
+                <textarea id="q3" name="q3" rows="3" required></textarea>
+
+                <button type="submit" id="download-json-btn" data-en="Download JSON Responses" data-cz="Stáhnout odpovědi v JSON">Download JSON Responses</button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- Logic Script -->
+    <script src="app.js"></script>
+</body>
+</html>
