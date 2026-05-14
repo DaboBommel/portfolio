@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theory Reactor | OpenAI Codex</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(13, 27, 46, 0.9);
+      --panel-soft: rgba(18, 38, 64, 0.72);
+      --line: rgba(132, 190, 255, 0.22);
+      --line-strong: rgba(255, 214, 112, 0.46);
+      --text: #d8e3ff;
+      --muted: #91a0bd;
+      --bright: #ffffff;
+      --cyan: #38b6ff;
+      --teal: #00d2b8;
+      --amber: #ffc857;
+      --rust: #ff7a45;
+      --violet: #9b8cff;
+      --green: #7ddf64;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+      --body: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --heading: Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 44px 44px;
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .return-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .return-link:hover {
+      color: var(--amber);
+      transform: translateX(-3px);
+    }
+
+    .return-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .language {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .lang-btn,
+    .chip,
+    .lens-btn,
+    .ghost-btn {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(13, 27, 46, 0.55);
+      color: var(--text);
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lang-btn {
+      padding: 0.35rem 0.62rem;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(255, 200, 87, 0.1);
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .title-panel,
+    .mission-panel,
+    .map-panel,
+    .console-panel,
+    .lens-panel,
+    .synthesis-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .title-panel {
+      padding: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    .kicker {
+      color: var(--amber);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--bright);
+      font-family: var(--heading);
+      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.16rem);
+    }
+
+    .mission-panel {
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, rgba(56, 182, 255, 0.13), rgba(255, 122, 69, 0.12)), var(--panel);
+    }
+
+    .mission-title {
+      color: var(--bright);
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .mission-panel p {
+      color: var(--text);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .signal {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 0.7rem;
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .signal strong {
+      display: block;
+      color: var(--amber);
+      font-size: 1.1rem;
+    }
+
+    .signal span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .reactor-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.86fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .map-panel,
+    .console-panel,
+    .lens-panel,
+    .synthesis-panel {
+      padding: 1rem;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+    }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      min-height: 360px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(155, 140, 255, 0.08), rgba(0, 210, 184, 0.06)),
+        rgba(5, 13, 24, 0.74);
+    }
+
+    #theory-map {
+      display: block;
+      width: 100%;
+      height: 360px;
+    }
+
+    .map-readout {
+      position: absolute;
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      pointer-events: none;
+    }
+
+    .readout-item {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      background: rgba(8, 17, 31, 0.72);
+      padding: 0.5rem;
+    }
+
+    .readout-item strong {
+      display: block;
+      color: var(--bright);
+      font-size: 0.78rem;
+    }
+
+    .readout-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .lens-strip,
+    .mix-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin-top: 0.85rem;
+    }
+
+    .lens-btn,
+    .chip {
+      min-height: 48px;
+      padding: 0.65rem 0.7rem;
+      text-align: left;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .lens-btn span,
+    .chip span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-top: 0.12rem;
+    }
+
+    .lens-btn:hover,
+    .lens-btn.active,
+    .chip:hover,
+    .chip.active {
+      transform: translateY(-2px);
+      background: rgba(56, 182, 255, 0.11);
+      border-color: var(--line-strong);
+    }
+
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      color: var(--bright);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(7, 16, 29, 0.92);
+      color: var(--text);
+      padding: 0.72rem 0.8rem;
+    }
+
+    .slider-stack {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .slider-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 38px;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--amber);
+    }
+
+    .value {
+      color: var(--bright);
+      text-align: right;
+      font-weight: 800;
+    }
+
+    .ranking {
+      display: grid;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .rank-row {
+      display: grid;
+      grid-template-columns: 94px 1fr 42px;
+      gap: 0.65rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .rank-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .rank-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--cyan);
+    }
+
+    .analysis-box {
+      display: grid;
+      gap: 0.75rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .analysis-row {
+      border-left: 3px solid var(--cyan);
+      padding-left: 0.75rem;
+    }
+
+    .analysis-row strong {
+      display: block;
+      color: var(--bright);
+      margin-bottom: 0.15rem;
+    }
+
+    .analysis-row p {
+      color: var(--muted);
+    }
+
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .lens-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .lens-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 18px currentColor;
+    }
+
+    .lens-panel h2 {
+      margin: 0;
+    }
+
+    .lens-question {
+      color: var(--amber);
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+    }
+
+    .lens-body {
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .moves {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .move {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.035);
+      padding: 0.75rem;
+    }
+
+    .move strong {
+      display: block;
+      color: var(--bright);
+      margin-bottom: 0.18rem;
+    }
+
+    .move span {
+      color: var(--muted);
+    }
+
+    .mix-strip {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .chip {
+      text-align: center;
+      min-height: 44px;
+      font-size: 0.86rem;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .brief-step {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.14);
+      padding: 0.85rem;
+    }
+
+    .brief-step strong {
+      display: block;
+      color: var(--amber);
+      margin-bottom: 0.25rem;
+    }
+
+    .brief-step span {
+      color: var(--muted);
+    }
+
+    .ghost-btn {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .ghost-btn:hover {
+      color: var(--bg);
+      border-color: var(--amber);
+      background: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      .intro,
+      .reactor-grid,
+      .lower-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mix-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: 92vw;
+        padding-top: 2rem;
+      }
+
+      .signal-grid,
+      .map-readout,
+      .lens-strip,
+      .brief {
+        grid-template-columns: 1fr;
+      }
+
+      .slider-row,
+      .rank-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+
+      .value {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <nav class="topbar">
+      <a class="return-link" id="return-link" href="toolbox.html#tool-codex">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span id="return-label"></span>
+      </a>
+      <div class="language">
+        <span id="language-label"></span>
+        <button type="button" class="lang-btn" id="lang-cz">CZ</button>
+        <button type="button" class="lang-btn" id="lang-en">EN</button>
+      </div>
+    </nav>
+
+    <section class="intro">
+      <div class="title-panel">
+        <div class="kicker" id="kicker"></div>
+        <h1 id="page-title"></h1>
+        <p class="lead" id="page-lead"></p>
+      </div>
+      <aside class="mission-panel">
+        <div>
+          <div class="mission-title" id="mission-title"></div>
+          <p id="mission-text"></p>
+        </div>
+        <div class="signal-grid">
+          <div class="signal"><strong>6</strong><span id="signal-lenses"></span></div>
+          <div class="signal"><strong>4</strong><span id="signal-scenarios"></span></div>
+          <div class="signal"><strong>1</strong><span id="signal-brief"></span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="reactor-grid">
+      <div class="map-panel">
+        <div class="panel-heading">
+          <h2 id="map-title"></h2>
+          <span class="panel-note" id="map-note"></span>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="theory-map"></canvas>
+          <div class="map-readout" id="map-readout"></div>
+        </div>
+        <div class="lens-strip" id="lens-strip"></div>
+      </div>
+
+      <div class="console-panel">
+        <div class="panel-heading">
+          <h2 id="console-title"></h2>
+          <span class="panel-note" id="console-note"></span>
+        </div>
+        <div class="field">
+          <label for="scenario-select" id="scenario-label"></label>
+          <select id="scenario-select"></select>
+        </div>
+        <div class="slider-stack" id="slider-stack"></div>
+        <div class="ranking" id="ranking"></div>
+        <div class="analysis-box" id="analysis-box"></div>
+      </div>
+    </section>
+
+    <section class="lower-grid">
+      <div class="lens-panel">
+        <div class="lens-title">
+          <span class="lens-dot" id="lens-dot"></span>
+          <h2 id="lens-name"></h2>
+        </div>
+        <div class="lens-question" id="lens-question"></div>
+        <p class="lens-body" id="lens-body"></p>
+        <div class="moves" id="moves"></div>
+      </div>
+
+      <div class="synthesis-panel">
+        <div class="panel-heading">
+          <h2 id="synthesis-title"></h2>
+          <span class="panel-note" id="synthesis-note"></span>
+        </div>
+        <div class="mix-strip" id="mix-strip"></div>
+        <div class="brief" id="brief"></div>
+        <button type="button" class="ghost-btn" id="randomize-btn"></button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const UI = {
+      cz: {
+        title: "Reaktor teorií",
+        kicker: "OpenAI Codex material",
+        lead: "Interaktivní laboratoř, ve které se pedagogické teorie nechovají jako seznam pojmů, ale jako živé čočky pro řešení výukových dilemat.",
+        return: "Zpět do Toolboxu",
+        language: "Jazyk / Language",
+        missionTitle: "Cíl",
+        mission: "Vyberte situaci, nastavte pedagogické priority a sledujte, jak různé teorie promění diagnózu, intervenci i rizika.",
+        signalLenses: "teoretických čoček",
+        signalScenarios: "univerzitní dilemata",
+        signalBrief: "návrh intervence",
+        mapTitle: "Mapa napětí",
+        mapNote: "Kliknutím na uzel vyberete čočku",
+        consoleTitle: "Scénářový reaktor",
+        consoleNote: "priority mění doporučené čočky",
+        scenarioLabel: "Výukové dilema",
+        ranking: "Nejsilnější čočky",
+        diagnosis: "Diagnóza",
+        action: "Intervence",
+        caution: "Riziko",
+        lensTitle: "Teoretická čočka",
+        moves: "Pohyby ve výuce",
+        synthesisTitle: "Syntéza intervence",
+        synthesisNote: "zvolte až tři čočky",
+        randomize: "Vytvořit jinou kombinaci",
+        brief: {
+          entry: "Vstupní tah",
+          architecture: "Architektura učení",
+          ethics: "Etická kontrola",
+          evidence: "Důkaz učení"
+        },
+        dims: {
+          conflict: "Kognitivní konflikt",
+          agency: "Autonomie",
+          community: "Vztahy",
+          tradition: "Svět a tradice"
+        },
+        domains: {
+          cognitive: "Kognitivní",
+          personal: "Personalistické",
+          academic: "Akademické"
+        }
+      },
+      en: {
+        title: "Theory Reactor",
+        kicker: "OpenAI Codex material",
+        lead: "An interactive lab where educational theories stop behaving like a list of terms and become live lenses for solving teaching dilemmas.",
+        return: "Back to Toolbox",
+        language: "Language",
+        missionTitle: "Mission",
+        mission: "Choose a situation, tune the pedagogical priorities, and watch how each theory changes the diagnosis, intervention, and risk profile.",
+        signalLenses: "theory lenses",
+        signalScenarios: "university dilemmas",
+        signalBrief: "intervention brief",
+        mapTitle: "Map of tensions",
+        mapNote: "Click a node to select a lens",
+        consoleTitle: "Scenario reactor",
+        consoleNote: "priorities reshape the strongest lenses",
+        scenarioLabel: "Teaching dilemma",
+        ranking: "Strongest lenses",
+        diagnosis: "Diagnosis",
+        action: "Intervention",
+        caution: "Risk",
+        lensTitle: "Theory lens",
+        moves: "Teaching moves",
+        synthesisTitle: "Intervention synthesis",
+        synthesisNote: "choose up to three lenses",
+        randomize: "Create another combination",
+        brief: {
+          entry: "Opening move",
+          architecture: "Learning architecture",
+          ethics: "Ethical check",
+          evidence: "Evidence of learning"
+        },
+        dims: {
+          conflict: "Cognitive conflict",
+          agency: "Agency",
+          community: "Relatedness",
+          tradition: "World and tradition"
+        },
+        domains: {
+          cognitive: "Cognitive",
+          personal: "Personalist",
+          academic: "Academic"
+        }
+      }
+    };
+
+    const LENSES = [
+      {
+        id: "piaget", color: "#9b8cff", domain: "cognitive", x: 0.24, y: 0.26,
+        name: { cz: "Jean Piaget", en: "Jean Piaget" },
+        tag: { cz: "schémata a konflikt", en: "schemas and conflict" },
+        question: { cz: "Jak se mění struktura myšlení?", en: "How does the structure of thinking change?" },
+        body: {
+          cz: "Učení vzniká, když nová zkušenost naruší staré schéma. Student musí rozhodnout, zda zkušenost asimiluje, nebo schéma akomoduje.",
+          en: "Learning happens when a new experience disturbs an old schema. The student must decide whether to assimilate it or accommodate the schema."
+        },
+        weights: { conflict: 95, agency: 44, community: 30, tradition: 28 },
+        moves: {
+          cz: ["Vytvořit produktivní kognitivní konflikt.", "Nechat studenty pojmenovat původní schéma.", "Vrátit se k chybě jako k důkazu vývoje."],
+          en: ["Create a productive cognitive conflict.", "Ask students to name their original schema.", "Return to the error as evidence of development."]
+        },
+        brief: {
+          entry: { cz: "Začněte paradoxy nebo chybnou intuicí.", en: "Start with a paradox or mistaken intuition." },
+          architecture: { cz: "Nechte studenty porovnat staré schéma s novým případem.", en: "Have students compare the old schema with a new case." },
+          ethics: { cz: "Konflikt musí být bezpečný, ne ponižující.", en: "Conflict must be safe, not humiliating." },
+          evidence: { cz: "Student umí vysvětlit, co ve svém schématu změnil.", en: "The student can explain what changed in their schema." }
+        }
+      },
+      {
+        id: "gopnik", color: "#38b6ff", domain: "cognitive", x: 0.47, y: 0.18,
+        name: { cz: "Alison Gopniková", en: "Alison Gopnik" },
+        tag: { cz: "dítě jako vědec", en: "child as scientist" },
+        question: { cz: "Jak studenti testují hypotézy?", en: "How do students test hypotheses?" },
+        body: {
+          cz: "Učení je experimentální. I mladí učící se aktivně vytvářejí hypotézy, testují příčiny a rozumí perspektivám druhých dříve, než čekáme.",
+          en: "Learning is experimental. Even young learners actively form hypotheses, test causes, and understand other perspectives earlier than expected."
+        },
+        weights: { conflict: 82, agency: 76, community: 55, tradition: 22 },
+        moves: {
+          cz: ["Proměnit úkol v test hypotézy.", "Nechat studenty navrhnout vlastní způsob ověření.", "Porovnat, co by si mohl myslet někdo jiný."],
+          en: ["Turn the task into a hypothesis test.", "Let students design their own verification method.", "Compare what another person might believe."]
+        },
+        brief: {
+          entry: { cz: "Položte otázku, na kterou nestačí reprodukce definice.", en: "Pose a question that cannot be answered by reproducing a definition." },
+          architecture: { cz: "Studenti navrhují mini experiment a sbírají důkazy.", en: "Students design a mini experiment and collect evidence." },
+          ethics: { cz: "Nezaměňujte hravost za povrchnost.", en: "Do not confuse playfulness with superficiality." },
+          evidence: { cz: "Student obhájí hypotézu, metodu a revizi závěru.", en: "The student defends the hypothesis, method, and revised conclusion." }
+        }
+      },
+      {
+        id: "lewin", color: "#00d2b8", domain: "personal", x: 0.2, y: 0.62,
+        name: { cz: "Kurt Lewin", en: "Kurt Lewin" },
+        tag: { cz: "osoba v prostředí", en: "person in environment" },
+        question: { cz: "Jak situace tvaruje chování?", en: "How does the situation shape behavior?" },
+        body: {
+          cz: "Chování je funkcí osoby a prostředí. Místo hledání viny u jednotlivce se zkoumá pole sil: pravidla, skupina, prostor a vedení.",
+          en: "Behavior is a function of person and environment. Instead of blaming the individual, the field of forces is examined: rules, group, space, and leadership."
+        },
+        weights: { conflict: 42, agency: 56, community: 96, tradition: 38 },
+        moves: {
+          cz: ["Zmapovat síly, které brání a podporují akci.", "Změnit pravidla interakce, ne jen instrukci.", "Použít cyklus plánování, akce a reflexe."],
+          en: ["Map forces that block and support action.", "Change the interaction rules, not only the instruction.", "Use a planning, action, reflection cycle."]
+        },
+        brief: {
+          entry: { cz: "Nechte skupinu pojmenovat síly v situaci.", en: "Ask the group to name the forces in the situation." },
+          architecture: { cz: "Upravte prostředí tak, aby žádoucí chování bylo snazší.", en: "Adjust the environment so the desired behavior becomes easier." },
+          ethics: { cz: "Intervence má měnit pole, ne manipulovat osoby.", en: "The intervention should change the field, not manipulate people." },
+          evidence: { cz: "Skupina dokáže popsat, která změna prostředí změnila chování.", en: "The group can describe which environmental change shifted behavior." }
+        }
+      },
+      {
+        id: "rogers", color: "#7ddf64", domain: "personal", x: 0.5, y: 0.72,
+        name: { cz: "Carl Rogers a SDT", en: "Carl Rogers and SDT" },
+        tag: { cz: "autonomie a růst", en: "agency and growth" },
+        question: { cz: "Kdy se učení stává osobním?", en: "When does learning become personal?" },
+        body: {
+          cz: "Učitel je facilitátor. Autonomní motivace roste, když prostředí podporuje volbu, kompetenci a vztahy.",
+          en: "The teacher is a facilitator. Autonomous motivation grows when the environment supports choice, competence, and relatedness."
+        },
+        weights: { conflict: 28, agency: 98, community: 88, tradition: 20 },
+        moves: {
+          cz: ["Dát studentům smysluplnou volbu.", "Posílit pocit zvládání malými důkazy pokroku.", "Vytvořit klima respektu a přijetí."],
+          en: ["Give students meaningful choice.", "Build competence through small evidence of progress.", "Create a climate of respect and acceptance."]
+        },
+        brief: {
+          entry: { cz: "Začněte otázkou, co je pro studenty v tématu živé.", en: "Start by asking what feels alive in the topic for students." },
+          architecture: { cz: "Nabídněte různé cesty k témuž intelektuálnímu cíli.", en: "Offer different paths to the same intellectual goal." },
+          ethics: { cz: "Volba má být skutečná, ne dekorativní.", en: "Choice must be real, not decorative." },
+          evidence: { cz: "Student umí pojmenovat vlastní důvod, strategii a posun.", en: "The student can name their own reason, strategy, and progress." }
+        }
+      },
+      {
+        id: "arendt", color: "#ffc857", domain: "academic", x: 0.76, y: 0.36,
+        name: { cz: "Hannah Arendtová", en: "Hannah Arendt" },
+        tag: { cz: "škola a svět", en: "school and world" },
+        question: { cz: "Jak škola uvádí do světa?", en: "How does school introduce the world?" },
+        body: {
+          cz: "Vzdělávání chrání svět tím, že do něj uvádí nové generace. Autorita učitele vychází z odpovědnosti za svět, ne z pouhé moci.",
+          en: "Education protects the world by introducing new generations into it. The teacher's authority comes from responsibility for the world, not mere power."
+        },
+        weights: { conflict: 26, agency: 34, community: 62, tradition: 96 },
+        moves: {
+          cz: ["Ukázat, proč dané poznání patří do společného světa.", "Oddělit autoritu od autoritářství.", "Chránit studenta i svět před okamžitým tlakem davu."],
+          en: ["Show why this knowledge belongs to the common world.", "Separate authority from authoritarianism.", "Protect both the student and the world from immediate crowd pressure."]
+        },
+        brief: {
+          entry: { cz: "Představte téma jako část světa, který stojí za převzetí.", en: "Present the topic as part of a world worth inheriting." },
+          architecture: { cz: "Spojte minulost, autoritu zdroje a současný úsudek.", en: "Connect the past, the authority of a source, and present judgment." },
+          ethics: { cz: "Autorita musí nést odpovědnost, ne vyžadovat poslušnost.", en: "Authority must carry responsibility, not demand obedience." },
+          evidence: { cz: "Student dokáže říct, co ze světa přebírá a co proměňuje.", en: "The student can say what they inherit from the world and what they transform." }
+        }
+      },
+      {
+        id: "biesta", color: "#ff7a45", domain: "academic", x: 0.78, y: 0.68,
+        name: { cz: "Gert Biesta", en: "Gert Biesta" },
+        tag: { cz: "účel vzdělávání", en: "purpose of education" },
+        question: { cz: "K čemu vzdělávání slouží?", en: "What is education for?" },
+        body: {
+          cz: "Biesta odmítá redukovat vzdělávání na efektivní učení. Smysl vzniká v rovnováze kvalifikace, socializace a subjektifikace.",
+          en: "Biesta rejects reducing education to efficient learning. Meaning emerges from balancing qualification, socialization, and subjectification."
+        },
+        weights: { conflict: 58, agency: 76, community: 76, tradition: 72 },
+        moves: {
+          cz: ["Ptát se nejen jak, ale proč se učíme.", "Vyvážit dovednosti, začlenění a vznik subjektu.", "Zkoumat, kým se student učením stává."],
+          en: ["Ask not only how, but why we learn.", "Balance skills, belonging, and becoming a subject.", "Examine who the student becomes through learning."]
+        },
+        brief: {
+          entry: { cz: "Začněte otázkou po účelu, ne po aktivitě.", en: "Start with the question of purpose, not activity." },
+          architecture: { cz: "Navrhněte úkol, který rozvíjí znalost, příslušnost i hlas.", en: "Design a task that develops knowledge, belonging, and voice." },
+          ethics: { cz: "Efektivita nesmí nahradit otázku dobrého vzdělání.", en: "Efficiency must not replace the question of good education." },
+          evidence: { cz: "Student ukáže dovednost, vztah ke světu i vlastní stanovisko.", en: "The student shows skill, relation to the world, and a personal stance." }
+        }
+      }
+    ];
+
+    const SCENARIOS = [
+      {
+        id: "glossary",
+        title: { cz: "Perfektní definice, nulový přenos", en: "Perfect definitions, no transfer" },
+        situation: {
+          cz: "Studenti umí zopakovat pojmy, ale v nové situaci je nepoužijí.",
+          en: "Students can repeat the terms, but they do not use them in a new situation."
+        },
+        sliders: { conflict: 88, agency: 48, community: 34, tradition: 42 },
+        plays: {
+          piaget: ["Staré schéma je stabilní, protože ho nic neohrožuje.", "Zadat případ, který definice sama nevyřeší.", "Příliš těžký konflikt vyrobí hádání místo rekonstrukce."],
+          gopnik: ["Studenti nemají hypotézu, jen slovník.", "Proměnit pojem v experimentální predikci.", "Experiment bez reflexe skončí jako hra bez konceptu."],
+          lewin: ["Pole odměňuje reprodukci více než aplikaci.", "Změnit kritéria úspěchu na použití v situaci.", "Bez jasného prostředí se odpovědnost rozpadne."],
+          rogers: ["Pojem není propojený s vlastním účelem studenta.", "Nabídnout volbu případu, kde pojem opravdu pomůže.", "Volba bez opory může zakrýt slabé porozumění."],
+          arendt: ["Student nevidí, proč pojem patří do světa oboru.", "Ukázat původ pojmu a problém, který měl řešit.", "Tradice nesmí zůstat jen jako memorovaný monument."],
+          biesta: ["Učení ztratilo otázku účelu.", "Vyžádat odpověď: co pojem umožňuje dělat, kam patří, kým mění studenta.", "Příliš široká reflexe může oslabit přesnost pojmu."]
+        }
+      },
+      {
+        id: "silence",
+        title: { cz: "Tiché semináře", en: "Silent seminars" },
+        situation: {
+          cz: "Skupina četla texty, ale v semináři mluví stále stejní dva lidé.",
+          en: "The group read the texts, but the same two people keep speaking in the seminar."
+        },
+        sliders: { conflict: 38, agency: 72, community: 92, tradition: 48 },
+        plays: {
+          piaget: ["Studenti nemusí veřejně testovat svá schémata.", "Začít anonymním porovnáním interpretací.", "Pouhý konflikt hlasitější studenty ještě zesílí."],
+          gopnik: ["Seminář nefunguje jako společné testování hypotéz.", "Každý tým dostane hypotézu a důkazní roli.", "Role se nesmí stát mechanickým divadlem."],
+          lewin: ["Pole sil favorizuje rychlé a dominantní hlasy.", "Změnit pravidla: čas na psaní, rotace rolí, menší kruhy.", "Příliš mnoho pravidel může zabít živost debaty."],
+          rogers: ["Chybí bezpečí, vztahy nebo pocit kompetence.", "Začít volitelnými mikro vstupy s nízkým rizikem.", "Bez akademické náročnosti se bezpečí změní na pohodlí."],
+          arendt: ["Autorita nechrání prostor společného světa.", "Učitel rámuje text jako společnou věc, ke které má každý odpovědnost.", "Autorita nesmí převzít všechny hlasy."],
+          biesta: ["Socializace přehlušila subjektifikaci.", "Navrhnout úkol, kde každý musí přinést vlastní odpovědnou pozici.", "Tlak na originalitu může vyvolat performanci místo myšlení."]
+        }
+      },
+      {
+        id: "ai",
+        title: { cz: "Dokonalý AI esej bez autora", en: "Perfect AI essay without an author" },
+        situation: {
+          cz: "Text je plynulý a přesný, ale student neumí vysvětlit vlastní stanovisko.",
+          en: "The text is fluent and accurate, but the student cannot explain their own position."
+        },
+        sliders: { conflict: 64, agency: 86, community: 36, tradition: 78 },
+        plays: {
+          piaget: ["Výstup přeskočil rekonstrukci schémat.", "Požádat o mapu změn: co jsem si myslel před a po.", "Kontrola procesu nesmí být jen podezřívání."],
+          gopnik: ["AI vytvořila závěr, ale student netestoval hypotézu.", "Nechat studenta obhájit jeden sporný experiment s textem.", "Technická hra s AI nesmí nahradit oborové myšlení."],
+          lewin: ["Prostředí odměňuje čistý produkt více než viditelný proces.", "Změnit zadání na iterace, komentáře a obhajobu rozhodnutí.", "Přísná kontrola může snížit důvěru v poli."],
+          rogers: ["Student ztratil osobní vlastnictví práce.", "Zařadit volbu problému a reflexi vlastního důvodu.", "Sebevyjádření potřebuje také kritéria kvality."],
+          arendt: ["Text není převzetím odpovědnosti za společný svět.", "Pracovat se zdroji jako s autoritami, vůči nimž student zaujme postoj.", "Tradice nesmí být jen dekorace citací."],
+          biesta: ["Kvalifikace vypadá hotově, subjektifikace chybí.", "Hodnotit dovednost, začlenění do diskuse i vlastní hlas.", "Neudělat z AI morální paniku bez pedagogického účelu."]
+        }
+      },
+      {
+        id: "project",
+        title: { cz: "Sebeřízený projekt, nerovná moc", en: "Self-directed project, unequal power" },
+        situation: {
+          cz: "Projekt má být autonomní, ale jeden student rozhoduje za celý tým.",
+          en: "The project is meant to be autonomous, but one student decides for the whole team."
+        },
+        sliders: { conflict: 44, agency: 92, community: 88, tradition: 36 },
+        plays: {
+          piaget: ["Tým nemá společné schéma spolupráce.", "Nechat tým porovnat různé modely rozhodování na konkrétním sporu.", "Kognitivní rozbor sám neopraví mocenský vzorec."],
+          gopnik: ["Skupina neexperimentuje s alternativami organizace.", "Testovat dva způsoby rozhodování a vyhodnotit data.", "Experiment bez bezpečí může potvrdit dominanci."],
+          lewin: ["Pole sil dává jednomu hlasu nepřiměřenou váhu.", "Zavést role, limity rozhodování a reflexi skupinového pole.", "Mechanická rovnost rolí neznamená skutečnou spolupráci."],
+          rogers: ["Autonomie jednoho potlačila autonomii ostatních.", "Vyjasnit volbu, kompetenci a vztahy pro každého člena.", "Přílišná facilitace může obejít nutný konflikt."],
+          arendt: ["Chybí veřejný prostor, kde je odpovědnost sdílená.", "Učitel chrání pluralitu hlasů jako podmínku společného světa.", "Autorita nesmí projekt převzít místo týmu."],
+          biesta: ["Projekt podporuje agency, ale selhává v socializaci a subjektifikaci.", "Vyžádat individuální hlas, společná pravidla a kvalitu výsledku.", "Reflexe moci nesmí spolknout oborový cíl."]
+        }
+      }
+    ];
+
+    const PLAY_EN = {
+      glossary: {
+        piaget: ["The old schema remains stable because nothing challenges it.", "Use a case that the definition cannot solve by itself.", "If the conflict is too difficult, students will guess instead of reconstructing."],
+        gopnik: ["Students have vocabulary, but not a hypothesis.", "Turn the concept into an experimental prediction.", "An experiment without reflection becomes play without a concept."],
+        lewin: ["The field rewards reproduction more than application.", "Change the success criteria toward use in a situation.", "Without a clear environment, responsibility dissolves."],
+        rogers: ["The concept is not connected to the student's own purpose.", "Offer a choice of cases where the concept genuinely helps.", "Choice without support can hide weak understanding."],
+        arendt: ["The student does not see why the concept belongs to the world of the discipline.", "Show the origin of the concept and the problem it was meant to address.", "Tradition must not remain a memorized monument."],
+        biesta: ["Learning has lost the question of purpose.", "Ask what the concept enables, where it belongs, and how it changes the student.", "Reflection that is too broad can weaken conceptual precision."]
+      },
+      silence: {
+        piaget: ["Students do not have to publicly test their schemas.", "Begin with anonymous comparison of interpretations.", "Conflict alone can amplify the already dominant voices."],
+        gopnik: ["The seminar is not functioning as shared hypothesis testing.", "Give each team a hypothesis and an evidence role.", "Roles must not become mechanical theatre."],
+        lewin: ["The field of forces favors fast and dominant voices.", "Change the rules: writing time, rotating roles, smaller circles.", "Too many rules can kill the energy of discussion."],
+        rogers: ["Safety, relatedness, or competence may be missing.", "Start with low-risk micro contributions.", "Without academic challenge, safety becomes comfort."],
+        arendt: ["Authority is not protecting the space of a shared world.", "Frame the text as a common matter for which everyone has responsibility.", "Authority must not take over all voices."],
+        biesta: ["Socialization has drowned out subjectification.", "Design a task where everyone must bring a responsible position.", "Pressure to be original can become performance instead of thinking."]
+      },
+      ai: {
+        piaget: ["The product skipped the reconstruction of schemas.", "Ask for a map of change: what I thought before and after.", "Process checking must not become mere suspicion."],
+        gopnik: ["AI produced the conclusion, but the student did not test the hypothesis.", "Ask the student to defend one contested experiment with the text.", "Technical play with AI must not replace disciplinary thinking."],
+        lewin: ["The environment rewards a clean product more than a visible process.", "Redesign the assignment around iterations, comments, and defense of decisions.", "Strict control can reduce trust in the learning field."],
+        rogers: ["The student has lost personal ownership of the work.", "Add choice of problem and reflection on personal reason.", "Self-expression still needs quality criteria."],
+        arendt: ["The text is not yet an act of responsibility toward the shared world.", "Work with sources as authorities toward which the student takes a stance.", "Tradition must not be reduced to decorative citations."],
+        biesta: ["Qualification looks complete, but subjectification is missing.", "Assess skill, participation in the conversation, and personal voice.", "Do not turn AI into a moral panic without pedagogical purpose."]
+      },
+      project: {
+        piaget: ["The team lacks a shared schema of collaboration.", "Let the team compare different decision models on one concrete dispute.", "Cognitive analysis alone will not repair a power pattern."],
+        gopnik: ["The group is not experimenting with alternative forms of organization.", "Test two decision methods and evaluate the evidence.", "An experiment without safety may confirm dominance."],
+        lewin: ["The field of forces gives one voice disproportionate weight.", "Introduce roles, decision limits, and reflection on the group field.", "Mechanical equality of roles does not guarantee real cooperation."],
+        rogers: ["One person's autonomy is suppressing the autonomy of others.", "Clarify choice, competence, and relatedness for each member.", "Too much facilitation can avoid a necessary conflict."],
+        arendt: ["There is no public space where responsibility is shared.", "The teacher protects plurality of voices as a condition of the common world.", "Authority must not take over the project instead of the team."],
+        biesta: ["The project supports agency but fails in socialization and subjectification.", "Require individual voice, shared rules, and quality of outcome.", "Reflection on power must not swallow the disciplinary goal."]
+      }
+    };
+
+    const el = id => document.getElementById(id);
+    const tx = value => typeof value === "string" ? value : value[lang];
+    let lang = new URLSearchParams(location.search).get("lang") || localStorage.getItem("codex-reactor-lang") || localStorage.getItem("preferredLang") || "cz";
+    if (!["cz", "en"].includes(lang)) lang = "cz";
+    let activeLens = "biesta";
+    let activeScenario = "ai";
+    let mix = ["piaget", "rogers", "biesta"];
+    let sliders = { conflict: 64, agency: 86, community: 36, tradition: 78 };
+    let animationTime = 0;
+
+    function setLanguage(next) {
+      lang = next;
+      localStorage.setItem("codex-reactor-lang", lang);
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null, "", url);
+      render();
+    }
+
+    function lensById(id) {
+      return LENSES.find(lens => lens.id === id);
+    }
+
+    function scenarioById(id) {
+      return SCENARIOS.find(scenario => scenario.id === id);
+    }
+
+    function scoreLens(lens) {
+      const keys = Object.keys(sliders);
+      const raw = keys.reduce((sum, key) => sum + (100 - Math.abs(sliders[key] - lens.weights[key])), 0);
+      return Math.round(raw / keys.length);
+    }
+
+    function rankedLenses() {
+      return [...LENSES].map(lens => ({ lens, score: scoreLens(lens) })).sort((a, b) => b.score - a.score);
+    }
+
+    function applyScenario(id) {
+      activeScenario = id;
+      sliders = { ...scenarioById(id).sliders };
+      activeLens = rankedLenses()[0].lens.id;
+      render();
+    }
+
+    function renderStatic() {
+      const t = UI[lang];
+      document.documentElement.lang = lang;
+      document.title = `${t.title} | OpenAI Codex`;
+      el("return-label").textContent = t.return;
+      el("language-label").textContent = t.language;
+      el("kicker").textContent = t.kicker;
+      el("page-title").textContent = t.title;
+      el("page-lead").textContent = t.lead;
+      el("mission-title").textContent = t.missionTitle;
+      el("mission-text").textContent = t.mission;
+      el("signal-lenses").textContent = t.signalLenses;
+      el("signal-scenarios").textContent = t.signalScenarios;
+      el("signal-brief").textContent = t.signalBrief;
+      el("map-title").textContent = t.mapTitle;
+      el("map-note").textContent = t.mapNote;
+      el("console-title").textContent = t.consoleTitle;
+      el("console-note").textContent = t.consoleNote;
+      el("scenario-label").textContent = t.scenarioLabel;
+      el("synthesis-title").textContent = t.synthesisTitle;
+      el("synthesis-note").textContent = t.synthesisNote;
+      el("randomize-btn").textContent = t.randomize;
+      el("lang-cz").classList.toggle("active", lang === "cz");
+      el("lang-en").classList.toggle("active", lang === "en");
+      el("return-link").href = `toolbox.html?lang=${lang}#tool-codex`;
+    }
+
+    function renderScenarioSelect() {
+      const select = el("scenario-select");
+      select.innerHTML = SCENARIOS.map(scenario => `<option value="${scenario.id}" ${scenario.id === activeScenario ? "selected" : ""}>${tx(scenario.title)}</option>`).join("");
+    }
+
+    function renderSliders() {
+      const t = UI[lang];
+      el("slider-stack").innerHTML = Object.entries(t.dims).map(([key, label]) => `
+        <div class="slider-row">
+          <span>${label}</span>
+          <input type="range" min="0" max="100" value="${sliders[key]}" data-dim="${key}" aria-label="${label}">
+          <span class="value">${sliders[key]}</span>
+        </div>
+      `).join("");
+      document.querySelectorAll("input[type='range']").forEach(input => {
+        input.addEventListener("input", event => {
+          sliders[event.target.dataset.dim] = Number(event.target.value);
+          renderDynamic();
+        });
+      });
+    }
+
+    function renderMapReadout() {
+      const t = UI[lang];
+      const domains = ["cognitive", "personal", "academic"];
+      el("map-readout").innerHTML = domains.map(domain => {
+        const count = LENSES.filter(lens => lens.domain === domain).length;
+        return `<div class="readout-item"><strong>${t.domains[domain]}</strong><span>${count} ${lang === "cz" ? "čočky" : "lenses"}</span></div>`;
+      }).join("");
+    }
+
+    function renderLensStrip() {
+      el("lens-strip").innerHTML = LENSES.map(lens => `
+        <button type="button" class="lens-btn ${lens.id === activeLens ? "active" : ""}" data-lens="${lens.id}">
+          ${tx(lens.name)}
+          <span>${tx(lens.tag)}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll(".lens-btn").forEach(button => {
+        button.addEventListener("click", () => {
+          activeLens = button.dataset.lens;
+          renderDynamic();
+        });
+      });
+    }
+
+    function renderRanking() {
+      const t = UI[lang];
+      el("ranking").innerHTML = `<label>${t.ranking}</label>` + rankedLenses().slice(0, 4).map(({ lens, score }) => `
+        <button type="button" class="rank-row" data-rank-lens="${lens.id}" style="border:0;background:transparent;text-align:left;padding:0">
+          <span style="color:${lens.color};font-weight:800">${tx(lens.name).split(" ")[0]}</span>
+          <span class="rank-bar"><span class="rank-fill" style="width:${score}%;background:${lens.color}"></span></span>
+          <span class="value">${score}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll("[data-rank-lens]").forEach(button => {
+        button.addEventListener("click", () => {
+          activeLens = button.dataset.rankLens;
+          renderDynamic();
+        });
+      });
+    }
+
+    function renderAnalysis() {
+      const t = UI[lang];
+      const lens = lensById(activeLens);
+      const scenario = scenarioById(activeScenario);
+      const play = lang === "en" ? PLAY_EN[activeScenario][activeLens] : scenario.plays[activeLens];
+      const labels = [t.diagnosis, t.action, t.caution];
+      el("analysis-box").innerHTML = `
+        <div>
+          <strong style="color:${lens.color}">${tx(lens.name)}</strong>
+          <p style="color:var(--muted)">${tx(scenario.situation)}</p>
+        </div>
+        ${play.map((text, index) => `
+          <div class="analysis-row" style="border-left-color:${lens.color}">
+            <strong>${labels[index]}</strong>
+            <p>${text}</p>
+          </div>
+        `).join("")}
+      `;
+    }
+
+    function renderLensPanel() {
+      const t = UI[lang];
+      const lens = lensById(activeLens);
+      el("lens-dot").style.background = lens.color;
+      el("lens-dot").style.color = lens.color;
+      el("lens-name").textContent = tx(lens.name);
+      el("lens-question").textContent = tx(lens.question);
+      el("lens-body").textContent = tx(lens.body);
+      el("moves").innerHTML = `<label>${t.moves}</label>` + lens.moves[lang].map((move, index) => `
+        <div class="move">
+          <strong>${String(index + 1).padStart(2, "0")}</strong>
+          <span>${move}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderMix() {
+      el("mix-strip").innerHTML = LENSES.map(lens => `
+        <button type="button" class="chip ${mix.includes(lens.id) ? "active" : ""}" data-mix="${lens.id}">
+          ${tx(lens.name).split(" ")[0]}
+          <span>${tx(lens.tag).split(" ").slice(0, 3).join(" ")}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll("[data-mix]").forEach(button => {
+        button.addEventListener("click", () => {
+          const id = button.dataset.mix;
+          if (mix.includes(id)) {
+            mix = mix.filter(item => item !== id);
+          } else {
+            mix = [...mix, id].slice(-3);
+          }
+          if (mix.length === 0) mix = [activeLens];
+          renderDynamic();
+        });
+      });
+    }
+
+    function renderBrief() {
+      const t = UI[lang];
+      const selected = mix.map(lensById);
+      const steps = ["entry", "architecture", "ethics", "evidence"];
+      el("brief").innerHTML = steps.map((step, index) => {
+        const lens = selected[index % selected.length];
+        return `
+          <div class="brief-step" style="border-color:${lens.color}66">
+            <strong>${t.brief[step]}</strong>
+            <span>${tx(lens.brief[step])}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderDynamic() {
+      renderSliders();
+      renderLensStrip();
+      renderRanking();
+      renderAnalysis();
+      renderLensPanel();
+      renderMix();
+      renderBrief();
+      drawMap();
+    }
+
+    function render() {
+      renderStatic();
+      renderScenarioSelect();
+      renderMapReadout();
+      renderDynamic();
+    }
+
+    function drawMap() {
+      const canvas = el("theory-map");
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+      canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const center = { x: w * 0.5, y: h * 0.47 };
+      const ranking = rankedLenses();
+      const bestIds = ranking.slice(0, 3).map(item => item.lens.id);
+
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 10; i++) {
+        const y = 24 + i * 32;
+        ctx.beginPath();
+        ctx.moveTo(24, y);
+        ctx.lineTo(w - 24, y);
+        ctx.stroke();
+      }
+
+      LENSES.forEach(lens => {
+        const x = lens.x * w;
+        const y = lens.y * h;
+        const pulse = Math.sin(animationTime / 34 + x * 0.01) * 3;
+        const strong = lens.id === activeLens || bestIds.includes(lens.id);
+
+        ctx.beginPath();
+        ctx.moveTo(center.x, center.y);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = strong ? `${lens.color}aa` : "rgba(255,255,255,0.12)";
+        ctx.lineWidth = strong ? 2 : 1;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x, y, strong ? 18 + pulse : 13, 0, Math.PI * 2);
+        ctx.fillStyle = strong ? `${lens.color}33` : "rgba(255,255,255,0.06)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(x, y, strong ? 8 : 6, 0, Math.PI * 2);
+        ctx.fillStyle = lens.color;
+        ctx.fill();
+
+        ctx.font = "700 12px Inter, sans-serif";
+        ctx.fillStyle = lens.id === activeLens ? "#ffffff" : "#d8e3ff";
+        ctx.textAlign = "center";
+        ctx.fillText(tx(lens.name).split(" ")[0], x, y + 32);
+      });
+
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, 26, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255, 200, 87, 0.18)";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 200, 87, 0.8)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.font = "800 11px Inter, sans-serif";
+      ctx.fillStyle = "#ffc857";
+      ctx.textAlign = "center";
+      ctx.fillText(lang === "cz" ? "DILEMA" : "DILEMMA", center.x, center.y + 4);
+    }
+
+    function animate() {
+      animationTime += 1;
+      drawMap();
+      requestAnimationFrame(animate);
+    }
+
+    function handleCanvasClick(event) {
+      const rect = el("theory-map").getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const hit = LENSES.find(lens => {
+        const dx = lens.x * rect.width - x;
+        const dy = lens.y * rect.height - y;
+        return Math.sqrt(dx * dx + dy * dy) < 32;
+      });
+      if (hit) {
+        activeLens = hit.id;
+        renderDynamic();
+      }
+    }
+
+    function randomizeMix() {
+      const pool = [...LENSES].sort(() => Math.random() - 0.5);
+      mix = pool.slice(0, 3).map(lens => lens.id);
+      activeLens = mix[0];
+      renderDynamic();
+    }
+
+    el("lang-cz").addEventListener("click", () => setLanguage("cz"));
+    el("lang-en").addEventListener("click", () => setLanguage("en"));
+    el("scenario-select").addEventListener("change", event => applyScenario(event.target.value));
+    el("theory-map").addEventListener("click", handleCanvasClick);
+    el("randomize-btn").addEventListener("click", randomizeMix);
+    window.addEventListener("resize", drawMap);
+
+    render();
+    animate();
+  </script>
+</body>
+
+</html>

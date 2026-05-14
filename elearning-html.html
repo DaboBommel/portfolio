@@ -1,0 +1,1610 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Theory of Education | Student Portfolio" data-cz="Teorie vzdělávání | Studentské Portfolium">Teorie
+    vzdělávání | Studentské Portfolium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      --mc: #534AB7;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f4f0;
+      color: #1a1a18;
+      font-size: 15px;
+      line-height: 1.6
+    }
+
+    .wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1rem
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 16px
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px
+    }
+
+    .muted {
+      color: #6b6b68;
+      font-size: 14px
+    }
+
+    .page {
+      display: none
+    }
+
+    .page.active {
+      display: block
+    }
+
+    /* nav */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #6b6b68;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .breadcrumb button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #6b6b68;
+      font-size: 13px;
+      padding: 2px 4px
+    }
+
+    .breadcrumb button:hover {
+      color: #1a1a18
+    }
+
+    /* module cards */
+    .mod-card {
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: box-shadow .15s
+    }
+
+    .mod-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08)
+    }
+
+    .mod-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px
+    }
+
+    .mod-card-header .icon {
+      font-size: 20px
+    }
+
+    .mod-card-header .title {
+      font-size: 16px;
+      font-weight: 500;
+      flex: 1
+    }
+
+    .mod-card-header .count {
+      font-size: 12px;
+      color: #6b6b68
+    }
+
+    .mod-card p {
+      font-size: 13px;
+      color: #6b6b68;
+      margin-bottom: 8px
+    }
+
+    .progress-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: #e8e7e3;
+      overflow: hidden
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width .4s
+    }
+
+    /* lesson cards */
+    .lesson-card {
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow .15s
+    }
+
+    .lesson-card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08)
+    }
+
+    .lesson-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #e8e7e3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b6b68;
+      flex-shrink: 0
+    }
+
+    .lesson-icon.done {
+      color: var(--mc)
+    }
+
+    .lesson-title {
+      font-size: 15px;
+      font-weight: 500
+    }
+
+    .lesson-score {
+      font-size: 12px;
+      color: #6b6b68;
+      margin-top: 2px
+    }
+
+    /* tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+      margin-bottom: 1.5rem
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      font-size: 14px;
+      color: #6b6b68;
+      margin-bottom: -1px;
+      transition: color .15s
+    }
+
+    .tab-btn.active {
+      font-weight: 500;
+      border-bottom-color: var(--mc);
+      color: var(--mc)
+    }
+
+    /* content blocks */
+    .intro-block {
+      font-size: 14px;
+      line-height: 1.7;
+      padding: .75rem 1rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--mc);
+      margin-bottom: 1.5rem
+    }
+
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.5rem
+    }
+
+    .fact-card {
+      flex: 1 1 140px;
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: .75rem 1rem
+    }
+
+    .fact-card .num {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 4px
+    }
+
+    .fact-card .label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .fact-card .desc {
+      font-size: 13px;
+      color: #6b6b68;
+      line-height: 1.5
+    }
+
+    .concepts-block {
+      margin-bottom: 1.5rem
+    }
+
+    .concepts-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: #6b6b68;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 8px
+    }
+
+    .concept-row {
+      border-bottom: 0.5px solid rgba(0, 0, 0, .1);
+      padding: .65rem 0;
+      font-size: 14px;
+      line-height: 1.6
+    }
+
+    .concept-row .term {
+      font-weight: 500
+    }
+
+    .concept-row .def {
+      color: #6b6b68
+    }
+
+    .formula-box {
+      background: #f0efe9;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center
+    }
+
+    .formula-text {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 8px
+    }
+
+    .formula-labels {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #6b6b68
+    }
+
+    .formula-labels strong {
+      font-weight: 500
+    }
+
+    table.styled {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      table-layout: fixed;
+      margin-bottom: 1.5rem
+    }
+
+    table.styled th {
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 13px;
+      color: #6b6b68;
+      border-bottom: 0.5px solid rgba(0, 0, 0, .12);
+      background: #f5f4f0
+    }
+
+    table.styled td {
+      padding: 8px 10px;
+      border-bottom: 0.5px solid rgba(0, 0, 0, .1);
+      color: #6b6b68;
+      vertical-align: top
+    }
+
+    table.styled td:first-child {
+      font-weight: 500;
+      color: var(--mc)
+    }
+
+    .exp-card {
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-bottom: 10px
+    }
+
+    .exp-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px
+    }
+
+    .exp-name {
+      font-size: 14px;
+      font-weight: 500
+    }
+
+    .exp-age {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px
+    }
+
+    .exp-finding {
+      font-size: 14px;
+      color: #6b6b68;
+      line-height: 1.6
+    }
+
+    .sdt-needs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px
+    }
+
+    .sdt-need {
+      flex: 1 1 140px;
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: .75rem
+    }
+
+    .sdt-need .need-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .sdt-need .need-desc {
+      font-size: 13px;
+      color: #6b6b68;
+      line-height: 1.5
+    }
+
+    .biesta-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem
+    }
+
+    .biesta-card {
+      flex: 1 1 150px;
+      border-radius: 8px;
+      padding: .75rem 1rem
+    }
+
+    .biesta-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px
+    }
+
+    .biesta-q {
+      font-size: 13px;
+      font-style: italic;
+      color: #6b6b68;
+      margin-bottom: 6px
+    }
+
+    .biesta-desc {
+      font-size: 13px;
+      line-height: 1.5
+    }
+
+    .conclusion-block {
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-top: 1rem;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem
+    }
+
+    /* quiz */
+    .quiz-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #6b6b68;
+      margin-bottom: 6px
+    }
+
+    .quiz-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: #e8e7e3;
+      margin-bottom: 1.5rem;
+      overflow: hidden
+    }
+
+    .quiz-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width .3s
+    }
+
+    .quiz-q {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 1.5rem
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 1rem
+    }
+
+    .opt-btn {
+      background: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1.5;
+      transition: background .15s
+    }
+
+    .opt-btn:not([disabled]):hover {
+      background: #f5f4f0
+    }
+
+    .opt-btn .opt-letter {
+      font-weight: 500;
+      color: #6b6b68;
+      margin-right: 8px
+    }
+
+    .opt-btn.correct {
+      background: #e1f5ee;
+      border: 1.5px solid #0f6e56
+    }
+
+    .opt-btn.wrong {
+      background: #faece7;
+      border: 1.5px solid #993c1d
+    }
+
+    .feedback {
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid
+    }
+
+    .feedback.ok {
+      background: #e1f5ee;
+      border-color: #0f6e56
+    }
+
+    .feedback.bad {
+      background: #faece7;
+      border-color: #993c1d
+    }
+
+    .feedback-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .feedback-title.ok {
+      color: #0f6e56
+    }
+
+    .feedback-title.bad {
+      color: #993c1d
+    }
+
+    .feedback-text {
+      font-size: 13px;
+      color: #6b6b68;
+      line-height: 1.5
+    }
+
+    .result-center {
+      text-align: center;
+      padding: 1.5rem 0 1rem
+    }
+
+    .result-emoji {
+      font-size: 44px;
+      margin-bottom: 8px
+    }
+
+    .result-score {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .result-msg {
+      font-size: 14px;
+      color: #6b6b68
+    }
+
+    .result-list {
+      margin-bottom: 1.5rem
+    }
+
+    .result-item {
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-bottom: 8px;
+      border-left: 3px solid
+    }
+
+    .result-item.ok {
+      background: #e1f5ee;
+      border-color: #0f6e56
+    }
+
+    .result-item.bad {
+      background: #faece7;
+      border-color: #993c1d
+    }
+
+    .result-item .ri-q {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .result-item .ri-exp {
+      font-size: 13px;
+      color: #6b6b68;
+      line-height: 1.5
+    }
+
+    /* buttons */
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #fff
+    }
+
+    .btn-outline {
+      background: none;
+      border: 0.5px solid rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #1a1a18
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 1.5rem
+    }
+
+    .progress-summary {
+      background: #f0efe9;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem
+    }
+
+    .section-header span.big-icon {
+      font-size: 24px
+    }
+
+    /* Portfolio visual theme overrides */
+    :root {
+      --bg-color: #0a192f;
+      --surface-color: rgba(17, 34, 64, 0.82);
+      --surface-soft: rgba(17, 34, 64, 0.52);
+      --primary-color: #38b6ff;
+      --secondary-color: #00f0ff;
+      --accent-color: #FFC107;
+      --text-color: #ccd6f6;
+      --text-secondary: #8892b0;
+      --text-highlight: #ffffff;
+      --border-color: rgba(56, 182, 255, 0.22);
+      --heading-font: 'Playfair Display', serif;
+      --body-font: 'Inter', sans-serif;
+      --glass-blur: blur(10px);
+      --transition-speed: 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      --mc: var(--primary-color);
+      min-height: 100vh;
+      font-family: var(--body-font);
+      background-color: var(--bg-color);
+      background-image: radial-gradient(circle at 50% 18%, rgba(23, 42, 69, 0.72) 0%, rgba(10, 25, 47, 0) 46%);
+      background-attachment: fixed;
+      color: var(--text-color);
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      width: 90%;
+      max-width: 1000px;
+      padding: 4rem 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--heading-font);
+      color: var(--text-highlight);
+      line-height: 1.1;
+    }
+
+    h1 {
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-bottom: 1.1rem;
+      border-bottom: 2px solid var(--primary-color);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--text-secondary);
+      max-width: 65ch;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem !important;
+    }
+
+    #page-home,
+    #page-module,
+    #page-lesson {
+      animation: eduFadeIn .28s ease;
+    }
+
+    @keyframes eduFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mod-card,
+    .lesson-card,
+    .fact-card,
+    .exp-card,
+    .sdt-need,
+    .formula-box,
+    .progress-summary,
+    .intro-block,
+    .conclusion-block,
+    .biesta-card,
+    .result-item,
+    .feedback {
+      background: var(--surface-color) !important;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-color) !important;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .mod-card,
+    .lesson-card {
+      border-radius: 16px;
+      padding: 1.25rem 1.4rem;
+      transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed), background var(--transition-speed);
+    }
+
+    .mod-card:hover,
+    .lesson-card:hover {
+      border-color: rgba(100, 180, 255, 0.36) !important;
+      background: rgba(17, 34, 64, 0.94) !important;
+      box-shadow: 0 12px 38px rgba(56, 182, 255, 0.13), 0 4px 12px rgba(0, 0, 0, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .mod-card-header .icon,
+    .section-header span.big-icon {
+      filter: drop-shadow(0 0 14px rgba(56, 182, 255, 0.25));
+    }
+
+    .mod-card-header .title,
+    .lesson-title,
+    .fact-card .label,
+    .exp-name,
+    .sdt-need .need-name,
+    .result-score,
+    .quiz-q {
+      color: var(--text-highlight);
+    }
+
+    .mod-card-header .count,
+    .mod-card p,
+    .lesson-score,
+    .fact-card .desc,
+    .concept-row .def,
+    .formula-labels,
+    .exp-finding,
+    .sdt-need .need-desc,
+    .biesta-q,
+    .feedback-text,
+    .result-msg,
+    .result-item .ri-exp,
+    .quiz-progress-label {
+      color: var(--text-secondary);
+    }
+
+    .progress-bar,
+    .quiz-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-fill,
+    .quiz-fill {
+      box-shadow: 0 0 16px currentColor;
+    }
+
+    .breadcrumb {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb button {
+      color: var(--secondary-color);
+      font-family: var(--body-font);
+      transition: color var(--transition-speed);
+    }
+
+    .breadcrumb button:hover {
+      color: var(--accent-color);
+    }
+
+    .course-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .return-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .return-link:hover {
+      color: var(--accent-color);
+      transform: translateX(-3px);
+    }
+
+    .return-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .course-language {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .quiz-lang-btn {
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--primary-color);
+      cursor: pointer;
+      font-family: var(--body-font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      transition: color var(--transition-speed), border-color var(--transition-speed), background var(--transition-speed);
+    }
+
+    .quiz-lang-btn:hover,
+    .quiz-lang-btn.active {
+      background: rgba(255, 193, 7, 0.12);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .tabs {
+      border-bottom-color: var(--border-color);
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      color: var(--text-secondary);
+      border-radius: 8px 8px 0 0;
+      font-family: var(--body-font);
+      transition: color var(--transition-speed), background var(--transition-speed), border-color var(--transition-speed);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-highlight);
+      background: rgba(56, 182, 255, 0.07);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+      background: rgba(255, 193, 7, 0.08);
+    }
+
+    .intro-block,
+    .conclusion-block,
+    .concept-row {
+      color: var(--text-color);
+    }
+
+    .concepts-title {
+      color: var(--primary-color);
+      letter-spacing: 0.08em;
+    }
+
+    .concept-row {
+      border-bottom-color: rgba(56, 182, 255, 0.16);
+    }
+
+    table.styled th {
+      background: rgba(56, 182, 255, 0.08);
+      color: var(--primary-color);
+      border-bottom-color: var(--border-color);
+    }
+
+    table.styled td {
+      color: var(--text-secondary);
+      border-bottom-color: rgba(56, 182, 255, 0.13);
+    }
+
+    .lesson-icon {
+      background: rgba(56, 182, 255, 0.1);
+      border: 1px solid var(--border-color);
+      color: var(--primary-color);
+    }
+
+    .opt-btn {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      border-radius: 8px;
+      font-family: var(--body-font);
+    }
+
+    .opt-btn:not([disabled]):hover {
+      background: rgba(56, 182, 255, 0.09);
+      border-color: rgba(56, 182, 255, 0.42);
+      transform: translateX(4px);
+    }
+
+    .opt-btn .opt-letter {
+      color: var(--accent-color);
+    }
+
+    .opt-btn.correct,
+    .feedback.ok,
+    .result-item.ok {
+      background: rgba(15, 110, 86, 0.24) !important;
+      border-color: rgba(0, 240, 255, 0.36) !important;
+    }
+
+    .opt-btn.wrong,
+    .feedback.bad,
+    .result-item.bad {
+      background: rgba(153, 60, 29, 0.26) !important;
+      border-color: rgba(255, 193, 7, 0.34) !important;
+    }
+
+    .btn,
+    .btn-outline {
+      border: 1px solid var(--primary-color) !important;
+      border-radius: 4px;
+      color: var(--primary-color) !important;
+      background: transparent !important;
+      font-family: var(--body-font);
+      transition: color var(--transition-speed), border-color var(--transition-speed), background var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .btn:hover,
+    .btn-outline:hover {
+      color: var(--bg-color) !important;
+      border-color: var(--accent-color) !important;
+      background: var(--accent-color) !important;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: 92%;
+        padding: 2.5rem 0;
+      }
+
+      .mod-card-header {
+        align-items: flex-start;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn,
+      .btn-outline {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="course-topbar">
+      <a class="return-link" href="toolbox.html#tool-claude" aria-label="Return to Toolbox">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span id="return-link-label">Zpět do Toolboxu</span>
+      </a>
+      <div class="course-language">
+        <span id="course-lang-label">Jazyk / Language</span>
+        <button type="button" class="quiz-lang-btn" id="course-lang-cz" onclick="setCourseLang('cz')">CZ</button>
+        <button type="button" class="quiz-lang-btn" id="course-lang-en" onclick="setCourseLang('en')">EN</button>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <h1 id="home-title">Teorie vzdělávání</h1>
+      <p id="home-subtitle" class="muted" style="margin-bottom:1.5rem">E-learningový kurz · 6 lekcí ve 3 modulech · Studijní materiál +
+        kvíz ke každé lekci</p>
+      <div id="home-progress" style="display:none" class="progress-summary">
+        <span id="home-progress-label">Dokončené lekce</span><span id="home-progress-val" style="font-weight:500"></span>
+      </div>
+      <div id="module-list"></div>
+    </div>
+
+    <!-- MODULE -->
+    <div id="page-module" class="page">
+      <div class="breadcrumb">
+        <button onclick="showHome()">Domů</button>
+        <span>›</span>
+        <span id="mod-breadcrumb"></span>
+      </div>
+      <div class="section-header">
+        <span class="big-icon" id="mod-icon"></span>
+        <h2 id="mod-title" style="margin:0"></h2>
+      </div>
+      <div id="lesson-list"></div>
+    </div>
+
+    <!-- LESSON -->
+    <div id="page-lesson" class="page">
+      <div class="breadcrumb">
+        <button onclick="showHome()">Domů</button>
+        <span>›</span>
+        <button id="lesson-mod-crumb" onclick="showModule()"></button>
+        <span>›</span>
+        <span id="lesson-breadcrumb"></span>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-learn" onclick="switchTab('learn')">📖 Studijní materiál</button>
+        <button class="tab-btn" id="tab-quiz" onclick="switchTab('quiz')">✏️ Kvíz / Quiz</button>
+      </div>
+      <h2 id="lesson-title"></h2>
+      <div id="lesson-content"></div>
+      <div id="quiz-content"></div>
+    </div>
+
+  </div>
+  <script>
+    const DATA = [
+      {
+        id: "kognitivni", title: "Kognitivně psychologické teorie", icon: "🧠",
+        color: "#534AB7", colorLight: "#EEEDFE",
+        lessons: [
+          {
+            id: "piaget", title: "Jean Piaget: Stadia a mechanismy učení",
+            content: [
+              {
+                type: "intro", text: "Piaget chápal dětské myšlení jako strukturu s vlastními pravidly — není to jednoduše „slabší verze“ myšlení dospělých. Vývoj probíhá skrze čtyři klíčové faktory."},
+          { type: "cards", items: [{ label: "Zrání", desc: "Biologický vývoj nervové soustavy." }, { label: "Fyzická zkušenost", desc: "Manipulace s objekty a interakce se světem." }, { label: "Sociální zkušenost", desc: "Komunikace, jazyk a kultura." }, { label: "Ekvilibrace", desc: "Rovnováha mezi asimilací a akomodací." }] },
+          {
+                type: "concepts", title: "Klíčové pojmy", items: [{ term: "Schémata", def: "Organizované způsoby jednání nebo myšlení (např. „těžké věci padají rychleji“)."},{term:"Asimilace",def:"Začlenění nové zkušenosti do stávajícího schématu."},{term:"Akomodace",def:"Změna schématu, pokud nová zkušenost nevyhovuje — vzniká kognitivní konflikt."},{term:"Klinická metoda",def:"Zkoumání dětského myšlení otevřenými rozhovory; prioritou je způsob uvažování, ne správnost odpovědi."}]}
+        ],
+                quiz: [
+                  { q: "Co popisuje pojem 'akomodace' v Piagetově teorii?", options: ["Začlenění nové zkušenosti do stávajícího schématu", "Změna stávajícího schématu při kognitivním konfliktu", "Biologický vývoj nervové soustavy", "Rovnováha mezi různými typy myšlení"], correct: 1, exp: "Akomodace nastává, když nová zkušenost nevyhovuje stávajícímu schématu — dítě musí schéma změnit. Opak (asimilace) znamená začlenění bez změny schématu." },
+                  { q: "Jak Piaget definoval dětské myšlení ve srovnání s myšlením dospělých?", options: ["Jako méně přesnou verzi myšlení dospělých", "Jako strukturu s vlastními pravidly, ne jen slabší verzi", "Jako čistě biologicky podmíněný proces", "Jako výhradně sociálně konstruovaný fenomén"], correct: 1, exp: "Piaget zdůrazňoval, že dítě nemyslí jako 'malý dospělý' — jeho myšlení má vlastní logiku a strukturu odpovídající vývojovému stadiu." },
+                  { q: "Jaký je cíl Piagetovy klinické metody?", options: ["Testovat správnost faktických znalostí dítěte", "Porozumět způsobu uvažování dítěte", "Měřit rychlost kognitivního vývoje", "Hodnotit sociální dovednosti"], correct: 1, exp: "Klinická metoda využívá otevřené rozhovory a klade důraz na proces myšlení — jak dítě dochází k závěrům — nikoli na to, zda je odpověď správná." }
+                ]
+              },
+              {
+                id: "gopnik", title: "Alison Gopniková: Dítě jako vědec",
+                content: [
+                  { type: "intro", text: "Gopniková reviduje Piagetovy závěry, zejména ohledně dětského egocentrismu. Její výzkumy ukazují, že děti jsou schopny sociálního porozumění a vědeckého uvažování mnohem dříve, než se předpokládalo." },
+                  { type: "experiments", items: [{ name: "Experiment s brokolicí", age: "18 měsíců", finding: "Děti chápou preference druhých — nabídnou dospělému brokolici, i když samy preferují krekry. Prokazuje rané sociální porozumění." }, { name: "Detektor bliketů", age: "4 roky", finding: "Čtyřleté děti dokážou metodou pokus–omyl testovat hypotézy o příčinách jevů — vědecké myšlení začíná velmi brzy." }] },
+                  { type: "conclusion", text: "Gopniková uzavírá: děti jsou 'rození experimentátoři' — učí se podobně jako vědci prostřednictvím vytváření a testování hypotéz o světě." }
+                ],
+                quiz: [
+                  { q: "Co prokázal experiment s brokolicí?", options: ["Děti preferují zdravá jídla", "Již 18měsíční děti chápou preference druhých", "Čtyřleté děti zvládají abstraktní myšlení", "Děti se učí napodobováním dospělých"], correct: 1, exp: "Děti nabídly dospělému brokolici (jeho preferenci), i když ony samy preferovaly krekry. To dokazuje, že i velmi malé děti chápou, že jiní mohou mít jiné preference." },
+                  { q: "Jak Gopniková charakterizuje způsob, jakým se děti učí?", options: ["Pasivní příjímání informací od dospělých", "Napodobování a opakování vzorů", "Vytváření a testování hypotéz, podobně jako vědci", "Postupné memorování faktů"], correct: 2, exp: "Gopniková popisuje děti jako 'rozené experimentátory' — aktivně formulují hypotézy a testují je, což je analogie vědecké metody." },
+                  { q: "Jak se závěry Gopnikové liší od Piagetových?", options: ["Gopniková tvrdí, že děti se nevyvíjejí ve stadiích", "Gopniková zpochybňuje Piagetův předpoklad egocentrismu a ukazuje dřívější sociální porozumění", "Gopniková odmítá myšlenku kognitivních struktur", "Gopniková věří, že biologický vývoj hraje větší roli"], correct: 1, exp: "Piaget tvrdil, že mladší děti jsou egocentrické a nechápou perspektivy druhých. Gopniková to experimentálně vyvrátila — děti chápou cizí preference již v 18 měsících." }
+                ]
+              }
+            ]
+          },
+          {
+            id: "personalisticke", title: "Personalistické teorie", icon: "🌱",
+            color: "#0F6E56", colorLight: "#E1F5EE",
+            lessons: [
+              {
+                id: "lewin", title: "Kurt Lewin: Styly vedení a interakční pojetí",
+                content: [
+                  { type: "intro", text: "Lewin definoval chování jako funkci interakce mezi osobou a prostředím: B = f(P, E). Nejde jen o vlastnosti jedince, ale o dynamický vztah s prostředím." },
+                  { type: "formula", formula: "B = f(P, E)", labels: { B: "Chování (Behavior)", P: "Osoba (Person)", E: "Prostředí (Environment)" } },
+                  { type: "table", title: "Styly vedení (experiment 1939)", rows: [{ style: "Autokratický", desc: "Silné řízení vedoucím", effect: "Podřízenost; výkon klesá bez vedoucího" }, { style: "Demokratický", desc: "Společné rozhodování a důvěra", effect: "Kooperace a stabilní motivace" }, { style: "Liberální", desc: "Minimální řízení", effect: "Nízká efektivita" }] },
+                  { type: "concept", term: "Akční výzkum", def: "Cyklický proces: plánování → akce → reflexe. Propojuje teoretický výzkum s praktickou intervencí v komunitách." }
+                ],
+                quiz: [
+                  { q: "Co vyjadřuje Lewinova rovnice B = f(P, E)?", options: ["Chování závisí pouze na osobnostních vlastnostech", "Chování je funkcí interakce mezi osobou a prostředím", "Prostředí zcela určuje chování bez ohledu na osobu", "Biologické faktory jsou hlavním determinantem chování"], correct: 1, exp: "Lewin zdůrazňuje dynamický vztah mezi osobou (P) a prostředím (E). Chování (B) nelze vysvětlit jen jedním z těchto faktorů." },
+                  { q: "Jaký výsledek měl demokratický styl vedení v Lewinově experimentu?", options: ["Nejvyšší výkon za přítomnosti vedoucího", "Kooperaci a stabilní motivaci i v nepřítomnosti vedoucího", "Nejrychlejší dokončení úkolů celkově", "Nejlepší individuální výkon žáků"], correct: 1, exp: "Demokratický styl vykazoval stabilní motivaci — na rozdíl od autokratického, kde výkon klesal, jakmile vedoucí odešel." },
+                  { q: "Jaký je princip Lewinova akčního výzkumu?", options: ["Čistě teoretická analýza vzdělávacích problémů", "Cyklický proces: plánování, akce, reflexe — propojující teorii s praxí", "Jednorázový výzkum zaměřený na měření výsledků", "Individuální terapeutická práce s jedinci"], correct: 1, exp: "Akční výzkum je iterativní — výzkumník plánuje intervenci, realizuje ji a reflexí získává poznatky pro další cyklus. Jde o propojení teorie a praxe v reálném prostředí." }
+                ]
+              },
+              {
+                id: "rogers", title: "Carl Rogers & Teorie sebeurčení",
+                content: [
+                  { type: "intro", text: "Rogers stavěl svůj humanistický přístup na důvěře v přirozenou tendenci člověka k růstu. Učitel pro něj není autorita, ale facilitátor — průvodce, který vytváří bezpečné klima pro učení." },
+                  { type: "concepts", title: "Rogersovy principy", items: [{ term: "Učitel jako facilitátor", def: "Nevystupuje jako autorita, ale jako průvodce. Rogers kritizuje 'výuku od krku nahoru' — prosazuje učení celou osobností." }, { term: "Student-centered learning", def: "Výuka se orientuje na potřeby žáka, nikoli na pevné kurikulum." }, { term: "Sudbury Valley School", def: "Příklad školy na úplném sebeřízeném učení a demokratickém fungování — každý člen má jeden hlas." }] },
+                  { type: "sdt", title: "Teorie sebeurčení (Deci & Ryan)", desc: "Motivace se posouvá k autonomii (internalizuje), pokud prostředí naplňuje tři základní psychologické potřeby:", needs: [{ name: "Autonomie", desc: "Pocit volby a vlastního rozhodování." }, { name: "Kompetence", desc: "Pocit zvládání úkolů a vlastní efektivity." }, { name: "Vztahy", desc: "Pocit sounáležitosti a přijetí v komunitě." }] }
+                ],
+                quiz: [
+                  { q: "Co Rogers myslí kritikou 'výuky od krku nahoru'?", options: ["Výuka by měla být vedena odborníky, ne laiky", "Tradiční výuka ignoruje emocionální a tělesnou dimenzi — zaměřuje se jen na intelekt", "Učitelé by měli mluvit méně a psát více na tabuli", "Výuka by měla postupovat od jednoduchého ke složitému"], correct: 1, exp: "Rogers kritizuje, že tradiční vzdělávání se zaměřuje výhradně na kognitivní rovinu (od krku nahoru) a ignoruje emoce, tělo a celou osobnost žáka." },
+                  { q: "Která tři psychologická potřeby identifikuje Teorie sebeurčení (SDT)?", options: ["Bezpečí, uznání a odměna", "Autonomie, kompetence a vztahy", "Poznání, svoboda a spravedlnost", "Motivace, výkon a hodnocení"], correct: 1, exp: "Deci a Ryan identifikují tři základní potřeby: autonomii (pocit volby), kompetenci (zvládání úkolů) a vztahy (sounáležitost). Jejich naplnění vede k autonomní motivaci." },
+                  { q: "Jaký je klíčový princip Sudbury Valley School?", options: ["Individualizovaná výuka s AI asistenty", "Striktní osnovy zaměřené na akademické výsledky", "Sebeřízené učení a demokratické fungování, kde má každý člen jeden hlas", "Alternativní systém hodnocení místo klasifikace"], correct: 2, exp: "Sudbury Valley School je extrémním příkladem student-centered přístupu — žáci si sami určují, co a jak se učí, a škola funguje demokraticky." }
+                ]
+              }
+            ]
+          },
+          {
+            id: "akademicke", title: "Akademické teorie a kurikulum", icon: "📚",
+            color: "#993C1D", colorLight: "#FAECE7",
+            lessons: [
+              {
+                id: "arendt", title: "Hannah Arendtová: Škola jako zástupce světa",
+                content: [
+                  { type: "intro", text: "Arendtová vnímá školu jako nezbytný přechod mezi soukromou sférou rodiny a veřejným světem. Vzdělávání je pro ni konzervativní akt — chrání svět tím, že do něj uvádí nové generace skrze poznání minulosti." },
+                  { type: "concepts", title: "Klíčové myšlenky", items: [{ term: "Konzervativní akt vzdělávání", def: "Vzdělávání chrání svět před rozkladem — uvádí nové generace do tradic a kulturního dědictví." }, { term: "Autorita učitele", def: "Nevychází z moci, ale z odpovědnosti za svět dospělých. Popření autority vede k tyranii skupiny vrstevníků." }, { term: "Škola jako přechod", def: "Prostor mezi rodinou (soukromé) a veřejným světem — chrání dítě před plnou expozicí, ale připravuje je na ni." }] }
+                ],
+                quiz: [
+                  { q: "Proč Arendtová považuje vzdělávání za 'konzervativní akt'?", options: ["Protože se zaměřuje na konzervativní politické hodnoty", "Protože chrání svět tím, že uvádí nové generace do kulturního dědictví a tradic", "Protože zachovává tradiční strukturu škol bez inovací", "Protože se staví proti změnám ve společnosti"], correct: 1, exp: "Pro Arendtovou je vzdělávání 'konzervativní' v hlubokém smyslu — zachovává a předává svět (kulturu, tradice, znalosti) dalším generacím. Bez tohoto přenosu by svět 'rozpadal'." },
+                  { q: "Z čeho podle Arendtové vychází autorita učitele?", options: ["Z formálního titulu a vzdělání", "Z moci a disciplinárních pravomocí", "Z odpovědnosti za svět dospělých, ne z pouhé moci", "Z popularity mezi žáky"], correct: 2, exp: "Arendtová rozlišuje autoritu od moci. Legitimní autorita učitele pramení z jeho odpovědnosti za předávání světa — je to závazek vůči kultuře a žákům." },
+                  { q: "K čemu podle Arendtové vede popření autority učitele?", options: ["K větší kreativitě a svobodě žáků", "K tyranii skupiny vrstevníků", "K lepším výsledkům v sebeřízeném učení", "K demokratičtějšímu prostředí ve třídě"], correct: 1, exp: "Paradoxně, absence autority dospělých nevede ke svobodě — dítě se ocitá pod tlakem skupiny vrstevníků, která může být tyranštější než zodpovědný dospělý." }
+                ]
+              },
+              {
+                id: "biesta", title: "Gert Biesta: Tři dimenze vzdělávání",
+                content: [
+                  { type: "intro", text: "Biesta kritizuje 'learnification' — přílišné zaměření na proces učení na úkor jeho obsahu a účelu. Navrhuje tři dimenze, které by mělo smysluplné vzdělávání naplňovat." },
+                  { type: "biesta", dimensions: [{ name: "Kvalifikace", question: "Co má žák umět?", desc: "Znalosti, dovednosti a kompetence pro pracovní a občanský život.", color: "#534AB7", light: "#EEEDFE" }, { name: "Socializace", question: "Kam žák patří?", desc: "Uvádění do kulturních tradic, hodnot a způsobů bytí ve společnosti.", color: "#0F6E56", light: "#E1F5EE" }, { name: "Subjektifikace", question: "Kým se žák stává?", desc: "Rozvoj autonomního, kriticky myslícího a odpovědného subjektu.", color: "#993C1D", light: "#FAECE7" }] },
+                  { type: "concept", term: "Learnification", def: "Kritický pojem pro trend, kdy se vzdělávání redukuje na optimalizaci procesu učení, aniž by se ptalo: K čemu se učíme? Jaké lidi to formuje?" }
+                ],
+                quiz: [
+                  { q: "Co kritizuje Biesta pojmem 'learnification'?", options: ["Nedostatek digitálních nástrojů ve výuce", "Přílišné zaměření na proces učení bez reflexe jeho obsahu a účelu", "Přílišný důraz na formální zkoušení a testování", "Nedostatek personalizace ve vzdělávání"], correct: 1, exp: "Learnification označuje trend, kdy se škola zaměřuje na 'jak se učit' (metody, efektivitu), ale zapomíná se ptát 'proč se učit' a 'co má vzdělávání formovat'." },
+                  { q: "Co znamená dimenze 'subjektifikace' u Biesty?", options: ["Zařazení žáka do existujících sociálních rolí", "Předávání znalostí a dovedností potřebných na trhu práce", "Rozvoj autonomního, kriticky myslícího a odpovědného subjektu", "Testování a hodnocení výsledků vzdělávání"], correct: 2, exp: "Subjektifikace je o tom, kým se žák stává jako člověk — jde nad rámec znalostí (kvalifikace) i sociálního zařazení (socializace). Ptá se: rozvíjí vzdělávání autonomního jedince?" },
+                  { q: "Která z Biestových dimenzí se ptá 'Kam žák patří?'", options: ["Kvalifikace", "Subjektifikace", "Socializace", "Emancipace"], correct: 2, exp: "Socializace se týká uvádění žáka do tradic, hodnot a způsobů bytí ve společnosti — tedy toho, ke které komunitě a kultuře náleží." }
+                ]
+              }
+            ]
+          }
+        ];
+
+        const QUIZ_EN = {
+          piaget: [
+            { q: "What does the term 'accommodation' describe in Piaget's theory?", options: ["Adding a new experience to an existing schema", "Changing an existing schema when there is cognitive conflict", "The biological development of the nervous system", "Balance between different types of thinking"], correct: 1, exp: "Accommodation happens when a new experience does not fit an existing schema, so the child has to change the schema. Assimilation is the opposite: adding the experience without changing the schema." },
+            { q: "How did Piaget define children's thinking compared with adult thinking?", options: ["As a less accurate version of adult thinking", "As a structure with its own rules, not just a weaker version", "As a purely biologically determined process", "As an exclusively socially constructed phenomenon"], correct: 1, exp: "Piaget emphasized that a child does not think like a 'small adult'. Children's thinking has its own logic and structure that corresponds to their developmental stage." },
+            { q: "What is the goal of Piaget's clinical method?", options: ["To test the correctness of a child's factual knowledge", "To understand the child's way of reasoning", "To measure the speed of cognitive development", "To evaluate social skills"], correct: 1, exp: "The clinical method uses open-ended interviews and focuses on the process of thinking: how the child reaches conclusions, not only whether the answer is correct." }
+          ],
+          gopnik: [
+            { q: "What did the broccoli experiment show?", options: ["Children prefer healthy foods", "Even 18-month-old children understand other people's preferences", "Four-year-old children can handle abstract thinking", "Children learn by imitating adults"], correct: 1, exp: "The children offered the adult broccoli, which was the adult's preference, even though they themselves preferred crackers. This shows that very young children understand that others can have different preferences." },
+            { q: "How does Gopnik describe the way children learn?", options: ["Passive reception of information from adults", "Imitation and repetition of models", "Creating and testing hypotheses, similarly to scientists", "Gradual memorization of facts"], correct: 2, exp: "Gopnik describes children as 'born experimenters'. They actively form hypotheses and test them, which is similar to the scientific method." },
+            { q: "How do Gopnik's conclusions differ from Piaget's?", options: ["Gopnik claims that children do not develop in stages", "Gopnik questions Piaget's assumption of egocentrism and shows earlier social understanding", "Gopnik rejects the idea of cognitive structures", "Gopnik believes biological development plays a larger role"], correct: 1, exp: "Piaget argued that younger children are egocentric and do not understand other perspectives. Gopnik challenged this experimentally by showing that children understand others' preferences as early as 18 months." }
+          ],
+          lewin: [
+            { q: "What does Lewin's equation B = f(P, E) express?", options: ["Behavior depends only on personality traits", "Behavior is a function of the interaction between the person and the environment", "The environment completely determines behavior regardless of the person", "Biological factors are the main determinant of behavior"], correct: 1, exp: "Lewin emphasizes the dynamic relationship between the person (P) and the environment (E). Behavior (B) cannot be explained by only one of these factors." },
+            { q: "What result did the democratic leadership style have in Lewin's experiment?", options: ["The highest performance only when the leader was present", "Cooperation and stable motivation even when the leader was absent", "The fastest completion of tasks overall", "The best individual performance by pupils"], correct: 1, exp: "The democratic style showed stable motivation. This differed from the autocratic style, where performance declined after the leader left." },
+            { q: "What is the principle of Lewin's action research?", options: ["Purely theoretical analysis of educational problems", "A cyclical process of planning, action, and reflection that connects theory with practice", "A one-time study focused on measuring outcomes", "Individual therapeutic work with people"], correct: 1, exp: "Action research is iterative: the researcher plans an intervention, carries it out, and uses reflection to inform the next cycle. It connects theory and practice in a real setting." }
+          ],
+          rogers: [
+            { q: "What does Rogers mean by criticizing 'teaching from the neck up'?", options: ["Teaching should be led by experts, not laypeople", "Traditional teaching ignores emotional and bodily dimensions and focuses only on intellect", "Teachers should speak less and write more on the board", "Teaching should move from simple to complex material"], correct: 1, exp: "Rogers criticizes traditional education for focusing only on the cognitive level and ignoring emotions, the body, and the whole personality of the learner." },
+            { q: "Which three psychological needs are identified by Self-Determination Theory (SDT)?", options: ["Safety, recognition, and reward", "Autonomy, competence, and relatedness", "Knowledge, freedom, and justice", "Motivation, performance, and assessment"], correct: 1, exp: "Deci and Ryan identify three basic needs: autonomy, competence, and relatedness. When these needs are supported, motivation becomes more autonomous." },
+            { q: "What is the key principle of Sudbury Valley School?", options: ["Individualized teaching with AI assistants", "Strict curricula focused on academic results", "Self-directed learning and democratic functioning, where every member has one vote", "An alternative grading system instead of marks"], correct: 2, exp: "Sudbury Valley School is an extreme example of a student-centered approach. Students decide what and how they learn, and the school functions democratically." }
+          ],
+          arendt: [
+            { q: "Why does Arendt consider education a 'conservative act'?", options: ["Because it focuses on conservative political values", "Because it protects the world by introducing new generations to cultural heritage and traditions", "Because it preserves traditional school structures without innovation", "Because it opposes social change"], correct: 1, exp: "For Arendt, education is conservative in a deeper sense: it preserves and passes on the world, meaning culture, traditions, and knowledge, to future generations." },
+            { q: "According to Arendt, what is the source of the teacher's authority?", options: ["Formal title and education", "Power and disciplinary rights", "Responsibility for the adult world, not mere power", "Popularity among pupils"], correct: 2, exp: "Arendt distinguishes authority from power. Legitimate teacher authority comes from responsibility for passing on the world: a commitment to culture and to pupils." },
+            { q: "According to Arendt, what can the denial of teacher authority lead to?", options: ["Greater creativity and freedom for pupils", "The tyranny of the peer group", "Better results in self-directed learning", "A more democratic classroom environment"], correct: 1, exp: "Paradoxically, the absence of adult authority does not automatically lead to freedom. The child may instead fall under pressure from the peer group, which can be more tyrannical than a responsible adult." }
+          ],
+          biesta: [
+            { q: "What does Biesta criticize with the term 'learnification'?", options: ["A lack of digital tools in teaching", "An excessive focus on the process of learning without reflecting on its content and purpose", "Too much emphasis on formal exams and testing", "A lack of personalization in education"], correct: 1, exp: "Learnification describes a trend where schooling focuses on how to learn, methods, and efficiency, but forgets to ask why we learn and what kind of people education should help form." },
+            { q: "What does Biesta's dimension of 'subjectification' mean?", options: ["Placing the pupil into existing social roles", "Transmitting knowledge and skills needed for the labor market", "Developing an autonomous, critically thinking, and responsible subject", "Testing and evaluating educational outcomes"], correct: 2, exp: "Subjectification concerns who the learner becomes as a person. It goes beyond knowledge and skills, and beyond social belonging, by asking whether education develops an autonomous individual." },
+            { q: "Which of Biesta's dimensions asks the question 'Where does the pupil belong?'", options: ["Qualification", "Subjectification", "Socialization", "Emancipation"], correct: 2, exp: "Socialization concerns introducing the learner into traditions, values, and ways of being in society: in other words, the communities and cultures to which the learner belongs." }
+          ]
+        };
+
+        const requestedLang = new URLSearchParams(window.location.search).get('lang');
+        const initialLang = requestedLang === 'en' || requestedLang === 'cz'
+          ? requestedLang
+          : localStorage.getItem('edu-quiz-lang') || 'cz';
+
+        const UI = {
+          cz: {
+            returnToToolbox: 'Zpět do Toolboxu',
+            language: 'Jazyk / Language',
+            title: 'Teorie vzdělávání',
+            subtitle: 'E-learningový kurz · 6 lekcí ve 3 modulech · Studijní materiál + kvíz ke každé lekci',
+            completed: 'Dokončené lekce',
+            home: 'Domů',
+            learnTab: '📖 Studijní materiál',
+            quizTab: '✏️ Kvíz / Quiz',
+            startQuiz: 'Spustit kvíz →',
+            score: 'Skóre',
+            completedShort: 'Dokončeno',
+            modules: {
+              kognitivni: 'Kognitivně psychologické teorie',
+              personalisticke: 'Personalistické teorie',
+              akademicke: 'Akademické teorie a kurikulum'
+            },
+            lessons: {
+              piaget: 'Jean Piaget: Stadia a mechanismy učení',
+              gopnik: 'Alison Gopniková: Dítě jako vědec',
+              lewin: 'Kurt Lewin: Styly vedení a interakční pojetí',
+              rogers: 'Carl Rogers & Teorie sebeurčení',
+              arendt: 'Hannah Arendtová: Škola jako zástupce světa',
+              biesta: 'Gert Biesta: Tři dimenze vzdělávání'
+            }
+          },
+          en: {
+            returnToToolbox: 'Back to Toolbox',
+            language: 'Language',
+            title: 'Theory of Education',
+            subtitle: 'E-learning course · 6 lessons in 3 modules · Study material + quiz for each lesson',
+            completed: 'Completed lessons',
+            home: 'Home',
+            learnTab: '📖 Study material',
+            quizTab: '✏️ Quiz',
+            startQuiz: 'Start quiz →',
+            score: 'Score',
+            completedShort: 'Completed',
+            modules: {
+              kognitivni: 'Cognitive Psychological Theories',
+              personalisticke: 'Personalist Theories',
+              akademicke: 'Academic Theories and Curriculum'
+            },
+            lessons: {
+              piaget: 'Jean Piaget: Stages and Mechanisms of Learning',
+              gopnik: 'Alison Gopnik: The Child as Scientist',
+              lewin: 'Kurt Lewin: Leadership Styles and Interactional Theory',
+              rogers: 'Carl Rogers & Self-Determination Theory',
+              arendt: 'Hannah Arendt: School as a Representative of the World',
+              biesta: 'Gert Biesta: Three Dimensions of Education'
+            }
+          }
+        };
+
+        let progress = JSON.parse(localStorage.getItem('edu-progress') || '{}');
+        let curMod = null, curLesson = null;
+        let quizState = {};
+        let quizLang = initialLang;
+
+        const LETTERS = ["A", "B", "C", "D"];
+
+        function t(key) {
+          return UI[quizLang][key];
+        }
+
+        function moduleTitle(mod) {
+          return UI[quizLang].modules[mod.id] || mod.title;
+        }
+
+        function lessonTitle(lesson) {
+          return UI[quizLang].lessons[lesson.id] || lesson.title;
+        }
+
+        function updateLanguageButtons() {
+          document.getElementById('course-lang-cz').classList.toggle('active', quizLang === 'cz');
+          document.getElementById('course-lang-en').classList.toggle('active', quizLang === 'en');
+        }
+
+        function updateStaticLanguage() {
+          document.documentElement.lang = quizLang;
+          document.title = t('title') + ' | Student Portfolio';
+          document.getElementById('return-link-label').textContent = t('returnToToolbox');
+          document.getElementById('course-lang-label').textContent = t('language');
+          document.getElementById('home-title').textContent = t('title');
+          document.getElementById('home-subtitle').textContent = t('subtitle');
+          document.getElementById('home-progress-label').textContent = t('completed');
+          document.getElementById('tab-learn').textContent = t('learnTab');
+          document.getElementById('tab-quiz').textContent = t('quizTab');
+          document.querySelectorAll('.breadcrumb button').forEach(btn => {
+            if (btn.getAttribute('onclick') === 'showHome()') btn.textContent = t('home');
+          });
+          updateLanguageButtons();
+        }
+
+        function setCourseLang(lang) {
+          if (quizLang === lang) return;
+          quizLang = lang;
+          localStorage.setItem('edu-quiz-lang', quizLang);
+          const url = new URL(location.href);
+          url.searchParams.set('lang', quizLang);
+          history.replaceState(null, '', url);
+          quizState = {};
+          updateStaticLanguage();
+          if (document.getElementById('page-home').classList.contains('active')) {
+            renderHome();
+          } else if (document.getElementById('page-module').classList.contains('active')) {
+            showModule();
+          } else if (document.getElementById('page-lesson').classList.contains('active')) {
+            document.getElementById('lesson-mod-crumb').textContent = moduleTitle(curMod);
+            document.getElementById('lesson-breadcrumb').textContent = lessonTitle(curLesson);
+            document.getElementById('lesson-title').textContent = lessonTitle(curLesson);
+            switchTab(document.getElementById('tab-quiz').classList.contains('active') ? 'quiz' : 'learn');
+          }
+        }
+
+        function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-' + id).classList.add('active');
+      }
+
+function showHome() {
+        updateStaticLanguage();
+        renderHome();
+        showPage('home');
+      }
+
+function showModule(mod) {
+        if (mod) curMod = mod;
+        updateStaticLanguage();
+        document.getElementById('mod-breadcrumb').textContent = moduleTitle(curMod);
+        document.getElementById('mod-icon').textContent = curMod.icon;
+        document.getElementById('mod-title').textContent = moduleTitle(curMod);
+        renderLessons();
+        showPage('module');
+      }
+
+function renderHome() {
+        updateStaticLanguage();
+        const total = DATA.reduce((s, m) => s + m.lessons.length, 0);
+        const done = Object.keys(progress).length;
+        const progEl = document.getElementById('home-progress');
+        if (done > 0) {
+          progEl.style.display = 'flex';
+          document.getElementById('home-progress-val').textContent = done + ' / ' + total;
+        } else {
+          progEl.style.display = 'none';
+        }
+        const list = document.getElementById('module-list');
+        list.innerHTML = DATA.map(mod => {
+          const doneCount = mod.lessons.filter(l => progress[mod.id + '-' + l.id]).length;
+          const pct = Math.round((doneCount / mod.lessons.length) * 100);
+          return `<div class="mod-card" onclick="showModule(DATA.find(m=>m.id==='${mod.id}'))" style="border-left:3px solid ${mod.color}">
+      <div class="mod-card-header">
+        <span class="icon">${mod.icon}</span>
+        <span class="title">${moduleTitle(mod)}</span>
+        <span class="count">${doneCount}/${mod.lessons.length}</span>
+      </div>
+      <p>${mod.lessons.map(l => lessonTitle(l)).join(' · ')}</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${mod.color}"></div></div>
+    </div>`;
+        }).join('');
+      }
+
+function renderLessons() {
+        const list = document.getElementById('lesson-list');
+        list.innerHTML = curMod.lessons.map(lesson => {
+          const key = curMod.id + '-' + lesson.id;
+          const done = progress[key];
+          return `<div class="lesson-card" onclick="openLesson(DATA.find(m=>m.id==='${curMod.id}').lessons.find(l=>l.id==='${lesson.id}'))">
+      <div class="lesson-icon ${done ? 'done' : ''}" style="${done ? 'background:' + curMod.colorLight : ''}">
+        <span style="${done ? 'color:' + curMod.color : ''}">${done ? '✓' : '▷'}</span>
+      </div>
+      <div>
+        <div class="lesson-title">${lessonTitle(lesson)}</div>
+        ${done ? `<div class="lesson-score">${t('score')}: ${done.score}/${done.total} · ${t('completedShort')}</div>` : ''}
+      </div>
+    </div>`;
+        }).join('');
+      }
+
+function openLesson(lesson) {
+        curLesson = lesson;
+        quizState = {};
+        updateStaticLanguage();
+        document.getElementById('lesson-mod-crumb').textContent = moduleTitle(curMod);
+        document.getElementById('lesson-breadcrumb').textContent = lessonTitle(lesson);
+        document.getElementById('lesson-title').textContent = lessonTitle(lesson);
+        document.documentElement.style.setProperty('--mc', curMod.color);
+        switchTab('learn');
+        showPage('lesson');
+      }
+
+function switchTab(tab) {
+        document.getElementById('tab-learn').classList.toggle('active', tab === 'learn');
+        document.getElementById('tab-quiz').classList.toggle('active', tab === 'quiz');
+
+        document.getElementById('lesson-content').style.display = tab === 'learn' ? 'block' : 'none';
+        document.getElementById('quiz-content').style.display = tab === 'quiz' ? 'block' : 'none';
+
+        if (tab === 'learn') {
+          renderLearnContent();
+        } else {
+          if (!quizState.initialized) {
+            quizState = {
+              initialized: true,
+              current: 0,
+              answers: [],
+              chosen: null,
+              finished: false
+            };
+          }
+
+          renderQuizQuestion();
+        }
+      }
+
+function getQuiz() {
+        return quizLang === 'en' && QUIZ_EN[curLesson.id] ? QUIZ_EN[curLesson.id] : curLesson.quiz;
+      }
+
+function quizText(cz, en) {
+        return quizLang === 'en' ? en : cz;
+      }
+
+function startQuiz() {
+        quizState = { initialized: true, current: 0, answers: [], chosen: null, finished: false };
+        switchTab('quiz');
+      }
+
+function renderLearnContent() {
+        const el = document.getElementById('lesson-content');
+        el.innerHTML = curLesson.content.map(b => renderBlock(b)).join('') +
+          `<div class="btn-row">
+            <button type="button" class="btn" style="background:${curMod.color}" onclick="startQuiz()">${t('startQuiz')}</button>
+          </div>`;
+      }
+
+function renderBlock(b) {
+        const c = curMod.color, cl = curMod.colorLight;
+        if (b.type === 'intro')
+          return `<p class="intro-block" style="background:${cl};border-left-color:${c}">${b.text}</p>`;
+        if (b.type === 'conclusion')
+          return `<p class="conclusion-block" style="background:${cl};border:0.5px solid ${c}">${b.text}</p>`;
+        if (b.type === 'cards')
+          return `<div class="cards-grid">${b.items.map((it, i) => `<div class="fact-card"><div class="num" style="color:${c}">${i + 1}</div><div class="label">${it.label}</div><div class="desc">${it.desc}</div></div>`).join('')}</div>`;
+        if (b.type === 'concepts')
+          return `<div class="concepts-block">${b.title ? `<div class="concepts-title">${b.title}</div>` : ''}` +
+            b.items.map(it => `<div class="concept-row"><span class="term" style="color:${c}">${it.term}: </span><span class="def">${it.def}</span></div>`).join('') + `</div>`;
+        if (b.type === 'concept')
+          return `<div class="concept-row" style="margin-bottom:1.5rem"><span class="term" style="color:${c}">${b.term}: </span><span class="def">${b.def}</span></div>`;
+        if (b.type === 'formula')
+          return `<div class="formula-box"><div class="formula-text" style="color:${c}">${b.formula}</div><div class="formula-labels">${Object.entries(b.labels).map(([k, v]) => `<span><strong style="color:${c}">${k}</strong> = ${v}</span>`).join('')}</div></div>`;
+        if (b.type === 'table')
+          return `${b.title ? `<div class="concepts-title">${b.title}</div>` : ''}<table class="styled"><thead><tr><th>Styl</th><th>Popis</th><th>Efekt</th></tr></thead><tbody>${b.rows.map(r => `<tr><td style="color:${c}">${r.style}</td><td>${r.desc}</td><td>${r.effect}</td></tr>`).join('')}</tbody></table>`;
+        if (b.type === 'experiments')
+          return b.items.map(e => `<div class="exp-card"><div class="exp-card-header"><span class="exp-name">${e.name}</span><span class="exp-age" style="background:${cl};color:${c}">${e.age}</span></div><p class="exp-finding">${e.finding}</p></div>`).join('');
+        if (b.type === 'sdt')
+          return `<div style="margin-bottom:1.5rem"><div style="font-size:14px;font-weight:500;margin-bottom:6px">${b.title}</div><p style="font-size:14px;color:#6b6b68;margin-bottom:10px;line-height:1.6">${b.desc}</p><div class="sdt-needs">${b.needs.map(n => `<div class="sdt-need"><div class="need-name" style="color:${c}">${n.name}</div><div class="need-desc">${n.desc}</div></div>`).join('')}</div></div>`;
+        if (b.type === 'biesta')
+          return `<div class="biesta-grid">${b.dimensions.map(d => `<div class="biesta-card" style="background:${d.light};border-top:3px solid ${d.color}"><div class="biesta-label" style="color:${d.color}">${d.name}</div><div class="biesta-q">${d.question}</div><div class="biesta-desc">${d.desc}</div></div>`).join('')}</div>`;
+        return '';
+      }
+
+function renderQuiz() {
+        quizState = { initialized: true, current: 0, answers: [], chosen: null, finished: false };
+        renderQuizQuestion();
+      }
+
+function renderQuizQuestion() {
+        const el = document.getElementById('quiz-content');
+        if (quizState.finished) { renderQuizResult(); return; }
+        const quiz = getQuiz();
+        const q = quiz[quizState.current];
+        const total = quiz.length;
+        const pct = Math.round((quizState.current / total) * 100);
+        const correct = quizState.answers.filter(a => a.correct).length;
+
+        let optionsHTML = q.options.map((opt, i) => {
+          let cls = 'opt-btn';
+          if (quizState.chosen !== null) {
+            if (i === q.correct) cls += ' correct';
+            else if (i === quizState.chosen) cls += ' wrong';
+          }
+          return `<button class="${cls}" ${quizState.chosen !== null ? 'disabled' : ''} onclick="chooseAnswer(${i})">
+      <span class="opt-letter">${LETTERS[i]}.</span>${opt}
+    </button>`;
+        }).join('');
+
+        let feedbackHTML = '';
+        if (quizState.chosen !== null) {
+          const ok = quizState.chosen === q.correct;
+          feedbackHTML = `<div class="feedback ${ok ? 'ok' : 'bad'}">
+      <div class="feedback-title ${ok ? 'ok' : 'bad'}">${ok ? quizText('✓ Správně!', '✓ Correct!') : quizText('✗ Nesprávně', '✗ Incorrect')}</div>
+      <div class="feedback-text">${q.exp}</div>
+    </div>
+    <div class="btn-row">
+      <button type="button" class="btn" style="background:${curMod.color}" onclick="nextQuestion()">
+        ${quizState.current + 1 >= total ? quizText('Zobrazit výsledky', 'Show results') : quizText('Další otázka →', 'Next question →')}
+      </button>
+    </div>`;
+        }
+
+        el.innerHTML = `
+    <div class="quiz-progress-label">
+      <span>${quizText('Otázka', 'Question')} ${quizState.current + 1} ${quizText('z', 'of')} ${total}</span>
+      <span>${correct} ${quizText('správně', 'correct')}</span>
+    </div>
+    <div class="quiz-bar"><div class="quiz-fill" style="width:${pct}%;background:${curMod.color}"></div></div>
+    <div class="quiz-q">${q.q}</div>
+    <div class="options">${optionsHTML}</div>
+    ${feedbackHTML}`;
+      }
+
+function chooseAnswer(idx) {
+        if (quizState.chosen !== null) return;
+        quizState.chosen = idx;
+        renderQuizQuestion();
+      }
+
+function nextQuestion() {
+        const quiz = getQuiz();
+        const q = quiz[quizState.current];
+        quizState.answers.push({ chosen: quizState.chosen, correct: quizState.chosen === q.correct });
+        quizState.current++;
+        quizState.chosen = null;
+        if (quizState.current >= quiz.length) {
+          quizState.finished = true;
+
+          const score = quizState.answers.filter(a => a.correct).length;
+          const key = curMod.id + '-' + curLesson.id;
+
+          progress[key] = {
+            score,
+            total: quiz.length
+          };
+
+          localStorage.setItem('edu-progress', JSON.stringify(progress));
+        }
+        renderQuizQuestion();
+      }
+
+function renderQuizResult() {
+        const el = document.getElementById('quiz-content');
+        const quiz = getQuiz();
+        const score = quizState.answers.filter(a => a.correct).length;
+        const total = quiz.length;
+        const pct = Math.round((score / total) * 100); const itemsHTML = quiz.map((q, i) => {
+          const ok = quizState.answers[i]?.correct;
+          return `<div class="result-item ${ok ? 'ok' : 'bad'}">
+      <div class="ri-q">${i + 1}. ${q.q}</div>
+      <div class="ri-exp">${q.exp}</div>
+    </div>`;
+        }).join('');
+        el.innerHTML = `
+    <div class="result-center">
+      <div class="result-emoji">${pct >= 70 ? '🎉' : '💪'}</div>
+      <div class="result-score">${score} / ${total} ${quizText('správně', 'correct')}</div>
+      <div class="result-msg">${pct >= 70 ? quizText('Výborně! Lekci máte zvládnutou.', 'Excellent! You have completed the lesson.') : quizText('Zkuste si zopakovat studijní materiál.', 'Try reviewing the study material again.')}</div>
+    </div>
+    <div class="result-list">${itemsHTML}</div>
+    <div class="btn-row">
+      <button class="btn-outline" onclick="renderQuiz()">${quizText('Zkusit znovu', 'Try again')}</button>
+      <button type="button" class="btn" style="background:${curMod.color}" onclick="showModule()">${quizText('Zpět na modul', 'Back to module')}</button>
+    </div>`;
+      }
+
+renderHome();
+  </script>
+</body>
+
+</html>
+
