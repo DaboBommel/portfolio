@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Online Learning Environments | Student Portfolio" data-cz="Online výuková prostředí | Studentské portfolio">Online Learning Environments | Student Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ole-page p {
+            text-align: left;
+        }
+
+        .ole-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .ole-header h1 {
+            text-align: center;
+        }
+
+        .ole-subtitle,
+        .ole-intro {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ole-subtitle {
+            max-width: 760px;
+            color: var(--primary-color);
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .ole-intro {
+            max-width: 760px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .ole-artifacts {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ole-artifact {
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
+        }
+
+        .ole-artifact:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .ole-artifact h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.45rem, 3vw, 2.1rem);
+        }
+
+        .ole-artifact-grid {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .ole-section-label {
+            display: block;
+            color: var(--accent-color);
+            font-family: monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.4rem;
+        }
+
+        .ole-description {
+            color: var(--text-color);
+            font-size: 1rem;
+            max-width: 100%;
+            margin-bottom: 1.1rem;
+        }
+
+        .presentation-preview,
+        .media-placeholder {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            transition: transform var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .presentation-preview:hover,
+        .media-placeholder:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 18px 28px -18px rgba(2, 12, 27, 0.85);
+        }
+
+        .presentation-slide {
+            aspect-ratio: 16 / 9;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                linear-gradient(135deg, rgba(56, 182, 255, 0.18), rgba(255, 193, 7, 0.08)),
+                rgba(10, 25, 47, 0.75);
+        }
+
+        .presentation-kicker {
+            display: inline-flex;
+            align-self: flex-start;
+            font-family: monospace;
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 193, 7, 0.35);
+            border-radius: 4px;
+            padding: 0.18rem 0.45rem;
+            font-size: 0.78rem;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .presentation-title {
+            color: var(--text-highlight);
+            font-family: var(--heading-font);
+            font-size: clamp(1.35rem, 4vw, 2rem);
+            line-height: 1.05;
+            margin: 1.3rem 0 0.4rem;
+        }
+
+        .presentation-lines {
+            display: grid;
+            gap: 0.45rem;
+            width: 72%;
+        }
+
+        .presentation-lines span {
+            display: block;
+            height: 0.45rem;
+            border-radius: 999px;
+            background: rgba(204, 214, 246, 0.28);
+        }
+
+        .presentation-lines span:nth-child(2) {
+            width: 78%;
+        }
+
+        .presentation-lines span:nth-child(3) {
+            width: 52%;
+        }
+
+        .presentation-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-family: monospace;
+        }
+
+        .presentation-preview .btn {
+            display: block;
+            text-align: center;
+            margin: 0;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0;
+            background: rgba(56, 182, 255, 0.08);
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin: 0 0 1.25rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .chip-list li {
+            color: var(--primary-color);
+            background: rgba(56, 182, 255, 0.1);
+            border: 1px solid rgba(56, 182, 255, 0.18);
+            border-radius: 4px;
+            padding: 0.28rem 0.6rem;
+            font-family: monospace;
+            font-size: 0.82rem;
+        }
+
+        .reflection-list {
+            display: grid;
+            gap: 0.55rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .reflection-list li {
+            color: var(--text-secondary);
+            border-left: 2px solid rgba(255, 193, 7, 0.45);
+            padding-left: 0.75rem;
+            font-size: 0.98rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .media-placeholder {
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-family: monospace;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+            border-style: dashed;
+            background:
+                linear-gradient(135deg, rgba(56, 182, 255, 0.08), rgba(255, 193, 7, 0.05)),
+                rgba(17, 34, 64, 0.62);
+        }
+
+        .media-placeholder.large {
+            min-height: 360px;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity var(--transition-speed), color var(--transition-speed);
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            opacity: 0.85;
+        }
+
+        .back-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 820px) {
+            .ole-artifact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .media-placeholder.large {
+                min-height: 240px;
+            }
+        }
+    </style>
+</head>
+
+<body class="ole-page">
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span data-en="Back to Overview" data-cz="Zpět na přehled">Back to Overview</span>
+        </a>
+
+        <div class="ole-header">
+            <h1 data-en="Online Learning Environments" data-cz="Online výuková prostředí">Online Learning Environments</h1>
+        </div>
+
+        <p class="ole-subtitle"
+            data-en="In depth work wih LMS (Learning Management) platforms (primarily Moodle), the design and management of online courses, providing an analysis of the clients needs to select optimal learning solutions. Emphasis placed on strategic planning, adult education specifics."
+            data-cz="Práce s LMS (Learning Management) systémy (zejména Moodlem), návrh a správa online kurzů, analýza potřeb klientů pro výběr vhodných výukových řešení. Důraz na strategické plánování.">
+            Exploring LMS platforms, Moodle course design, and online learning solutions.
+        </p>
+        <br/>
+        <br/>
+
+        <div class="ole-artifacts">
+            <section class="ole-artifact fade-in" id="lms-recommendation">
+            <h2 data-en="Proposed Solution to Educational Demand" data-cz="Návrh řešení vzdělávací poptávky">LMS Recommendation</h2>
+            <div class="ole-artifact-grid">
+            <div class="presentation-preview">
+            <div class="aspect-ratio-16-9">
+            <iframe loading="lazy" class="embed-iframe"
+            src="https://www.canva.com/design/DAHKOODHjKk/iUw6PJEcFnymaUtNMonizA/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+            </div>
+            <a class="btn" href="https://www.canva.com/design/DAHKOODHjKk/iUw6PJEcFnymaUtNMonizA/view?utm_content=DAHKOODHjKk&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=editor"
+            target="_blank" rel="noopener" data-en="View Presentation" data-cz="Zobrazit prezentaci">View Presentation</a>
+            </div>
+
+            <div>
+            <span class="ole-section-label" data-en="Asignment description:" data-cz="Popis zadání úkolu:">What it is:</span>
+            <p class="ole-description" data-en="The final assignment for the course was to develop a training needs analysis for a client seeking to implement online employee training using e-learning. The assignment included analyzing the client’s needs, selecting appropriate technologies, and creating a presentation to justify the proposed solution." data-cz="Závěrečným úkolem předmětu bylo zpracování vzdělávací poptávky pro klienta, který chtce zavést online vzdělávání zaměstnanců pomocí e-learningu. Součástí úkolu byla analýza potřeb klienta, výběr vhodných technologií a vytvoření prezentace obhajující navržené řešení.">[PLACEHOLDER_ARTIFACT_4_DESCRIPTION]</p>
+
+            <span class="ole-section-label" data-en="Skills developed:" data-cz="Rozvíjené dovednosti:">Skills developed:</span>
+            <ul class="chip-list">
+            <li data-en="Client Analysis" data-cz="Analýza klienta">Client Analysis</li>
+            <li data-en="LMS Selection" data-cz="Výběr LMS">LMS Selection</li>
+            <li data-en="Solution Presentation" data-cz="Prezentace řešení">Solution Presentation</li>
+            </ul>
+
+            <span class="ole-section-label" data-en="Reflection:" data-cz="Reflexe:">Reflection:</span>
+            <ul class="reflection-list">
+            <li data-en="This exercise showed me how important it is to conduct a detailed analysis of the client and their needs before starting the course." data-cz="Aktivita mi ukázala, jak důležité je provést podrobnou analýzu klienta a jeho potřeb před zahájením kurzu. ">[PLACEHOLDER_REFLECTION_7]</li>
+            <li data-en="The exercise also included the opportunity to ask the client additional questions, which allowed me to quickly adjust the initial proposal to fully meet the company’s needs." data-cz="Součástí aktivity byla také možnost pokládat dodatečné dotazy klientovi, díky tomu jsem byl schopen rychle upravit prvotní návrh tak, aby plně vyhovoval potřebám firmy.">[PLACEHOLDER_REFLECTION_8]</li>
+            </ul>
+            </div>
+            </div>
+            </section>
+
+            <section class="ole-artifact fade-in" id="moodle-activities">
+            <h2 data-en="Designing Moodle activities" data-cz="Design aktivit v Moodlu">Moodle Activities</h2>
+            <div class="gallery-grid" aria-label="Moodle activity screenshots">
+            <a class="media-placeholder" href="assets/moodle 1.png" target="_blank" rel="noopener">
+            <img class="gallery-image" src="assets/moodle 1.png" alt="Moodle activity screenshot 1">
+            </a>
+            <a class="media-placeholder" href="assets/moodle 2.png" target="_blank" rel="noopener">
+            <img class="gallery-image" src="assets/moodle 2.png" alt="Moodle activity screenshot 2">
+            </a>
+            <a class="media-placeholder" href="assets/moodle 3.png" target="_blank" rel="noopener">
+            <img class="gallery-image" src="assets/moodle 3.png" alt="Moodle activity screenshot 3">
+            </a>
+            </div>
+
+            <span class="ole-section-label" data-en="Asignment description:" data-cz="Popis zadání úkolu:">What it is:</span>
+            <p class="ole-description"
+            data-en="As part of the course, we were tasked with creating, configuring, and analyzing the results of various types of activities. Personally, I experimented with configuring test modules, lecture modules, H5P tools, and workshop settings."
+            data-cz="V rámci kurzu jsme měli za úkol vytvořit, nastavit a zanalyzovat výsledky různých typů aktivit. Osobně jsem zkoušel nastavení modulů test, přednáška, nástrojů H5P, nebo nastavení workshopu.">
+            Practical Moodle activities and course components created during coursework.
+            </p>
+
+            <span class="ole-section-label" data-en="Skills developed:" data-cz="Rozvíjené dovednosti:">Skills developed:</span>
+            <ul class="chip-list">
+            <li data-en="Moodle" data-cz="Moodle">Moodle</li>
+            <li data-en="Activity Design" data-cz="Návrh aktivit">Activity Design</li>
+            <li data-en="Assessment Tools" data-cz="Hodnoticí nástroje">Assessment Tools</li>
+            <li data-en="Course Management" data-cz="Správa kurzu">Course Management</li>
+            </ul>
+
+            <span class="ole-section-label" data-en="Reflection:" data-cz="Reflexe:">Reflection:</span>
+            <ul class="reflection-list">
+            <li data-en="I was struck by the relative simplicity of Moodle’s interface combined with its extensive functionality. I found that more complex activity designs aren’t necessarily more effective." data-cz="Zaujala mě relativní jednoduchost rozhraní Moodlu v kombinaci s jeho rozsáhlou funkčností. Zjistil jsem, že složitější pojetí aktivit nemusí být vždy i efektivnější.">[PLACEHOLDER_REFLECTION_3]</li>
+            <li data-en="I realized just how complex creating high-quality, interactive, adaptive, or gamified courses can be." data-cz="Uvědomil jsem si, jak komplexní může tvorba kvalitních, interaktivní, adaptivních, nebo gamifikovaných kurzů být.">[PLACEHOLDER_REFLECTION_4]</li>
+            </ul>
+            </section>
+
+            <section class="ole-artifact fade-in" id="lms-analysis">
+            <h2 data-en="Practical testing of a digital tool" data-cz="Praktické testování digitálního nástroje">LMS Analysis</h2>
+            <div class="ole-artifact-grid">
+            <div class="presentation-preview">
+            <div class="aspect-ratio-16-9">
+            <iframe loading="lazy" class="embed-iframe"
+            src="https://www.canva.com/design/DAHI92Qtz-s/i1HcUvH6R54PTVIhzdr6DA/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+            </div>
+            <a class="btn" href="https://www.canva.com/design/DAHI92Qtz-s/i1HcUvH6R54PTVIhzdr6DA/view?utm_content=DAHI92Qtz-s&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
+            target="_blank" rel="noopener" data-en="View Presentation" data-cz="Zobrazit prezentaci">View Presentation</a>
+            </div>
+
+            <div>
+            <span class="ole-section-label" data-en="Asignment description:" data-cz="Popis zadání úkolu:">What it is:</span>
+            <p class="ole-description" data-en="A practical evaluation of YouLearn.ai, an AI-powered learning platform designed to transform educational content into interactive study materials. The project involved testing the platform with real course materials, analyzing its features, and assessing its strengths, limitations, and potential applications in education." data-cz="Praktické testování vzdělávací platformy YouLearn.ai zaměřené na tvorbu studijních materiálů pomocí umělé inteligence. Součástí úkolu bylo analyzovat funkce nástroje, vyzkoušet jeho využití s reálnými studijními materiály a zhodnotit jeho přínosy, omezení a možnosti využití ve vzdělávání.">[PLACEHOLDER_ARTIFACT_1_DESCRIPTION]</p>
+
+            <span class="ole-section-label" data-en="Skills developed:" data-cz="Rozvíjené dovednosti:">Skills developed:</span>
+            <ul class="chip-list">
+            <li data-en="Educational Technology for General Users" data-cz="Vzdělávací technologie pro běžné uživatele">Educational Technology</li>
+            <li data-en="Evalutaion of Paid Platforms" data-cz="Hodnocení placených platforem">Platform Evaluation</li>
+            <li data-en="A new view on Lifelong Learning in a Digital Environment" data-cz="Pojetí Celoživotního učení v digitálním prostředí">Digital Learning</li>
+            </ul>
+
+            <span class="ole-section-label" data-en="Reflection:" data-cz="Reflexe:">Reflection:</span>
+            <ul class="reflection-list">
+            <li data-en="I appreciated the tool's ability to convert various types of content (such as videos) into study materials." data-cz="Ocenil jsem schopnost nástroje převádět různé typy obsahu (např. videa) do studijních materiálů.">[PLACEHOLDER_REFLECTION_1]</li>
+            <li data-en="I realized how many new apps are being developed and that it’s always a good idea to at least give them a try. Choosing a tool is often just a matter of preference—whether a particular approach to similar software suits us better." data-cz="Uvědomil jsem si, kolik nových aplikací vzniká a že je vždy dobré je minimálně vyzkoušet vyzkoušet. Výběr nástroje je často jen otázkou preference, zda nám konkrétní pojetí podobného softwaru bude vyhovovat víc.">[PLACEHOLDER_REFLECTION_2]</li>
+            </ul>
+            </div>
+            </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025
+            Damian van Bommel. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
