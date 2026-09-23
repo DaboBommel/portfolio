@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Course Records | Student Portfolio" data-cz="Záznamy z předmětu | Studentské Portfolium">Course
+        Records | Student Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio" onclick="location.href='index.html'">My
+                Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other
+                        documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="content-wrapper">
+            <a href="index.html" class="back-link" data-en="← Back to study overview"
+                data-cz="← Zpět na přehled studia">← Back to study overview</a>
+
+            <h1 data-en="Course Records: Lifelong Learning in Digital Environments"
+                data-cz="Záznamy z předmětu: Celoživotní učení v digitálním prostředí">
+                Course Records: Lifelong Learning in Digital Environments
+            </h1>
+
+            <section class="timeline-container fade-in visible">
+                <div class="timeline-line"></div>
+
+                <!--
+                    Copy this timeline-entry block for each new week.
+                    Replace the date, title, text, and the embed area with a PDF, iframe, video, image, or link.
+                -->
+                <div class="timeline-entry">
+                    <div class="timeline-dot"></div>
+                    <details class="timeline-content-box" open>
+                        <summary class="timeline-summary">
+                            <div class="summary-info">
+                                <span class="timeline-date" data-en="Add date" data-cz="Doplnit datum">Add date</span>
+                                <h3 data-en="Weekly Assignment Log" data-cz="Týdenní záznam úkolu">Weekly Assignment
+                                    Log</h3>
+                            </div>
+                        </summary>
+                        <div class="timeline-expanded-content">
+                            <p class="reflection-text"
+                                data-en="Write a short note about the weekly assignment here: what the task was, what source or tool you used, and what you learned from it."
+                                data-cz="Sem doplň krátký záznam k týdennímu úkolu: jaké bylo zadání, jaký zdroj nebo nástroj jsi použil a co sis z toho odnesl.">
+                                Write a short note about the weekly assignment here: what the task was, what source or
+                                tool you used, and what you learned from it.
+                            </p>
+
+                            <div class="embed-placeholder"
+                                data-en="Embedded content area: replace this box with a PDF embed, Canva iframe, YouTube iframe, image, or another weekly assignment artifact."
+                                data-cz="Prostor pro vložený obsah: nahraď tento box PDF embedem, Canva iframem, YouTube iframem, obrázkem nebo jiným výstupem z týdenního úkolu.">
+                                Embedded content area: replace this box with a PDF embed, Canva iframe, YouTube iframe,
+                                image, or another weekly assignment artifact.
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="timeline-dot"></div>
+                    <details class="timeline-content-box">
+                        <summary class="timeline-summary">
+                            <div class="summary-info">
+                                <span class="timeline-date" data-en="Add date" data-cz="Doplnit datum">Add date</span>
+                                <h3 data-en="Weekly Assignment Log" data-cz="Týdenní záznam úkolu">Weekly Assignment
+                                    Log</h3>
+                            </div>
+                        </summary>
+                        <div class="timeline-expanded-content">
+                            <p class="reflection-text"
+                                data-en="Use this second entry as a ready-made duplicate for another week."
+                                data-cz="Tento druhý záznam můžeš použít jako hotovou kopii pro další týden.">
+                                Use this second entry as a ready-made duplicate for another week.
+                            </p>
+
+                            <div class="embed-placeholder"
+                                data-en="Embedded content area"
+                                data-cz="Prostor pro vložený obsah">
+                                Embedded content area
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025
+            Damian van Bommel. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</body>
+
+</html>

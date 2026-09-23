@@ -435,8 +435,16 @@ nav ul li a.active::after {
     width: 100%;
     display: block;
     border: none;
-    height: 100vh;
-    /* Reduced height */
+    height: 80vh;
+    max-height: 800px;
+}
+
+@media (max-width: 768px) {
+    .embed-container object,
+    .embed-container iframe {
+        height: 60vh;
+        max-height: 500px;
+    }
 }
 
 /* --- Timeline (Homepage) --- */
@@ -1456,6 +1464,20 @@ p {
     cursor: pointer;
     border: 1px solid transparent;
     margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.subject-btn + .subject-btn {
+    margin-left: 0.5rem;
+}
+
+.subject-item summary {
+    flex-wrap: wrap;
+}
+
+.subject-name {
+    flex: 1 1 220px;
+    min-width: 0;
 }
 
 .subject-btn:hover {
@@ -1511,6 +1533,15 @@ p {
     backdrop-filter: var(--glass-blur);
     transition: border-color var(--transition-speed), transform var(--transition-speed);
     overflow: hidden;
+}
+
+.embed-placeholder {
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    padding: 2rem;
+    text-align: center;
+    background: rgba(56, 182, 255, 0.06);
 }
 
 .timeline-summary {
@@ -1648,5 +1679,108 @@ audio::-webkit-media-controls-time-remaining-display {
 
     .pdf-viewer-container embed {
         height: 400px;
+    }
+}
+
+/* ========================================================= */
+/* --- ADDED RESPONSIVE FIXES --- */
+/* ========================================================= */
+
+/* Prevent any image from overflowing its container */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Adjust embeds for mobile */
+@media (max-width: 768px) {
+    .embed-container object,
+    .embed-container iframe {
+        height: 60vh !important;
+        max-height: 500px !important;
+    }
+    
+    .cv-embed {
+        height: 70vh !important;
+        min-height: 400px !important;
+    }
+}
+
+/* Fix for profile-visuals bubbles causing clipping/overflow */
+@media (max-width: 768px) {
+    .profile-visuals {
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 120px !important;
+    }
+    
+    .profile-photo.main-photo {
+        right: 0 !important;
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .profile-photo.bubble {
+        width: 90px !important;
+        height: 90px !important;
+    }
+    
+    .bubble-1 {
+        top: 130px !important;
+        left: 0 !important;
+    }
+    
+    .bubble-2 {
+        top: 160px !important;
+        right: 10px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .profile-photo.bubble-3 {
+        width: 60px !important;
+        height: 60px !important;
+        top: 60px !important;
+        right: 0 !important;
+    }
+}
+
+/* Fix info-tooltip going off-screen on mobile */
+@media (max-width: 768px) {
+    .info-tooltip {
+        left: 50% !important;
+        top: calc(100% + 15px) !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        width: 280px !important;
+        max-width: 85vw !important;
+    }
+    
+    .info-icon-wrapper:hover .info-tooltip {
+        transform: translateX(-50%) translateY(0) !important;
+    }
+    
+    .info-tooltip::before {
+        top: auto !important;
+        bottom: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        border-color: transparent transparent var(--surface-color) transparent !important;
+        border-width: 8px !important;
+    }
+}
+
+/* Timeline specific fixes */
+@media (max-width: 768px) {
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+    .timeline::after {
+        left: 20px;
+    }
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        left: 12px;
     }
 }

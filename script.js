@@ -179,6 +179,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const semesterFilter = document.getElementById('semester-filter');
     const subjectFilter = document.getElementById('subject-filter');
     const essayItems = document.querySelectorAll('.portfolio-item');
+    const subjectOptions = subjectFilter ? Array.from(subjectFilter.options) : [];
+
+    function updateSubjectOptions() {
+        if (!semesterFilter || !subjectFilter) return;
+
+        const semesterValue = semesterFilter.value;
+        let selectedSubjectIsVisible = false;
+
+        subjectOptions.forEach(option => {
+            const optionSemesters = (option.dataset.semesters || '')
+                .split(',')
+                .map(semester => semester.trim())
+                .filter(Boolean);
+            const isAlwaysVisible = option.value === 'all';
+            const matchesSemester = semesterValue === 'all' || optionSemesters.includes(semesterValue);
+            const shouldShow = isAlwaysVisible || matchesSemester;
+
+            option.hidden = !shouldShow;
+            option.disabled = !shouldShow;
+
+            if (option.value === subjectFilter.value && shouldShow) {
+                selectedSubjectIsVisible = true;
+            }
+        });
+
+        if (!selectedSubjectIsVisible) {
+            subjectFilter.value = 'all';
+        }
+    }
 
     function filterEssays() {
         if (!searchBar || !semesterFilter || !subjectFilter) return;
@@ -206,8 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (searchBar && semesterFilter && subjectFilter) {
+        updateSubjectOptions();
+        filterEssays();
         searchBar.addEventListener('input', filterEssays);
-        semesterFilter.addEventListener('change', filterEssays);
+        semesterFilter.addEventListener('change', () => {
+            updateSubjectOptions();
+            filterEssays();
+        });
         subjectFilter.addEventListener('change', filterEssays);
     }
 });
