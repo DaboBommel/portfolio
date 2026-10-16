@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Výukový materiál a didaktická reflexe: Důležitější je znát principy, než aplikace. Převod grafického materiálu do přístupného HTML.">
+    <meta name="author" content="Damian van Bommel">
+    <title data-en="Principles Over Applications | Student Portfolio" data-cz="Důležitější je znát principy, než aplikace | Studentské portfolio">Důležitější je znát principy, než aplikace | Studentské portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .article-page {
+            padding-bottom: 4rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: color var(--transition-speed);
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        .article-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .article-meta-badge {
+            display: inline-block;
+            background: rgba(56, 182, 255, 0.15);
+            color: var(--primary-color);
+            border: 1px solid rgba(56, 182, 255, 0.3);
+            border-radius: 20px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.2;
+            color: var(--text-highlight);
+            margin-bottom: 1rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            display: block;
+        }
+
+        .article-lead {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            font-style: italic;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1.2rem;
+            margin: 1.5rem 0 2rem 0;
+            background: rgba(255, 193, 7, 0.05);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .article-content {
+            font-size: 1.12rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .article-content h2 {
+            font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid rgba(56, 182, 255, 0.2);
+            padding-bottom: 0.4rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            color: var(--text-highlight);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-content p {
+            max-width: 100%;
+            margin-bottom: 1.4rem;
+        }
+
+        /* Responsive floated figures as requested by instructions */
+        .figure-right {
+            float: right;
+            width: 44%;
+            margin-left: 1.8rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .figure-left {
+            float: left;
+            width: 42%;
+            margin-right: 1.8rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .article-figure {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.75rem;
+            backdrop-filter: var(--glass-blur);
+            transition: transform var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .article-figure:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .article-figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .figure-caption {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: var(--text-secondary);
+            margin-top: 0.65rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .figure-caption a {
+            color: var(--secondary-color);
+            word-break: break-all;
+        }
+
+        .figure-caption a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Quote box with speaker icon */
+        .quote-box {
+            background: rgba(17, 34, 64, 0.85);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 10px 10px 0;
+            padding: 1.4rem 1.6rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            box-shadow: 0 8px 24px -10px rgba(2, 12, 27, 0.5);
+        }
+
+        .quote-speaker-icon {
+            width: 42px;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+            opacity: 0.9;
+        }
+
+        .quote-text-container {
+            flex-grow: 1;
+        }
+
+        .quote-body {
+            font-size: 1.18rem;
+            font-style: italic;
+            color: var(--text-highlight);
+            line-height: 1.6;
+            margin-bottom: 0.6rem;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-style: normal;
+        }
+
+        /* Principles list */
+        .principles-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.8rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .principles-list li {
+            position: relative;
+            background: rgba(17, 34, 64, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.2rem 1rem 3rem;
+            transition: all var(--transition-speed);
+        }
+
+        .principles-list li:hover {
+            border-color: var(--accent-color);
+            background: rgba(17, 34, 64, 0.9);
+            transform: translateX(4px);
+        }
+
+        .principles-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 1.1rem;
+            top: 1rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* AI declaration card */
+        .ai-declaration-card {
+            background: rgba(255, 193, 7, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.35);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .ai-declaration-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #0a192f;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* Material comparison card */
+        .comparison-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.6rem;
+            margin: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comparison-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: #0a192f;
+            padding: 0.65rem 1.3rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed);
+        }
+
+        .action-btn:hover {
+            background: var(--secondary-color);
+            color: #0a192f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(56, 182, 255, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: transparent;
+            color: var(--text-highlight);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn.secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+
+        /* References section */
+        .references-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .references-list li {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .references-list a {
+            color: var(--secondary-color);
+            word-break: break-all;
+        }
+
+        /* Mobile layout adjustments */
+        @media (max-width: 768px) {
+            .figure-right,
+            .figure-left {
+                float: none;
+                width: 100%;
+                margin: 1.5rem 0;
+            }
+
+            .quote-box {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .article-lead {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio" onclick="location.href='index.html'">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O&nbsp;mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container article-page">
+        <div class="content-wrapper">
+            <a href="course-records.html" class="back-link" data-en="← Back to Course Records (Semester 3)" data-cz="← Zpět na záznamy z&nbsp;předmětu (3. semestr)">← Back to Course Records (Semester 3)</a>
+
+            <article class="article-header">
+                <span class="article-meta-badge" data-en="Subject: Digital Learning Material Creation (FFPGBICT05) | Academic Year 2026/2027" data-cz="Předmět: Tvorba digitálních výukových materiálů (FFPGBICT05) | ZS 2026/2027">Předmět: Tvorba digitálních výukových materiálů (FFPGBICT05) | ZS 2026/2027</span>
+                <h1 class="article-title" data-en="It Is More Important to Know Principles Than Applications" data-cz="Důležitější je znát principy, než aplikace">Důležitější je znát principy, než aplikace</h1>
+                
+                <div class="article-lead" data-en="&ldquo;We can solve certain tasks with technologies and without them, comparing advantages and disadvantages. And in some situations, we find that working without them is actually better.&rdquo;" data-cz="„Můžeme určité úlohy řešit s&nbsp;technologiemi i&nbsp;bez nich, srovnávat výhody a&nbsp;nevýhody. A&nbsp;někde zjistíme, že bez nich je to lepší.“">
+                    „Můžeme určité úlohy řešit s&nbsp;technologiemi i&nbsp;bez nich, srovnávat výhody a&nbsp;nevýhody. A&nbsp;někde zjistíme, že bez nich je to lepší.“
+                </div>
+            </article>
+
+            <div class="article-content clearfix">
+
+                <h2 data-en="1. Purpose of Technology and Digital Tools in Education" data-cz="1. Smysl technologií a&nbsp;digitálních nástrojů ve výuce">1. Smysl technologií a&nbsp;digitálních nástrojů ve výuce</h2>
+
+                <figure class="article-figure figure-right">
+                    <img src="assets/helmhaus_zurich.jpg" alt="Skupinová interakce žáků s multimediálními příběhy v Helmhaus Curych" style="width: 100%; margin-left: 0;">
+                    <figcaption class="figure-caption">
+                        <strong data-en="Image source:" data-cz="Zdroj obrázku:">Zdroj obrázku:</strong> MaddaMom. (2024, February 3). <em>Helmhaus Zurich – Group interaction with multimedia stories</em> [Photograph]. Wikimedia Commons. Dostupné z:&nbsp;<a href="https://commons.wikimedia.org/wiki/File:Helmhaus_Zurich_%E2%80%93_Group_interaction_with_multimedia_stories.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>.
+                    </figcaption>
+                </figure>
+
+                <p data-en="In educational practice, digital technology is often perceived uncritically as an unquestionable improvement. However, true pedagogical mastery lies in knowing when technology genuinely enhances learning and when, conversely, it introduces unnecessary cognitive clutter." data-cz="V&nbsp;pedagogické praxi bývá digitální technologie mnohdy vnímána nekriticky jako automatické vylepšení výuky. Skutečné didaktické mistrovství však spočívá v&nbsp;rozpoznání okamžiku, kdy technologie reálně rozvíjí myšlení a&nbsp;kdy naopak vnáší do hodiny zbytečné kognitivní zahlcení.">
+                    V&nbsp;pedagogické praxi bývá digitální technologie mnohdy vnímána nekriticky jako automatické vylepšení výuky. Skutečné didaktické mistrovství však spočívá v&nbsp;rozpoznání okamžiku, kdy technologie reálně rozvíjí myšlení a&nbsp;kdy naopak vnáší do hodiny zbytečné kognitivní zahlcení.
+                </p>
+
+                <p data-en="As expert consultant Eva Fanfulová illustrates in an interview for the National Pedagogical Institute of the Czech Republic (NPI ČR), digital tools demonstrate their highest value when relieving students from tedious, repetitive mechanical tasks in favor of conceptual exploration:" data-cz="Jak uvádí odborná konzultantka Eva Fanfulová v&nbsp;rozhovoru pro Národní pedagogický institut České republiky (NPI ČR), digitální nástroje mají nejvyšší hodnotu tehdy, když žáky zbavují zdlouhavé mechanické rutiny ve prospěch konceptuálního zkoumání:">
+                    Jak uvádí odborná konzultantka Eva Fanfulová v&nbsp;rozhovoru pro Národní pedagogický institut České republiky (NPI ČR), digitální nástroje mají nejvyšší hodnotu tehdy, když žáky zbavují zdlouhavé mechanické rutiny ve prospěch konceptuálního zkoumání:
+                </p>
+
+                <p data-en="&ldquo;In mathematical application software, students can do things they previously had to draw by hand. For example, with a graph of direct proportionality, they can make multiple trials to see how the line moves. And perhaps through this tool, they will better understand how the slope angle changes with the coefficient. If they did it by hand, they would focus on the drawing itself, barely draw two graphs, and understand nothing. In the application, they can make several changes within a few minutes that clearly illustrate how the entire proportionality works,&rdquo; explains Fanfulová." data-cz="„V&nbsp;aplikačním softwaru pro matematiku mohou žáci dělat věci, které doteď rýsovali ručně. Například u&nbsp;grafu na přímou úměrnost si mohou udělat víc pokusů, aby viděli, jak se přímka pohybuje. A&nbsp;možná právě přes tento nástroj víc pochopí, jak se s&nbsp;koeficientem mění úhel sklonu. Kdyby to dělali ručně, soustředí se na vlastní rýsování, nakreslí sotva dva grafy a&nbsp;nepochopí nic. V&nbsp;aplikaci si mohou během pár minut udělat několik změn, které názorně ilustrují, jak celá úměrnost funguje,“ vysvětluje Fanfulová.">
+                    „V&nbsp;aplikačním softwaru pro matematiku mohou žáci dělat věci, které doteď rýsovali ručně. Například u&nbsp;grafu na přímou úměrnost si mohou udělat víc pokusů, aby viděli, jak se přímka pohybuje. A&nbsp;možná právě přes tento nástroj víc pochopí, jak se s&nbsp;koeficientem mění úhel sklonu. Kdyby to dělali ručně, soustředí se na vlastní rýsování, nakreslí sotva dva grafy a&nbsp;nepochopí nic. V&nbsp;aplikaci si mohou během pár minut udělat několik změn, které názorně ilustrují, jak celá úměrnost funguje,“ vysvětluje Fanfulová.
+                </p>
+
+                <div class="quote-box">
+                    <img src="assets/speak_icon.png" alt="Ikona mluvícího člověka" class="quote-speaker-icon">
+                    <div class="quote-text-container">
+                        <div class="quote-body" data-en="&ldquo;Zároveň se učíme používat v digitálních nástrojích právě ty funkce, které nám v daném případě přinesou něco pozitivního, co budou žáci potřebovat, aby porozuměli principu, například jak funguje vzorec.&rdquo;" data-cz="„Zároveň se učíme používat v&nbsp;digitálních nástrojích právě ty funkce, které nám v&nbsp;daném případě přinesou něco pozitivního, co budou žáci potřebovat, aby porozuměli principu, například jak funguje vzorec.“">
+                            „Zároveň se učíme používat v&nbsp;digitálních nástrojích právě ty funkce, které nám v&nbsp;daném případě přinesou něco pozitivního, co budou žáci potřebovat, aby porozuměli principu, například jak funguje vzorec.“
+                        </div>
+                        <div class="quote-author" data-en="— Eva Fanfulová, expert consultant for NPI ČR" data-cz="— Eva Fanfulová, odborná konzultantka NPI ČR">— Eva Fanfulová, odborná konzultantka NPI ČR</div>
+                    </div>
+                </div>
+
+                <h2 data-en="2. Principles Versus Drilled Procedures" data-cz="2. Principy versus nadrilované postupy">2. Principy versus nadrilované postupy</h2>
+
+                <figure class="article-figure figure-left">
+                    <img src="assets/notebook_to_excel.jpg" alt="Přechod od papírového sešitu k digitálnímu tabulkovému procesoru" style="width: 100%; margin-right: 0;">
+                    <figcaption class="figure-caption">
+                        <span class="ai-badge" data-en="AI-Generated Image" data-cz="Obrázek vygenerovaný pomocí AI">Obrázek vygenerovaný pomocí AI</span><br>
+                        <strong data-en="Image source:" data-cz="Zdroj obrázku:">Zdroj obrázku:</strong> OpenAI. (2026). <em>cartoon style image of a&nbsp;paper notebook with a&nbsp;short arrow pointing at an open window of excel AI-generated image</em>. ChatGPT. Dostupné z:&nbsp;<a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">chatgpt.com</a>.
+                    </figcaption>
+                </figure>
+
+                <p data-en="Understanding fundamental principles is, according to Eva Fanfulová, essential for transferring knowledge across disciplines. In fact, it is <strong>substantially more important than knowing a&nbsp;specific software application</strong>." data-cz="Znát základní princip je podle Evy Fanfulové klíčové i&nbsp;pro aplikace do dalších oborů. Je to dokonce <strong>podstatně důležitější než znát konkrétní nástroj či aplikaci</strong>.">
+                    Znát základní princip je podle Evy Fanfulové klíčové i&nbsp;pro aplikace do dalších oborů. Je to dokonce <strong>podstatně důležitější než znát konkrétní nástroj či aplikaci</strong>.
+                </p>
+
+                <p data-en="<strong>&ldquo;If I&nbsp;understand the principle, I&nbsp;can use various tools—for instance, another spreadsheet processor instead of Excel. It is not about the tool, but about the purpose of use.&rdquo;</strong>" data-cz="<strong>„Pokud rozumím principu, mohu použít různé nástroje, například místo Excelu jiný tabulkový procesor. Nejde o&nbsp;nástroj, ale o&nbsp;účel použití.“</strong>">
+                    <strong>„Pokud rozumím principu, mohu použít různé nástroje, například místo Excelu jiný tabulkový procesor. Nejde o&nbsp;nástroj, ale o&nbsp;účel použití.“</strong>
+                </p>
+
+                <p data-en="When an educational program teaches only concrete user interface buttons (e.g. &lsquo;click tab X, then icon Y&rsquo;), the acquired skill has a very short lifespan. <strong>Ultimately, with every update, specific software tools shift slightly, so drilling a&nbsp;particular procedure without understanding will not last long.</strong>" data-cz="Pokud vzdělávání ustrne na pouhém nácviku klikání v&nbsp;konkrétním uživatelském rozhraní (např.&nbsp;‚klikněte na záložku X a&nbsp;ikonu Y‘), získaná dovednost má velmi krátkou životnost. <strong>Koneckonců s&nbsp;každou aktualizací se konkrétní nástroje trochu mění, takže nadrilovat si určitý postup bez porozumění dlouho nevydrží.</strong>">
+                    Pokud vzdělávání ustrne na pouhém nácviku klikání v&nbsp;konkrétním uživatelském rozhraní (např.&nbsp;‚klikněte na záložku X a&nbsp;ikonu Y‘), získaná dovednost má velmi krátkou životnost. <strong>Koneckonců s&nbsp;každou aktualizací se konkrétní nástroje trochu mění, takže nadrilovat si určitý postup bez porozumění dlouho nevydrží.</strong>
+                </p>
+
+                <p data-en="In contrast, when a pupil masters the essence of relative vs. absolute cell addressing ($A$1 vs. A1), data structures, and mathematical functions, they can smoothly transfer this mental model between Microsoft Excel, Google Sheets, LibreOffice Calc, or Apple Numbers." data-cz="Naopak žák, který pochopí princip relativního a&nbsp;absolutního adresování ($A$1 vs. A1), logiku matematických vzorců a&nbsp;toky dat, dokáže tento myšlenkový model okamžitě aplikovat v&nbsp;Microsoft Excelu, Google Tabulkách, LibreOffice Calc i&nbsp;Apple Numbers.">
+                    Naopak žák, který pochopí princip relativního a&nbsp;absolutního adresování ($A$1 vs. A1), logiku matematických vzorců a&nbsp;toky dat, dokáže tento myšlenkový model okamžitě aplikovat v&nbsp;Microsoft Excelu, Google Tabulkách, LibreOffice Calc i&nbsp;Apple Numbers.
+                </p>
+
+                <div class="clearfix"></div>
+
+                <h2 data-en="3. Key Principles of Meaningful Educational Digitization" data-cz="3. Klíčové zásady smysluplné digitalizace výuky">3. Klíčové zásady smysluplné digitalizace výuky</h2>
+
+                <p data-en="From the analysis of digital workflows and expert recommendations, we can synthesize four core didactic principles:" data-cz="Z&nbsp;analýzy digitálních postupů a&nbsp;doporučení odborníků lze vyvodit čtyři základní didaktické zásady:">
+                    Z&nbsp;analýzy digitálních postupů a&nbsp;doporučení odborníků lze vyvodit čtyři základní didaktické zásady:
+                </p>
+
+                <ul class="principles-list">
+                    <li data-en="<strong>Purpose over instrument:</strong> Technology is an amplifier of pedagogical intent, not a&nbsp;standalone objective. We choose digital tools only when they bring demonstrable didactic value (e.g. dynamic visualization, rapid experimentation, immediate feedback)." data-cz="<strong>Účelnost před samoúčelností:</strong> Technologie je zesilovačem pedagogického záměru, nikoliv samostatným cílem. Volíme ji výhradně tehdy, přináší-li prokazatelnou didaktickou přidanou hodnotu (dynamická vizualizace, rychlé experimentování, okamžitá zpětná vazba).">
+                        <strong>Účelnost před samoúčelností:</strong> Technologie je zesilovačem pedagogického záměru, nikoliv samostatným cílem. Volíme ji výhradně tehdy, přináší-li prokazatelnou didaktickou přidanou hodnotu (dynamická vizualizace, rychlé experimentování, okamžitá zpětná vazba).
+                    </li>
+                    <li data-en="<strong>Conceptual comprehension over mechanical drill:</strong> Students must understand what happens inside the calculation or data model, rather than memorizing a&nbsp;fragile chain of mouse clicks." data-cz="<strong>Konceptuální porozumění před mechanickým drillem:</strong> Žák musí chápat, jaký proces v&nbsp;datech či výpočtu probíhá, nikoliv mechanicky memorovat křehkou posloupnost kliknutí myší.">
+                        <strong>Konceptuální porozumění před mechanickým drillem:</strong> Žák musí chápat, jaký proces v&nbsp;datech či výpočtu probíhá, nikoliv mechanicky memorovat křehkou posloupnost kliknutí myší.
+                    </li>
+                    <li data-en="<strong>Transferability and technological agnosticism:</strong> Mastery of general principles enables immediate adaptation across competing platforms, operating systems, and future software generations." data-cz="<strong>Přenositelnost a&nbsp;technologická agnostičnost:</strong> Znalost obecných principů umožňuje okamžitou adaptaci mezi konkurenčními platformami, operačními systémy i&nbsp;budoucími softwarovými verzemi.">
+                        <strong>Přenositelnost a&nbsp;technologická agnostičnost:</strong> Znalost obecných principů umožňuje okamžitou adaptaci mezi konkurenčními platformami, operačními systémy i&nbsp;budoucími softwarovými verzemi.
+                    </li>
+                    <li data-en="<strong>Critical evaluation of analog vs. digital:</strong> Being able to consciously choose paper or manual drawing when physical engagement fosters deeper focus, tactile grounding, or reduced distraction." data-cz="<strong>Kritické porovnání analogového a&nbsp;digitálního přístupu:</strong> Schopnost vědomě zvolit tužku a&nbsp;papír v&nbsp;situacích, kdy manuální práce přináší hlubší soustředění, hmatové ukotvení či méně kognitivního rozptýlení.">
+                        <strong>Kritické porovnání analogového a&nbsp;digitálního přístupu:</strong> Schopnost vědomě zvolit tužku a&nbsp;papír v&nbsp;situacích, kdy manuální práce přináší hlubší soustředění, hmatové ukotvení či méně kognitivního rozptýlení.
+                    </li>
+                </ul>
+
+                <h2 data-en="4. From Graphic Poster to Accessible Web Document" data-cz="4. Od grafického plakátu k&nbsp;přístupnému webovému dokumentu">4. Od grafického plakátu k&nbsp;přístupnému webovému dokumentu</h2>
+
+                <p data-en="This HTML page represents an authentic transformation of the visual poster originally designed in Figma and exported as PDF in the previous seminar (08/10/2026). Automated PDF-to-HTML converters typically produce rigid, absolutely-positioned HTML fragments that are unreadable by screen readers and unresponsive on mobile screens. In contrast, this manual semantic conversion delivers a truly accessible, responsive, and typographically refined educational resource." data-cz="Tato HTML stránka představuje autentickou transformaci grafického plakátu, který byl původně navržen ve Figmě a&nbsp;v&nbsp;minulé hodině (08.&nbsp;10.&nbsp;2026) exportován do formátu PDF. Automatické konvertory (jako např.&nbsp;pdf2htmlEX) sice dokáží vygenerovat vizuální shodu, ale jejich kód je plný absolutních pozic, nečitelný pro čtečky obrazovky a&nbsp;nepoužitelný na mobilních zařízeních. Ruční sémantická konverze naopak nabízí plnohodnotný, přístupný a&nbsp;typograficky čistý výukový materiál.">
+                    Tato HTML stránka představuje autentickou transformaci grafického plakátu, který byl původně navržen ve Figmě a&nbsp;v&nbsp;minulé hodině (08.&nbsp;10.&nbsp;2026) exportován do formátu PDF. Automatické konvertory (jako např.&nbsp;pdf2htmlEX) sice dokáží vygenerovat vizuální shodu, ale jejich kód je plný absolutních pozic, nečitelný pro čtečky obrazovky a&nbsp;nepoužitelný na mobilních zařízeních. Ruční sémantická konverze naopak nabízí plnohodnotný, přístupný a&nbsp;typograficky čistý výukový materiál.
+                </p>
+
+                <div class="comparison-card">
+                    <h3 data-en="Original Graphic Artifact" data-cz="Původní grafický artefakt">Původní grafický artefakt</h3>
+                    <p data-en="You can inspect the original graphic poster in PDF format or download it directly to compare the visual arrangement with this web implementation." data-cz="Můžete si prohlédnout původní grafický plakát ve formátu PDF a&nbsp;porovnat grafické rozložení s&nbsp;touto webovou implementací.">
+                        Můžete si prohlédnout původní grafický plakát ve formátu PDF a&nbsp;porovnat grafické rozložení s&nbsp;touto webovou implementací.
+                    </p>
+                    <div class="comparison-actions">
+                        <a href="assets/pdfs/collage_poster.pdf" target="_blank" rel="noopener noreferrer" class="action-btn" data-en="📄 Open Original PDF Poster" data-cz="📄 Otevřít původní PDF plakát">📄 Otevřít původní PDF plakát</a>
+                        <a href="course-records.html" class="action-btn secondary" data-en="← Return to Course Records" data-cz="← Návrat do záznamů předmětu">← Návrat do záznamů předmětu</a>
+                    </div>
+                </div>
+
+                <div class="ai-declaration-card">
+                    <h3 data-en="Declaration and Evaluation of AI Usage" data-cz="Prohlášení a&nbsp;vyhodnocení využití umělé inteligence (AI)">Prohlášení a&nbsp;vyhodnocení využití umělé inteligence (AI)</h3>
+                    <p data-en="In accordance with university ethical standards and the assignment guidelines, the following aspects of this page involve artificial intelligence:" data-cz="V&nbsp;souladu s&nbsp;etickými standardy akademické integrity a&nbsp;pokyny k&nbsp;vypracování úkolu transparentně uvádím zapojení nástrojů umělé inteligence v&nbsp;této stránce:">
+                        V&nbsp;souladu s&nbsp;etickými standardy akademické integrity a&nbsp;pokyny k&nbsp;vypracování úkolu transparentně uvádím zapojení nástrojů umělé inteligence v&nbsp;této stránce:
+                    </p>
+                    <ul style="margin: 0.8rem 0; padding-left: 1.5rem; line-height: 1.6;">
+                        <li data-en="<strong>AI-Generated Visual Content:</strong> The cartoon illustration comparing a&nbsp;paper notebook to an Excel spreadsheet (<code>assets/notebook_to_excel.jpg</code>) was generated via OpenAI ChatGPT (DALL-E) based on the user prompt: <em>&lsquo;cartoon style image of a&nbsp;paper notebook with a&nbsp;short arrow pointing at an open window of excel&rsquo;</em>. It serves as a&nbsp;visual metaphor for digital transformation and is visibly labeled both in its figure caption and in the bibliographic citations." data-cz="<strong>Vizuální obsah vytvořený pomocí AI:</strong> Kreslená ilustrace sešitu s&nbsp;šipkou směřující k&nbsp;oknu Excelu (<code>assets/notebook_to_excel.jpg</code>) byla vygenerována modelem OpenAI ChatGPT (DALL-E) na základě promptu: <em>„cartoon style image of a&nbsp;paper notebook with a&nbsp;short arrow pointing at an open window of excel“</em>. Slouží jako didaktická metafora přechodu z&nbsp;analogového do digitálního prostředí a&nbsp;je zřetelně označena štítkem u&nbsp;obrázku i&nbsp;v&nbsp;citacích.">
+                            <strong>Vizuální obsah vytvořený pomocí AI:</strong> Kreslená ilustrace sešitu s&nbsp;šipkou směřující k&nbsp;oknu Excelu (<code>assets/notebook_to_excel.jpg</code>) byla vygenerována modelem OpenAI ChatGPT (DALL-E) na základě promptu: <em>„cartoon style image of a&nbsp;paper notebook with a&nbsp;short arrow pointing at an open window of excel“</em>. Slouží jako didaktická metafora přechodu z&nbsp;analogového do digitálního prostředí a&nbsp;je zřetelně označena štítkem u&nbsp;obrázku i&nbsp;v&nbsp;citacích.
+                        </li>
+                        <li data-en="<strong>AI-Assisted Coding and Accessible Structuring:</strong> The semantic HTML5 coding, WCAG accessibility adjustments, responsive float styles, and typographical replacement of non-breaking spaces were created with the assistance of Google Antigravity. The educational text originates from the interview published by NPI ČR." data-cz="<strong>Asistence při kódování a&nbsp;sémantickém strukturování:</strong> Sémantický kód HTML5, úprava přístupnosti (WCAG), responzivní obtékání obrázků a&nbsp;typografické doplnění nezlomitelných mezer byly vytvořeny ve vývojovém prostředí Google Antigravity. Textový obsah vychází z&nbsp;odborného rozhovoru publikovaného Národním pedagogickým institutem ČR.">
+                            <strong>Asistence při kódování a&nbsp;sémantickém strukturování:</strong> Sémantický kód HTML5, úprava přístupnosti (WCAG), responzivní obtékání obrázků a&nbsp;typografické doplnění nezlomitelných mezer byly vytvořeny ve vývojovém prostředí Google Antigravity. Textový obsah vychází z&nbsp;odborného rozhovoru publikovaného Národním pedagogickým institutem ČR.&nbsp;</li>
+                    </ul>
+                </div>
+
+                <h2 data-en="5. Bibliographic References and Citations" data-cz="5. Bibliografické citace a&nbsp;zdroje">5. Bibliografické citace a&nbsp;zdroje</h2>
+
+                <ol class="references-list">
+                    <li>
+                        KRAMULOVÁ, Daniela. <em>Podpora středních odborných škol v&nbsp;procesu digitalizace</em>. Online. HTTPS://WWW.NPI.CZ/. Národní pedagogický institut České republiky, 2025. Dostupné z:&nbsp;<a href="https://digitalizace.rvp.cz/clanky/podpora-sov-v-procesu-digitalizace" target="_blank" rel="noopener noreferrer">https://digitalizace.rvp.cz/clanky/podpora-sov-v-procesu-digitalizace</a>. [cit.&nbsp;2026-10-05].
+                    </li>
+                    <li>
+                        MaddaMom. (2024, February 3). <em>Helmhaus Zurich – Group interaction with multimedia stories</em> [Photograph]. Wikimedia Commons. Dostupné z:&nbsp;<a href="https://commons.wikimedia.org/wiki/File:Helmhaus_Zurich_%E2%80%93_Group_interaction_with_multimedia_stories.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Helmhaus_Zurich_–_Group_interaction_with_multimedia_stories.jpg</a>.
+                    </li>
+                    <li>
+                        OpenAI. (2026). <em>cartoon style image of a&nbsp;paper notebook with a&nbsp;short arrow pointing at an open window of excel</em> [AI-generated image]. ChatGPT. Dostupné z:&nbsp;<a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">https://chatgpt.com</a>.
+                    </li>
+                    <li>
+                        Yuttapong Lineal. (n.d.). <em>Speak</em> [Icon]. Flaticon. Dostupné z:&nbsp;<a href="https://www.flaticon.com/free-icon/speak_1247944" target="_blank" rel="noopener noreferrer">https://www.flaticon.com/free-icon/speak_1247944</a>.
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025 Damian van Bommel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
