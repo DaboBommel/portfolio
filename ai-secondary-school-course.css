@@ -1,0 +1,422 @@
+.course-page {
+    max-width: 900px;
+    padding-bottom: 5rem;
+}
+
+.course-page .back-link {
+    display: inline-flex;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.course-hero {
+    padding: clamp(1.5rem, 5vw, 3.25rem);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: linear-gradient(140deg, rgba(17, 34, 64, 0.96), rgba(14, 48, 76, 0.72));
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+}
+
+.course-kicker {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.course-hero h1 {
+    max-width: 760px;
+    line-height: 1.12;
+    margin-bottom: 1.2rem;
+}
+
+.course-lead {
+    max-width: 68ch;
+    font-size: 1.12rem;
+    line-height: 1.75;
+}
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.6rem;
+}
+
+.course-meta span {
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 0.83rem;
+    padding: 0.35rem 0.8rem;
+}
+
+.story-card,
+.takeaway-card {
+    display: flex;
+    gap: 1rem;
+    margin: 1.25rem 0;
+    padding: 1.35rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--surface-color);
+    backdrop-filter: var(--glass-blur);
+}
+
+.story-icon {
+    display: grid;
+    flex: 0 0 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border-radius: 50%;
+    color: #07182b;
+    background: var(--accent-color);
+    font-size: 1.25rem;
+}
+
+.story-card h2,
+.takeaway-card h2 {
+    display: block;
+    margin: 0 0 0.6rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.story-card p,
+.takeaway-card p {
+    max-width: 72ch;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.lesson-panel {
+    margin: 1.25rem 0;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid rgba(56, 182, 255, 0.38);
+    border-radius: 16px;
+    background: rgba(9, 25, 46, 0.9);
+}
+
+.lesson-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.score-label {
+    color: var(--accent-color);
+}
+
+.progress-track {
+    height: 7px;
+    margin: 0.8rem 0 1.6rem;
+    overflow: hidden;
+    border-radius: 99px;
+    background: rgba(136, 146, 176, 0.18);
+}
+
+.progress-track span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 250ms ease;
+}
+
+.decision-kicker {
+    margin-bottom: 0.45rem;
+    color: var(--accent-color);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.decision-title {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.3;
+}
+
+.decision-context {
+    max-width: 72ch;
+    margin: 0 0 1.25rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.choice-list {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.choice-button {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    width: 100%;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(136, 146, 176, 0.32);
+    border-radius: 10px;
+    color: var(--text-color);
+    background: rgba(17, 34, 64, 0.64);
+    font: inherit;
+    line-height: 1.55;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.choice-button:hover:not(:disabled),
+.choice-button:focus-visible {
+    border-color: var(--primary-color);
+    background: rgba(56, 182, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.choice-button:focus-visible,
+.action-button:focus-visible,
+.restart-button:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.choice-button:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.choice-button.is-correct {
+    border-color: rgba(136, 146, 176, 0.32);
+    background: rgba(63, 214, 155, 0.08);
+    opacity: 1;
+}
+
+.choice-button.is-incorrect {
+    border-color: rgba(136, 146, 176, 0.32);
+    background: rgba(255, 110, 110, 0.07);
+    opacity: 1;
+}
+
+.choice-marker {
+    position: relative;
+    display: grid;
+    flex: 0 0 1.55rem;
+    width: 1.55rem;
+    height: 1.55rem;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.choice-button.is-correct .choice-marker,
+.choice-button.is-incorrect .choice-marker {
+    border-color: transparent;
+    color: transparent;
+}
+
+.choice-button.is-correct .choice-marker::after,
+.choice-button.is-incorrect .choice-marker::after {
+    position: absolute;
+    color: currentColor;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.choice-button.is-correct .choice-marker {
+    background: rgba(63, 214, 155, 0.16);
+}
+
+.choice-button.is-correct .choice-marker::after {
+    color: #3fd69b;
+    content: "✓";
+}
+
+.choice-button.is-incorrect .choice-marker {
+    background: rgba(255, 110, 110, 0.14);
+}
+
+.choice-button.is-incorrect .choice-marker::after {
+    color: #ff8b8b;
+    content: "×";
+}
+
+.feedback-box {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(105deg, rgba(56, 182, 255, 0.11), rgba(56, 182, 255, 0.025) 72%, transparent);
+}
+
+.feedback-box[data-result="correct"] {
+    background: linear-gradient(105deg, rgba(63, 214, 155, 0.12), rgba(63, 214, 155, 0.025) 72%, transparent);
+}
+
+.feedback-box[data-result="incorrect"] {
+    background: linear-gradient(105deg, rgba(255, 193, 7, 0.11), rgba(255, 193, 7, 0.025) 72%, transparent);
+}
+
+.feedback-box strong {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-highlight);
+}
+
+.feedback-box strong::before {
+    display: grid;
+    flex: 0 0 1.35rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    place-items: center;
+    border-radius: 50%;
+    color: #0a192f;
+    background: var(--primary-color);
+    content: "i";
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.feedback-box[data-result="correct"] strong::before {
+    background: #3fd69b;
+    content: "✓";
+}
+
+.feedback-box[data-result="incorrect"] strong::before {
+    background: var(--accent-color);
+    content: "↗";
+}
+
+.feedback-box p {
+    max-width: 72ch;
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+.lesson-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.1rem;
+}
+
+.action-button,
+.restart-button {
+    padding: 0.75rem 1.15rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.action-button {
+    color: #06182a;
+    background: var(--primary-color);
+}
+
+.action-button:hover {
+    background: var(--secondary-color);
+}
+
+.restart-button {
+    border-color: var(--border-color);
+    color: var(--text-color);
+    background: transparent;
+}
+
+.takeaway-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    padding: 1.6rem 1.7rem;
+    background: radial-gradient(ellipse at 100% 0%, rgba(255, 193, 7, 0.09), transparent 38%), rgba(17, 34, 64, 0.54);
+}
+
+.takeaway-kicker {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: var(--accent-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.takeaway-card h2 {
+    color: var(--text-highlight);
+    font-size: 1.35rem;
+}
+
+.takeaway-card p {
+    color: var(--text-secondary);
+}
+
+.source-notes {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    background: rgba(17, 34, 64, 0.5);
+}
+
+.source-notes summary {
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.source-notes ul {
+    display: grid;
+    gap: 0.55rem;
+    margin: 1rem 0 0 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.source-notes a {
+    color: var(--text-color);
+}
+
+.source-note {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    .course-page {
+        width: 92%;
+    }
+
+    .story-card {
+        padding: 1.1rem;
+    }
+
+    .choice-button {
+        padding: 0.85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-track span,
+    .choice-button {
+        transition: none;
+    }
+}

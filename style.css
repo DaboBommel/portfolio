@@ -1594,6 +1594,14 @@ p {
     animation: slideDown 0.3s ease-out;
 }
 
+.timeline-expanded-content .embed-placeholder {
+    margin: 1.25rem 0 1.75rem;
+}
+
+.timeline-expanded-content .reflection-heading {
+    margin-top: 2.25rem;
+}
+
 .timeline-expanded-content p {
     margin-top: 1.5rem;
 }

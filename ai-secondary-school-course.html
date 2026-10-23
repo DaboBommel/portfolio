@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A short interactive course about using generative AI to support learning and fair assessment in secondary school.">
+    <title data-en="AI and Learning in Secondary School | Student Portfolio" data-cz="AI a učení na střední škole | Studentské portfolio">AI and Learning in Secondary School | Student Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-secondary-school-course.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio" onclick="location.href='index.html'">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container course-page">
+        <a class="back-link" href="course-records.html" data-en="← Back to Course Records" data-cz="← Zpět na záznamy z předmětu">← Back to Course Records</a>
+
+        <section class="course-hero">
+            <span class="course-kicker" data-en="A short scenario-based course · about 5 minutes" data-cz="Krátký kurz založený na scénáři · přibližně 5 minut">A short scenario-based course · about 5 minutes</span>
+            <h1 data-en="AI can help with the task. Does it help you learn?" data-cz="AI může pomoci s úkolem. Pomáhá vám ale učit se?">AI can help with the task. Does it help you learn?</h1>
+            <p class="course-lead" data-en="Step into a teacher’s day and make four decisions about a student using generative AI to prepare for a maths test. See the consequences of each choice as the story unfolds." data-cz="Vžijte se do role učitele a udělejte čtyři rozhodnutí o studentovi, který se pomocí generativní AI připravuje na test z matematiky. Sledujte, jaké důsledky mají vaše volby.">Step into a teacher’s day and make four decisions about a student using generative AI to prepare for a maths test. See the consequences of each choice as the story unfolds.</p>
+            <div class="course-meta" aria-label="Course details">
+              
+  
+            </div>
+        </section>
+
+        <section class="story-card" aria-labelledby="story-heading">
+            <div class="story-icon" aria-hidden="true">✦</div>
+            <div>
+                <h2 id="story-heading" data-en="The situation" data-cz="Situace">The situation</h2>
+                <p data-en="It is Monday morning. Jakub, a first-year secondary-school student, has a maths test on linear equations next week. He has been practising with a general AI chatbot and says, “I get the answers right now, so I think I’m ready.” You want to help him use AI without mistaking a polished answer for lasting learning." data-cz="Je pondělí ráno a Jakub, student prvního ročníku střední školy, se přípravuje na test z lieárních rovnic, který píše další týden. Procvičuje s AI chatbotem, který mu pomáhá počítat příklady a říká vám: „Teď jsem dospěl ke správnému výsledku, takže si myslím, že jsem připravený.“ Chcete mu pomoct využívat AI tak, aby si nespletl uhlazené odpověďi AI a vypočítání jednoho příkladu s reálným učením.">It is Monday morning. Jakub, a first-year secondary-school student, has a maths test on linear equations next week. He has been practising with a general AI chatbot and says, “I get the answers right now, so I think I’m ready.” You want to help him use AI without mistaking a polished answer for lasting learning.</p>
+            </div>
+        </section>
+
+        <section class="lesson-panel" aria-labelledby="decision-title">
+            <div class="lesson-topline">
+                <span class="step-label" id="step-label">Decision 1 of 4</span>
+                <span class="score-label" id="score-label">Score: 0</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="progress-track">
+                <span id="progress-fill"></span>
+            </div>
+            <div id="decision-content" aria-live="polite"></div>
+            <div id="feedback" class="feedback-box" role="status" hidden></div>
+            <div class="lesson-actions">
+                <button class="action-button" id="continue-button" type="button" hidden data-en="Continue" data-cz="Pokračovat">Continue</button>
+                <button class="restart-button" id="restart-button" type="button" hidden data-en="Start again" data-cz="Začít znovu">Start again</button>
+            </div>
+        </section>
+
+        <section class="takeaway-card">
+            <span class="takeaway-kicker" data-en="ONE THING TO TAKE WITH YOU" data-cz="JEDNA MYŠLENKA NA CESTU">ONE THING TO TAKE WITH YOU</span>
+            <h2 data-en="The idea to keep" data-cz="Myšlenka, kterou si odnést">The idea to keep</h2>
+            <p data-en="The useful question is not simply whether AI was used. Ask what the student learned, what they can explain independently, and how the activity helped them get there." data-cz="Užitečná otázka nezní jen, zda byla použita AI. Ptejte se, co se student naučil, co dokáže vysvětlit samostatně a jak mu aktivita pomohla se k tomu dostat.">The useful question is not simply whether AI was used. Ask what the student learned, what they can explain independently, and how the activity helped them get there.</p>
+        </section>
+
+        <details class="source-notes">
+            <summary data-en="Sources and further reading" data-cz="Zdroje a další čtení">Sources and further reading</summary>
+            <ul>
+                <li><a href="https://doi.org/10.54675/JKJB9835" target="_blank" rel="noopener noreferrer" data-en="Miao, F. &amp; Shiohira, K. (2024). AI competency framework for students. UNESCO." data-cz="Miao, F. &amp; Shiohira, K. (2024). AI competency framework for students. UNESCO.">Miao, F. &amp; Shiohira, K. (2024). <em>AI competency framework for students.</em> UNESCO.</a></li>
+                <li><a href="https://digitalizace.rvp.cz/files/2025-faq-ai-umela-inteligence-ve-vyuce.pdf" target="_blank" rel="noopener noreferrer" data-en="National Pedagogical Institute of the Czech Republic (2025). Artificial intelligence in teaching." data-cz="Národní pedagogický institut České republiky (2025). Umělá inteligence ve výuce.">National Pedagogical Institute of the Czech Republic (2025). Artificial intelligence in teaching.</a></li>
+                <li><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener noreferrer" data-en="Bastani et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics." data-cz="Bastani et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics.">Bastani et al. (2025). <em>Generative AI without guardrails can harm learning: Evidence from high school mathematics.</em></a></li>
+                <li><a href="https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html" target="_blank" rel="noopener noreferrer" data-en="OECD (2026). OECD Digital Education Outlook 2026." data-cz="OECD (2026). OECD Digital Education Outlook 2026.">OECD (2026). <em>OECD Digital Education Outlook 2026.</em></a></li>
+            </ul>
+            <p class="source-note" data-en="Course content adapted from the my own short paper on “How AI is changing secondary education”." data-cz="Obsah kurzu volně vychází z mé vlastní práce „Jak AI mění středoškolské vzdělávání“.">Course content adapted from the supplied paper “How AI is changing secondary education” by Damian van Bommel.</p>
+        </details>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025 Damian van Bommel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="ai-secondary-school-course.js"></script>
+</body>
+
+</html>

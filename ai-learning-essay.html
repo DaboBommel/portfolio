@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A visual essay about generative AI, learning, and assessment in secondary school.">
+    <title data-en="When AI Makes the Answer Easier | Student Portfolio" data-cz="Když AI usnadní odpověď | Studentské portfolio">When AI Makes the Answer Easier | Student Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-learning-essay.css">
+</head>
+
+<body class="ai-essay-body">
+    <header>
+        <nav class="container">
+            <div class="nav-logo" data-en="My Portfolio" data-cz="Mé portfolio" onclick="location.href='index.html'">My Portfolio</div>
+            <ul>
+                <li><a href="index.html" data-en="About" data-cz="O mně">About</a></li>
+                <li><a href="essays.html" data-en="Seminar papers" data-cz="Seminární práce">Essays</a></li>
+                <li><a href="presentations.html" data-en="Presentations" data-cz="Prezentace">Presentations</a></li>
+                <li><a href="cv.html" data-en="CV + other documents" data-cz="Životopis + další dokumenty">CV + other documents</a></li>
+                <li><a href="contact.html" data-en="Contact" data-cz="Kontakt">Contact</a></li>
+            </ul>
+            <button id="lang-toggle" title="Toggle language">CZ</button>
+        </nav>
+    </header>
+
+    <main class="container ai-essay">
+        <a class="essay-back" href="course-records.html" data-en="← Course Records" data-cz="← Záznamy z předmětu">← Course Records</a>
+
+        <section class="essay-hero">
+            <div class="hero-copy">
+                                <h1 data-en="A faster answer is not the same as learning." data-cz="Rychlejší odpověď není totéž co učení.">A faster answer is not the same as learning.</h1>
+                <p class="hero-deck" data-en="Generative AI changes both how secondary-school students study and how they show what they know. The educational question is not simply whether a tool was used. It is what remains when the tool is put away." data-cz="Generativní AI mění způsob, jakým se středoškoláci učí i jak prokazují své znalosti. Pedagogická otázka nezní pouze, zda použili nástroj. Důležité je, co jim zůstane, když ho odloží.">Generative AI changes both how secondary-school students study and how they show what they know. The educational question is not simply whether a tool was used. It is what remains when the tool is put away.</p>
+            </div>
+
+            <figure class="hero-art" aria-labelledby="hero-art-caption">
+                <svg viewBox="0 0 560 390" role="img" aria-labelledby="hero-svg-title hero-svg-desc">
+                    <title id="hero-svg-title" data-en="The answer and the learner" data-cz="Odpověď a žák">The answer and the learner</title>
+                    <desc id="hero-svg-desc" data-en="A fine-line illustration of an answer passing through a filter and leaving a trace of independent understanding." data-cz="Kresba z jemných čar znázorňuje odpověď procházející filtrem a stopu samostatného porozumění.">A fine-line illustration of an answer passing through a filter and leaving a trace of independent understanding.</desc>
+                    <defs>
+                        <linearGradient id="hero-path" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#d5a777" />
+                            <stop offset="1" stop-color="#93c8bf" />
+                        </linearGradient>
+                        <pattern id="hero-dots" width="12" height="12" patternUnits="userSpaceOnUse">
+                            <circle cx="1.3" cy="1.3" r="1" fill="#d5a777" opacity=".45" />
+                        </pattern>
+                    </defs>
+                    <circle cx="360" cy="188" r="154" fill="url(#hero-dots)" opacity=".55" />
+                    <circle cx="360" cy="188" r="129" fill="none" stroke="#334653" stroke-width="1" />
+                    <circle cx="360" cy="188" r="92" fill="none" stroke="#334653" stroke-width="1" stroke-dasharray="2 7" />
+                    <path d="M45 105 C116 105 130 105 182 105 C222 105 236 130 260 155" fill="none" stroke="#d5a777" stroke-width="2" />
+                    <path d="M45 105 C116 105 130 105 182 105 C222 105 236 130 260 155" fill="none" stroke="#f2eadb" stroke-width=".7" stroke-dasharray="2 9" />
+                    <rect x="32" y="78" width="112" height="54" rx="27" fill="#172833" stroke="#d5a777" />
+                    <text x="88" y="100" text-anchor="middle" class="hero-svg-small" data-en="PROMPT" data-cz="DOTAZ">PROMPT</text>
+                    <text x="88" y="117" text-anchor="middle" class="hero-svg-label" data-en="the answer" data-cz="odpověď">the answer</text>
+                    <path d="M255 132 L286 164 L255 196 L224 164 Z" fill="#263b43" stroke="#93c8bf" stroke-width="1.5" />
+                    <path d="M245 164 H265 M255 154 V174" stroke="#d8e1d5" stroke-width="1" />
+                    <path d="M286 164 C322 164 326 126 364 126 C405 126 398 204 440 204 C466 204 477 181 504 181" fill="none" stroke="url(#hero-path)" stroke-width="3" />
+                    <path d="M286 164 C322 164 326 126 364 126 C405 126 398 204 440 204 C466 204 477 181 504 181" fill="none" stroke="#f2eadb" stroke-width=".8" stroke-dasharray="1 9" />
+                    <circle cx="364" cy="126" r="5" fill="#d5a777" />
+                    <circle cx="440" cy="204" r="5" fill="#93c8bf" />
+                    <circle cx="504" cy="181" r="4" fill="#f2eadb" />
+                    <text x="360" y="91" text-anchor="middle" class="hero-svg-small" data-en="CHECK" data-cz="OVĚŘIT">CHECK</text>
+                    <text x="442" y="240" text-anchor="middle" class="hero-svg-small" data-en="RECALL" data-cz="VYBAVIT">RECALL</text>
+                    <text x="479" y="154" text-anchor="middle" class="hero-svg-label" data-en="what remains" data-cz="co zůstává">what remains</text>
+                    <path d="M64 294 H470" stroke="#334653" stroke-width="1" />
+                    <circle cx="64" cy="294" r="3" fill="#d5a777" />
+                    <circle cx="470" cy="294" r="3" fill="#93c8bf" />
+                    <text x="64" y="317" class="hero-svg-small" data-en="AI SUPPORT" data-cz="PODPORA AI">AI SUPPORT</text>
+                    <text x="470" y="317" text-anchor="end" class="hero-svg-small" data-en="INDEPENDENT KNOWLEDGE" data-cz="SAMOSTATNÁ ZNALOST">INDEPENDENT KNOWLEDGE</text>
+                </svg>
+                <figcaption id="hero-art-caption" data-en="The path from an answer to understanding passes through checking and recall." data-cz="Cesta od odpovědi k porozumění vede přes ověřování a samostatné vybavení.">The path from an answer to understanding passes through checking and recall.</figcaption>
+            </figure>
+        </section>
+
+        <div class="essay-layout">
+            <aside class="margin-note">
+                <span class="margin-note-no">01</span>
+                <p data-en="Output is visible. Learning is latent." data-cz="Výsledek vidíme. Učení je skryté.">Output is visible. Learning is latent.</p>
+            </aside>
+
+            <article class="essay-copy">
+                <p class="opening-paragraph" data-en="Generative AI can make a student’s work look stronger in the moment. That visible improvement is not, by itself, proof that the student has learned the underlying skill." data-cz="Generativní AI může v daný okamžik zlepšit výsledek žákovy práce. Toto viditelné zlepšení samo o sobě nedokazuje, že se žák naučil potřebnou dovednost.">Generative AI can make a student’s work look stronger in the moment. That visible improvement is not, by itself, proof that the student has learned the underlying skill.</p>
+
+                <h2 data-en="Two moments. Two different measures." data-cz="Dva okamžiky. Dvě různá měřítka.">Two moments. Two different measures.</h2>
+                <p data-en="During practice, an AI tool can supply a next step, explanation, or polished answer. But learning is tested later, when the support is gone and a student must retrieve, adapt, and explain an idea independently. In a high-school mathematics field experiment, students with unrestricted GPT-4 support did better during practice, then scored below students who had never used the tool on a later unaided exam. A tutor designed to give teacher-guided hints largely avoided that decline." data-cz="Během procvičování může AI nabídnout další krok, vysvětlení nebo hotovou odpověď. Učení se však ukáže později, když podpora zmizí a žák musí myšlenku samostatně vybavit, použít a vysvětlit. V experimentu ze středoškolské matematiky dosáhli žáci s neomezenou podporou GPT-4 lepších výsledků při procvičování, ale při pozdější zkoušce bez pomůcek dopadli hůře než žáci, kteří nástroj nepoužívali. Tutor nastavený na nápovědy připravené učitelem tomuto poklesu z velké části předešel.">During practice, an AI tool can supply a next step, explanation, or polished answer. But learning is tested later, when the support is gone and a student must retrieve, adapt, and explain an idea independently. In a high-school mathematics field experiment, students with unrestricted GPT-4 support did better during practice, then scored below students who had never used the tool on a later unaided exam. A tutor designed to give teacher-guided hints largely avoided that decline.</p>
+
+                <figure class="evidence-figure">
+                    <div class="figure-heading">
+                        <span class="figure-index">FIG. 01 / FIELD STUDY</span>
+                        <h3 data-en="When the tool is present—and when it is not" data-cz="Když je nástroj k dispozici — a když není">When the tool is present—and when it is not</h3>
+                        <p data-en="Change in grades relative to the control group" data-cz="Změna výsledků oproti kontrolní skupině">Change in grades relative to the control group</p>
+                    </div>
+                    <svg class="evidence-chart" viewBox="0 0 760 390" role="img" aria-labelledby="evidence-title evidence-desc">
+                        <title id="evidence-title" data-en="Practice scores and unaided exam scores in a high-school AI study" data-cz="Výsledky procvičování a zkoušky bez pomůcek ve středoškolské studii AI">Practice scores and unaided exam scores in a high-school AI study</title>
+                        <desc id="evidence-desc" data-en="Compared with a control group, GPT Base raised practice grades by 48 percent but lowered unaided exam grades by 17 percent. GPT Tutor raised practice grades by 127 percent; its unaided exam result was not statistically different from control." data-cz="Oproti kontrolní skupině zvýšila verze GPT Base známky při procvičování o 48 procent, ale snížila známky u zkoušky bez pomůcek o 17 procent. GPT Tutor zvýšil známky při procvičování o 127 procent; výsledek u zkoušky bez pomůcek se statisticky významně nelišil od kontroly.">Compared with a control group, GPT Base raised practice grades by 48 percent but lowered unaided exam grades by 17 percent. GPT Tutor raised practice grades by 127 percent; its unaided exam result was not statistically different from control.</desc>
+                        <g class="chart-grid">
+                            <line x1="265" y1="74" x2="265" y2="333" />
+                            <line x1="299" y1="74" x2="299" y2="333" class="zero-line" />
+                            <line x1="367" y1="74" x2="367" y2="333" />
+                            <line x1="435" y1="74" x2="435" y2="333" />
+                            <line x1="503" y1="74" x2="503" y2="333" />
+                            <line x1="537" y1="74" x2="537" y2="333" />
+                        </g>
+                        <g class="chart-axis">
+                            <text x="265" y="358" text-anchor="middle">−20%</text>
+                            <text x="299" y="358" text-anchor="middle">0</text>
+                            <text x="367" y="358" text-anchor="middle">+40%</text>
+                            <text x="435" y="358" text-anchor="middle">+80%</text>
+                            <text x="503" y="358" text-anchor="middle">+120%</text>
+                            <text x="537" y="358" text-anchor="middle">+140%</text>
+                        </g>
+                        <g class="chart-group-label">
+                            <text x="24" y="101" data-en="PRACTICE" data-cz="PROCVIČOVÁNÍ">PRACTICE</text>
+                            <text x="24" y="120" data-en="AI available" data-cz="AI k dispozici">AI available</text>
+                            <text x="24" y="242" data-en="UNASSISTED EXAM" data-cz="ZKOUŠKA BEZ POMŮCEK">UNASSISTED EXAM</text>
+                            <text x="24" y="261" data-en="AI removed" data-cz="AI odebrána">AI removed</text>
+                        </g>
+                        <g class="chart-row-label">
+                            <text x="159" y="145" text-anchor="end">GPT Base</text>
+                            <text x="159" y="191" text-anchor="end">GPT Tutor</text>
+                            <text x="159" y="284" text-anchor="end">GPT Base</text>
+                            <text x="159" y="322" text-anchor="end">GPT Tutor</text>
+                        </g>
+                        <rect class="bar bar-base" x="299" y="130" width="81.6" height="22" rx="3" />
+                        <rect class="bar bar-tutor" x="299" y="176" width="215.9" height="22" rx="3" />
+                        <rect class="bar bar-loss" x="270.1" y="269" width="28.9" height="22" rx="3" />
+                        <circle class="chart-neutral" cx="299" cy="315" r="6" />
+                        <g class="chart-value">
+                            <text x="389" y="146">+48%</text>
+                            <text x="523" y="192">+127%</text>
+                            <text x="261" y="285" text-anchor="end">−17%</text>
+                            <text x="318" y="320" data-en="no significant difference" data-cz="bez významného rozdílu">no significant difference</text>
+                        </g>
+                        <text class="chart-footnote" x="24" y="382" data-en="The tutor exam result was statistically indistinguishable from control—not a measured gain." data-cz="Výsledek tutor varianty se statisticky významně nelišil od kontroly — nešlo o naměřené zlepšení.">The tutor exam result was statistically indistinguishable from control—not a measured gain.</text>
+                    </svg>
+                    <figcaption data-en="The study reports relative changes against a control group. Practice and exam are separate stages; the figure is not a single learning score." data-cz="Studie uvádí relativní změny vůči kontrolní skupině. Procvičování a zkouška jsou dvě různé fáze; graf neukazuje jedinou souhrnnou známku učení.">The study reports relative changes against a control group. Practice and exam are separate stages; the figure is not a single learning score.</figcaption>
+                    <a class="source-link" href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener noreferrer" data-en="Bastani et al. · PNAS, 2025 ↗" data-cz="Bastani et al. · PNAS, 2025 ↗">Bastani et al. · PNAS, 2025 ↗</a>
+                </figure>
+
+                <h2 data-en="The beginner’s disadvantage" data-cz="Nevýhoda začátečníka">The beginner’s disadvantage</h2>
+                <p data-en="A student who is new to a topic has less knowledge to use as a filter. A plausible explanation may contain a logical error, an unsupported claim, or a missing step, yet still sound convincing. If a learner has only practised the interface, they may not know what to challenge. Foundations matter: they give students something to compare an AI answer against." data-cz="Žák, který s tématem začíná, má méně znalostí, jimiž by mohl výstup posoudit. Věrohodné vysvětlení může obsahovat logickou chybu, nepodložené tvrzení nebo vynechaný krok — a přesto znít přesvědčivě. Pokud si žák procvičil jen ovládání rozhraní, nemusí vědět, co zpochybnit. Základy jsou důležité: dávají žákům měřítko, s nímž mohou odpověď AI porovnat.">A student who is new to a topic has less knowledge to use as a filter. A plausible explanation may contain a logical error, an unsupported claim, or a missing step, yet still sound convincing. If a learner has only practised the interface, they may not know what to challenge. Foundations matter: they give students something to compare an AI answer against.</p>
+
+                <div class="pull-quote">
+                    <span class="quote-mark" aria-hidden="true">“</span>
+                    <p data-en="The goal is not to remove AI from school. It is to help students master the basics without it—and then use it critically." data-cz="Cílem není vyloučit AI ze školy. Jde o to, aby žáci zvládli základy i bez ní — a potom ji používali kriticky.">The goal is not to remove AI from school. It is to help students master the basics without it—and then use it critically.</p>
+                    <span class="quote-attribution" data-en="THE EDUCATIONAL DESIGN QUESTION" data-cz="OTÁZKA PRO NÁVRH VÝUKY">THE EDUCATIONAL DESIGN QUESTION</span>
+                </div>
+
+                <h2 data-en="Build the task around the thinking" data-cz="Navrhněte úkol kolem přemýšlení">Build the task around the thinking</h2>
+                <p data-en="The same tool can short-circuit practice or make a useful tutor. The difference is often in the task: does AI hand over the finished answer, or does it offer a bounded hint that leaves the student to do the important work? A teacher can make checking part of the assignment, asking students to test an output, explain a choice, or identify where a model’s reasoning fails." data-cz="Tentýž nástroj může obejít procvičování, nebo fungovat jako užitečný tutor. Rozdíl často spočívá v zadání: předá AI hotovou odpověď, nebo nabídne omezenou nápovědu a důležitou práci nechá na žákovi? Učitel může zařadit ověřování přímo do úkolu: požádat žáky, aby výstup prověřili, vysvětlili své rozhodnutí nebo našli chybu v uvažování modelu.">The same tool can short-circuit practice or make a useful tutor. The difference is often in the task: does AI hand over the finished answer, or does it offer a bounded hint that leaves the student to do the important work? A teacher can make checking part of the assignment, asking students to test an output, explain a choice, or identify where a model’s reasoning fails.</p>
+
+                <figure class="design-figure">
+                    <div class="figure-heading">
+                        <span class="figure-index">FIG. 02 / A LEARNING SEQUENCE</span>
+                        <h3 data-en="Keep the learner in the loop" data-cz="Žák zůstává v procesu">Keep the learner in the loop</h3>
+                        <p data-en="A simple sequence for guided use" data-cz="Jednoduchá posloupnost pro vedené využití AI">A simple sequence for guided use</p>
+                    </div>
+                    <svg class="sequence-chart" viewBox="0 0 760 250" role="img" aria-labelledby="sequence-title sequence-desc">
+                        <title id="sequence-title" data-en="Four stages of learning with AI" data-cz="Čtyři fáze učení s AI">Four stages of learning with AI</title>
+                        <desc id="sequence-desc" data-en="Students first retrieve knowledge, then ask AI for a hint, verify its output, and finally demonstrate the skill independently." data-cz="Žáci nejprve vybavují znalosti, poté požádají AI o nápovědu, ověří její výstup a nakonec předvedou dovednost samostatně.">Students first retrieve knowledge, then ask AI for a hint, verify its output, and finally demonstrate the skill independently.</desc>
+                        <path class="sequence-line" d="M95 86 C196 30 226 145 315 86 S440 34 510 86 S624 141 682 86" />
+                        <path class="sequence-thread" d="M95 86 C196 30 226 145 315 86 S440 34 510 86 S624 141 682 86" />
+                        <g class="sequence-node node-one"><circle cx="95" cy="86" r="25" /><text x="95" y="92" text-anchor="middle">01</text></g>
+                        <g class="sequence-node node-two"><circle cx="315" cy="86" r="25" /><text x="315" y="92" text-anchor="middle">02</text></g>
+                        <g class="sequence-node node-three"><circle cx="510" cy="86" r="25" /><text x="510" y="92" text-anchor="middle">03</text></g>
+                        <g class="sequence-node node-four"><circle cx="682" cy="86" r="25" /><text x="682" y="92" text-anchor="middle">04</text></g>
+                        <g class="sequence-label">
+                            <text x="95" y="145" text-anchor="middle" data-en="RETRIEVE" data-cz="VYBAVIT">RETRIEVE</text>
+                            <text x="315" y="145" text-anchor="middle" data-en="ASK FOR A HINT" data-cz="POŽÁDAT O NÁPOVĚDU">ASK FOR A HINT</text>
+                            <text x="510" y="145" text-anchor="middle" data-en="VERIFY" data-cz="OVĚŘIT">VERIFY</text>
+                            <text x="682" y="145" text-anchor="middle" data-en="DEMONSTRATE" data-cz="PŘEDVÉST">DEMONSTRATE</text>
+                        </g>
+                        <g class="sequence-sub">
+                            <text x="95" y="168" text-anchor="middle" data-en="try first" data-cz="nejprve zkusit">try first</text>
+                            <text x="315" y="168" text-anchor="middle" data-en="keep the work" data-cz="práce zůstává žákovi">keep the work</text>
+                            <text x="510" y="168" text-anchor="middle" data-en="check the steps" data-cz="zkontrolovat postup">check the steps</text>
+                            <text x="682" y="168" text-anchor="middle" data-en="show it unaided" data-cz="ukázat bez pomoci">show it unaided</text>
+                        </g>
+                        <text class="sequence-endnote" x="380" y="223" text-anchor="middle" data-en="The tool supports the learning process; it does not stand in for it." data-cz="Nástroj podporuje proces učení — nenahrazuje jej.">The tool supports the learning process; it does not stand in for it.</text>
+                    </svg>
+                    <figcaption data-en="Adapted from the learning safeguards discussed in the supplied paper and the Bastani et al. study." data-cz="Vychází z pedagogických pojistek popsaných v dodané práci a ve studii Bastani et al.">Adapted from the learning safeguards discussed in the supplied paper and the Bastani et al. study.</figcaption>
+                </figure>
+
+                <h2 data-en="Assessment should reveal learning" data-cz="Hodnocení má odhalovat učení">Assessment should reveal learning</h2>
+                <p data-en="Because AI use cannot always be reliably detected, suspicion is a weak foundation for assessment. Instead, design tasks that make learning visible. Check essential knowledge in class without AI through a brief written response or oral explanation. For longer work, look at the process: drafts, decisions, and the student’s account of how the final result took shape." data-cz="Protože využití AI nelze vždy spolehlivě odhalit, podezření je slabým základem hodnocení. Navrhujte úkoly tak, aby bylo učení viditelné. Ověřte zásadní znalosti ve třídě bez AI krátkou písemnou odpovědí nebo ústním vysvětlením. U delších prací sledujte proces: koncepty, rozhodnutí a žákovo vysvětlení toho, jak vznikl konečný výsledek.">Because AI use cannot always be reliably detected, suspicion is a weak foundation for assessment. Instead, design tasks that make learning visible. Check essential knowledge in class without AI through a brief written response or oral explanation. For longer work, look at the process: drafts, decisions, and the student’s account of how the final result took shape.</p>
+
+                <div class="closing-note">
+                                   <p data-en="Good AI use is not a property of the tool. It emerges from the task, the learner’s foundations, and the teacher’s guidance." data-cz="Dobré využití AI není vlastností samotného nástroje. Vzniká ze zadání, základních znalostí žáka a pedagogického vedení.">Good AI use is not a property of the tool. It emerges from the task, the learner’s foundations, and the teacher’s guidance.</p>
+                </div>
+
+                <details class="essay-reflection">
+                    <summary data-en="Reflection on the graphic design (PDF)" data-cz="Reflexe grafického zpracování (PDF)">Reflection on the graphic design (PDF)</summary>
+                    <p data-en="The accompanying reflection on the creation of the visual material." data-cz="Doprovodná reflexe tvorby grafického materiálu.">The accompanying reflection on the creation of the visual material.</p>
+                    <a class="source-link" href="assets/pdfs/Grafick%C3%A9%20prvky%20pomoc%C3%AD%20html.pdf" target="_blank" rel="noopener noreferrer" data-en="Open PDF in a new tab ↗" data-cz="Otevřít PDF v nové kartě ↗">Open PDF in a new tab ↗</a>
+                    <div class="reflection-embed">
+                        <embed src="assets/pdfs/Grafick%C3%A9%20prvky%20pomoc%C3%AD%20html.pdf" width="100%" height="650px" type="application/pdf">
+                    </div>
+                </details>
+
+                <details class="essay-sources">
+                    <summary data-en="Sources &amp; reading" data-cz="Zdroje a literatura">Sources &amp; reading</summary>
+                    <ol>
+                        <li><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener noreferrer">Bastani, H. et al. (2025). <em>Generative AI without guardrails can harm learning: Evidence from high school mathematics.</em> PNAS, 122(26).</a></li>
+                        <li><a href="https://doi.org/10.54675/JKJB9835" target="_blank" rel="noopener noreferrer">Miao, F. &amp; Shiohira, K. (2024). <em>AI competency framework for students.</em> UNESCO.</a></li>
+                        <li><a href="https://digitalizace.rvp.cz/files/2025-faq-ai-umela-inteligence-ve-vyuce.pdf" target="_blank" rel="noopener noreferrer" data-en="National Pedagogical Institute of the Czech Republic (2025). Artificial intelligence in teaching." data-cz="Národní pedagogický institut České republiky (2025). Umělá inteligence ve výuce.">National Pedagogical Institute of the Czech Republic (2025). Artificial intelligence in teaching.</a></li>
+                        <li><a href="https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html" target="_blank" rel="noopener noreferrer">OECD (2026). <em>OECD Digital Education Outlook 2026.</em></a></li>
+                    </ol>
+                    <p data-en="Based on the supplied essay “How AI is changing secondary education” by Damian van Bommel." data-cz="Vychází z dodané práce „Jak AI mění středoškolské vzdělávání“ od Damiana van Bommela.">Based on the supplied essay “How AI is changing secondary education” by Damian van Bommel.</p>
+                </details>
+            </article>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p data-en="Academic portfolio - Damian van Bommel" data-cz="Akademické portfolio - Damian van Bommel">© 2025 Damian van Bommel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
