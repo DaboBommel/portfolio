@@ -244,4 +244,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         subjectFilter.addEventListener('change', filterEssays);
     }
+
+    // --- Video Player Quick Controls (Play/Pause, Skip +10s / -10s, Speed) ---
+    const videoContainers = document.querySelectorAll('.video-player-container');
+    videoContainers.forEach(container => {
+        const video = container.querySelector('video');
+        if (!video) return;
+
+        const playPauseBtn = container.querySelector('.btn-play-pause');
+        const playText = container.querySelector('.play-text');
+        const playIcon = container.querySelector('.play-icon');
+        const skipBackBtn = container.querySelector('.btn-skip-back');
+        const skipFwdBtn = container.querySelector('.btn-skip-fwd');
+        const speedBtns = container.querySelectorAll('.btn-speed');
+
+        const updatePlayBtnState = () => {
+            if (!playPauseBtn) return;
+            const isPaused = video.paused || video.ended;
+            if (playIcon) playIcon.textContent = isPaused ? '▶' : '⏸';
+            if (playText) {
+                playText.setAttribute('data-en', isPaused ? 'Play' : 'Pause');
+                playText.setAttribute('data-cz', isPaused ? 'Přehrát' : 'Pozastavit');
+                const lang = document.documentElement.lang || 'en';
+                playText.textContent = isPaused ? (lang === 'cz' ? 'Přehrát' : 'Play') : (lang === 'cz' ? 'Pozastavit' : 'Pause');
+            }
+        };
+
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => {
+                if (video.paused || video.ended) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+            video.addEventListener('play', updatePlayBtnState);
+            video.addEventListener('pause', updatePlayBtnState);
+            video.addEventListener('ended', updatePlayBtnState);
+        }
+
+        if (skipBackBtn) {
+            skipBackBtn.addEventListener('click', () => {
+                video.currentTime = Math.max(0, video.currentTime - 10);
+            });
+        }
+
+        if (skipFwdBtn) {
+            skipFwdBtn.addEventListener('click', () => {
+                const maxTime = isFinite(video.duration) ? video.duration : video.currentTime + 10;
+                video.currentTime = Math.min(maxTime, video.currentTime + 10);
+            });
+        }
+
+        speedBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const speed = parseFloat(btn.dataset.speed);
+                if (!isNaN(speed)) {
+                    video.playbackRate = speed;
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                }
+            });
+        });
+
+        video.addEventListener('ratechange', () => {
+            speedBtns.forEach(b => {
+                if (parseFloat(b.dataset.speed) === video.playbackRate) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+        });
+    });
 });
